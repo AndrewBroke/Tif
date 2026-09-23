@@ -24,6 +24,11 @@ public class FireExtinguish : MonoBehaviour
     public float extinguishDuration = 4f;
     public float waitAfterExtinguish = 2f;
 
+    [Header("Звуки")]
+    public Transform audioParent;
+    public AudioSource[] audioSources;
+
+    private float[] audioStartVolumes;
     private bool isExtinguishing = false;
 
     public void ExtinguishFire()
@@ -31,6 +36,31 @@ public class FireExtinguish : MonoBehaviour
         if (!isExtinguishing)
         {
             StartCoroutine(Extinguish());
+        }
+    }
+
+    private void Awake()
+    {
+        CacheAudioSources();
+    }
+
+    private void CacheAudioSources()
+    {
+        if (audioSources == null || audioSources.Length == 0)
+        {
+            var provider = audioParent != null ? audioParent : transform;
+            if (provider != null)
+            {
+                audioSources = provider.GetComponentsInChildren<AudioSource>(true);
+            }
+        }
+
+        audioStartVolumes = new float[audioSources?.Length ?? 0];
+
+        for (int i = 0; i < audioStartVolumes.Length; i++)
+        {
+            var source = audioSources[i];
+            audioStartVolumes[i] = source != null ? source.volume : 0f;
         }
     }
 
@@ -92,7 +122,7 @@ public class FireExtinguish : MonoBehaviour
                     fireProgress
                 );
             }
-
+            FadeAudioSources(fireProgress);
             yield return null;
         }
 
@@ -120,6 +150,27 @@ public class FireExtinguish : MonoBehaviour
         yield return new WaitForSeconds(waitAfterExtinguish);
 
         fadeImageAnimator.SetTrigger("Fade");
+    }
+
+    private void FadeAudioSources(float progress)
+    {
+        if (audioSources == null || audioSources.Length == 0)
+            return;
+
+        for (int i = 0; i < audioSources.Length; i++)
+        {
+            var source = audioSources[i];
+            if (source == null)
+                continue;
+
+            float startVolume = (i < audioStartVolumes.Length) ? audioStartVolumes[i] : source.volume;
+            source.volume = Mathf.Lerp(startVolume, 0f, progress);
+
+            if (progress >= 1f && source.isPlaying)
+            {
+                source.Stop();
+            }
+        }
     }
 
     private float GetEmissionRate(ParticleSystem particleSystem)
@@ -152,4 +203,6 @@ public class FireExtinguish : MonoBehaviour
         return particleSystem.particleCount;
     }
 }
+
+
 
