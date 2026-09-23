@@ -69,7 +69,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cinemachine": {
-      "version": "3.1.6",
+      "version": "3.1.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -110,7 +110,7 @@
     },
     "com.unity.editorcoroutines": {
       "version": "1.1.0",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -162,7 +162,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.localization": {
-      "version": "1.5.12",
+      "version": "1.5.13",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -317,7 +317,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.8.12",
+      "version": "1.8.13",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -358,21 +358,6 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "org.khronos.unitygltf": {
-      "version": "https://github.com/KhronosGroup/UnityGLTF.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.imageconversion": "1.0.0",
-        "com.unity.modules.particlesystem": "1.0.0",
-        "com.unity.shadergraph": "10.0.0",
-        "com.unity.mathematics": "1.0.0",
-        "com.unity.collections": "1.0.0"
-      },
-      "hash": "f0295f76355a3dbc6a9588ac3eb86f53531c4dd1"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
