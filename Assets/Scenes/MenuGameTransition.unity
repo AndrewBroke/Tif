@@ -290,7 +290,7 @@ MonoBehaviour:
   monthText: {fileID: 68289055}
   fadeGroup: {fileID: 1880974058}
   startYear: 2026
-  targetYear: 1919
+  targetYear: 1920
   cityChangeYear: 1930
   yearChangeDuration: 10
   yearCurve:
