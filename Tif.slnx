@@ -72,6 +72,7 @@
   <Project Path="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.csproj" />
   <Project Path="Unity.Collections.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
+  <Project Path="Boxophobic.Utils.Editor.csproj" />
   <Project Path="Unity.TextMeshPro.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Editor.Overrides.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
@@ -98,6 +99,7 @@
   <Project Path="Unity.Performance.Profile-Analyzer.Editor.csproj" />
   <Project Path="Unity.AI.Toolkit.Asset.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
+  <Project Path="Boxophobic.Utils.Scripts.csproj" />
   <Project Path="Unity.AI.Assistant.AssetGenerators.Editor.csproj" />
   <Project Path="UnityGLTFEditor.csproj" />
   <Project Path="Unity.Addressables.csproj" />
@@ -141,6 +143,7 @@
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
   <Project Path="Unity.AI.Toolkit.Async.csproj" />
   <Project Path="ToonyColorsPro.Demo.Editor.csproj" />
+  <Project Path="Boxophobic.SkyboxCubemapExtended.Editor.csproj" />
   <Project Path="UnityGLTF.Interactivity.VisualScripting.ExportPlugin.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
   <Project Path="CFXRRuntime.csproj" />

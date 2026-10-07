@@ -290,7 +290,7 @@ MonoBehaviour:
   monthText: {fileID: 68289055}
   fadeGroup: {fileID: 1880974058}
   startYear: 2026
-  targetYear: 1919
+  targetYear: 1920
   cityChangeYear: 1930
   yearChangeDuration: 10
   yearCurve:
@@ -706,7 +706,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8f880c8d8a05b90428f9bb1270e31b99, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

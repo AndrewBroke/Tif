@@ -246,6 +246,11 @@ namespace StarterAssets
 			}
 		}
 
+		public float CurrentSpeed => _speed;
+		public bool IsMoving => _speed > 0.1f;
+		public Vector3 CurrentVelocity => _controller ? _controller.velocity : Vector3.zero;
+
+
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
 			if (lfAngle < -360f) lfAngle += 360f;
