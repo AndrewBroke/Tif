@@ -3,7 +3,67 @@ guid: 5a56bdf72aa77d043ba143ff100ca7fb
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 274dfdf1cc0efa945b3d11f1d04e1e68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Found
+    second: {fileID: 2100000, guid: f14c0448dfc97634296854353bb7c05c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Found HOUSE
+    second: {fileID: 2100000, guid: 438af5b92780bd54a9d4ae11f6b1042f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Houseain
+    second: {fileID: 2100000, guid: 29a3f2c3ca1cc7c46a4f72dfbe9bf2c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightWOOD
+    second: {fileID: 2100000, guid: d65a53c836e858143b97653ce83438fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RAMA
+    second: {fileID: 2100000, guid: d8a289722cf4e0f40a9e949ed831f6ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bricks
+    second: {fileID: 2100000, guid: 2dd8f42decf8b294188317cebab229ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkwood
+    second: {fileID: 2100000, guid: ab72fcdbe1949654784c1bf2f4489f39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dimohod
+    second: {fileID: 2100000, guid: 6ffe7b7289b58c34195fa78860487c80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: a3acf601be0f5914880290faee49778e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: med
+    second: {fileID: 2100000, guid: c333e6856a7f31e49ade2e61c299c2fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roofs
+    second: {fileID: 2100000, guid: 48f6cd58c0baff44b8b60c6b44bf5b9e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

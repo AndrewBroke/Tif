@@ -3,13 +3,15 @@ using UnityEngine.Events;
 
 
 
-public class InvokeOnTriggerPlayer : MonoBehaviour
+public class InvokeOnTrigger : MonoBehaviour
 {
     [SerializeField] private UnityEvent onTriggerEnter;
+    [SerializeField] private string tagToCompare = "Player";
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        print("Collision with: " + other.gameObject);
+        if (other.CompareTag(tagToCompare))
         {
             onTriggerEnter?.Invoke();
         }
