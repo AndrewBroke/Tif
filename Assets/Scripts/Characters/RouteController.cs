@@ -31,6 +31,7 @@ public class RouteController : MonoBehaviour
 
     public void StartRoute(Transform routeParent)
     {
+        print("Начат маршрут: " + routeParent.name);
         if (routeParent == null || agent == null)
             return;
 
@@ -68,6 +69,7 @@ public class RouteController : MonoBehaviour
             }
             else
             {
+                print("Вперед!");
                 agent.SetDestination(routePoints[currentPointIndex].position);
             }
         }

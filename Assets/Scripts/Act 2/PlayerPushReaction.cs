@@ -1,10 +1,14 @@
-using UnityEngine;
 using System.Collections;
-using UnityEngine.InputSystem;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerPushReaction : MonoBehaviour
 {
-     [Header("Push")]
+    [Header("Components")]
+    [SerializeField] private CharacterController characterController;
+    [SerializeField] private Volume volume;
+
+    [Header("Push")]
     [SerializeField] private float duration = 0.5f;
     [SerializeField] private float pushDistance = 1.5f;
 
@@ -12,14 +16,11 @@ public class PlayerPushReaction : MonoBehaviour
     [SerializeField] private float maxPitch = -29f;
     [SerializeField] private float maxRoll = 3f;
 
-    [Header("Curves")]
-
-    // Движение назад: постепенно набираем смещение
+    [Header("Push Curve")]
     [SerializeField] private AnimationCurve pushCurve =
         AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
-    // Наклон назад/вниз:
-    // 0 -> максимум примерно на 0.39 сек -> обратно в 0
+    [Header("Rotation Curves")]
     [SerializeField] private AnimationCurve pitchCurve =
         new AnimationCurve(
             new Keyframe(0f, 0f),
@@ -27,12 +28,19 @@ public class PlayerPushReaction : MonoBehaviour
             new Keyframe(1f, 0f)
         );
 
-    // Небольшой наклон в сторону
     [SerializeField] private AnimationCurve rollCurve =
         new AnimationCurve(
             new Keyframe(0f, 0f),
             new Keyframe(0.78f, 1f),
             new Keyframe(1f, 0f)
+        );
+
+    [Header("Post Processing")]
+    [SerializeField] private AnimationCurve volumeCurve =
+        new AnimationCurve(
+            new Keyframe(0f, 1f),
+            new Keyframe(0.78f, 0f),
+            new Keyframe(1f, 1f)
         );
 
     private Coroutine pushCoroutine;
@@ -51,10 +59,10 @@ public class PlayerPushReaction : MonoBehaviour
     {
         float timer = 0f;
 
-        // Запоминаем направление в момент удара
+        // Направление толчка фиксируем в момент получения урона
         Vector3 pushDirection = -transform.forward;
 
-        // Запоминаем первоначальный поворот
+        // Запоминаем обычный поворот игрока
         Quaternion startRotation = transform.rotation;
 
         float previousPush = 0f;
@@ -65,9 +73,9 @@ public class PlayerPushReaction : MonoBehaviour
 
             float t = Mathf.Clamp01(timer / duration);
 
-            // -------------------------
-            // ДВИЖЕНИЕ НАЗАД
-            // -------------------------
+            // =========================
+            // ТОЛЧОК
+            // =========================
 
             float currentPush =
                 pushCurve.Evaluate(t) * pushDistance;
@@ -75,14 +83,16 @@ public class PlayerPushReaction : MonoBehaviour
             float deltaPush =
                 currentPush - previousPush;
 
-            transform.position +=
-                pushDirection * deltaPush;
+            characterController.Move(
+                pushDirection * deltaPush
+            );
 
             previousPush = currentPush;
 
-            // -------------------------
-            // НАКЛОН
-            // -------------------------
+
+            // =========================
+            // НАКЛОН ИГРОКА
+            // =========================
 
             float pitch =
                 pitchCurve.Evaluate(t) * maxPitch;
@@ -94,20 +104,29 @@ public class PlayerPushReaction : MonoBehaviour
                 startRotation *
                 Quaternion.Euler(pitch, 0f, roll);
 
+
+            // =========================
+            // POST PROCESSING
+            // =========================
+
+            if (volume != null)
+            {
+                volume.weight =
+                    Mathf.Clamp01(volumeCurve.Evaluate(t));
+            }
+
+
             yield return null;
         }
 
-        // Гарантированно возвращаем Rotation
+        // Возвращаем всё точно в исходное состояние
         transform.rotation = startRotation;
 
-        pushCoroutine = null;
-    }
+        if (volume != null)
+        {
+            volume.weight = 0f;
+        }
 
-    void Update()
-    {
-        // if(Keyboard.current.hKey.wasPressedThisFrame)
-        // {
-        //     Push();
-        // }
+        pushCoroutine = null;
     }
 }
