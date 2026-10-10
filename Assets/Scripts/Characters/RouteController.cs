@@ -96,4 +96,9 @@ public class RouteController : MonoBehaviour
         routeInProgress = false;
         agent.isStopped = true;
     }
+
+    public void SetNewSpeed(float newSpeed)
+    {
+        agent.speed = newSpeed;
+    }
 }

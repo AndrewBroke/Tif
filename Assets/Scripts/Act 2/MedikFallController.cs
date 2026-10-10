@@ -9,6 +9,7 @@ public class MedikFallController : MonoBehaviour
     [SerializeField] private GameObject logsInArms;
     [SerializeField] private GameObject helpDialogue;
     [SerializeField] private QuestDisplayController questDisplayController;
+    bool hasFallen = false;
     Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,6 +42,7 @@ public class MedikFallController : MonoBehaviour
 
     private void Fall()
     {
+        if(hasFallen) return;
         routeController.StopRoute();
 
         if(fallLogs != null) fallLogs.SetActive(true);
@@ -48,6 +50,7 @@ public class MedikFallController : MonoBehaviour
         animator.SetTrigger("Fall");
         animator.SetTrigger("Knee");
         SpawnFallLogs();
+        hasFallen = true;
     }
 
     public void SpawnFallLogs()
