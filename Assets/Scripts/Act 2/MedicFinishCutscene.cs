@@ -16,7 +16,8 @@ public class MedicFinishCutscene : MonoBehaviour
     [Tooltip("Optional. Use ONLY if Cinemachine Look At is assigned to this separate target.")]
     [SerializeField] private Transform cameraLookTarget;
     [SerializeField] private CanvasGroup blackScreen;
-    [SerializeField] private Animator medicAnimator;
+    [SerializeField] private GameObject medicBefore;
+    [SerializeField] private GameObject medicDead;
     [SerializeField] private string deadTrigger = "dead";
     [SerializeField] private bool hideLogAfterImpact = true;
 
@@ -99,10 +100,10 @@ public class MedicFinishCutscene : MonoBehaviour
 
     void Update()
     {
-        if(Keyboard.current.pKey.wasPressedThisFrame)
-        {
-            Play();
-        }
+        // if(Keyboard.current.pKey.wasPressedThisFrame)
+        // {
+        //     Play();
+        // }
     }
 
     // Can be called by a UnityEvent in the existing interaction system.
@@ -110,7 +111,7 @@ public class MedicFinishCutscene : MonoBehaviour
     {
         if (IsPlaying) return;
 
-        if (logPivot == null || playerCameraRoot == null || blackScreen == null || medicAnimator == null)
+        if (logPivot == null || playerCameraRoot == null || blackScreen == null)
         {
             Debug.LogError("MedicFinishCutscene: assign Log Pivot, Player Camera Root, Black Screen and Medic Animator.", this);
             return;
@@ -165,8 +166,8 @@ public class MedicFinishCutscene : MonoBehaviour
         if (impactSource != null && impactSound != null)
             impactSource.PlayOneShot(impactSound);
 
-        medicAnimator.ResetTrigger(deadTrigger);
-        medicAnimator.SetTrigger(deadTrigger);
+        medicBefore.SetActive(false);
+        medicDead.SetActive(true);
 
         if (ringingSource != null && ringingSound != null)
         {

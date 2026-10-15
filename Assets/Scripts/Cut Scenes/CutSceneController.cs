@@ -9,7 +9,14 @@ public class CutSceneController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerMovementDelay = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementDelay>();
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var obj in objects)
+        {
+            if(obj.TryGetComponent(out playerMovementDelay))
+            {
+                break;
+            }
+        }
 
     }
 

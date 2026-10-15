@@ -53,7 +53,13 @@ public class RouteController : MonoBehaviour
     private void Update()
     {
         if(animator != null)
+        {
             animator.SetBool("Walk", agent.velocity.sqrMagnitude >= 0.1f ? true : false);
+        }
+        else
+        {
+            print($"Аниматор на объекте {gameObject.name} не найден");   
+        }
 
         if (!routeInProgress || agent.pathPending)
             return;

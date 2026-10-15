@@ -9,6 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private LayerMask interactableLayerMask = ~0;
     private const string InteractActionName = "Interact";
     private Interactable currentInteractable;
+    private InteractionMarker focusedMarker;
 
     [SerializeField] private GameObject interractTip;
 
@@ -24,6 +25,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         DetectInteractable();
+        UpdateMarkerFocus();
     }
 
     private void OnDrawGizmos()
@@ -36,7 +38,10 @@ public class PlayerInteraction : MonoBehaviour
     private void DetectInteractable()
     {
         if (Camera.main == null)
+        {
+            ClearCurrentInteractable();
             return;
+        }
 
         Transform cam = Camera.main.transform;
         Vector3 origin = cam.position;
@@ -45,7 +50,11 @@ public class PlayerInteraction : MonoBehaviour
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactDistance, interactableLayerMask))
         {
             Interactable hitInteractable = hit.collider.GetComponent<Interactable>();
-            if(hit.collider.tag != "Interact") return;
+            if (!hit.collider.CompareTag("Interact"))
+            {
+                ClearCurrentInteractable();
+                return;
+            }
             
             if (hitInteractable != null)
             {
@@ -66,6 +75,11 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
+        ClearCurrentInteractable();
+    }
+
+    private void ClearCurrentInteractable()
+    {
         if (currentInteractable != null)
         {
             currentInteractable.enabled = false;
@@ -73,6 +87,26 @@ public class PlayerInteraction : MonoBehaviour
             if (interractTip != null)
                 interractTip.SetActive(false);
         }
+    }
+
+    private void UpdateMarkerFocus()
+    {
+        InteractionMarker next = currentInteractable != null && currentInteractable.isActiveAndEnabled
+            ? currentInteractable.GetComponentInChildren<InteractionMarker>()
+            : null;
+        if (focusedMarker != next && focusedMarker != null)
+            focusedMarker.SetFocused(false);
+        focusedMarker = next;
+        if (focusedMarker != null)
+            focusedMarker.SetFocused(true);
+    }
+
+    private void OnDisable()
+    {
+        ClearCurrentInteractable();
+        if (focusedMarker != null)
+            focusedMarker.SetFocused(false);
+        focusedMarker = null;
     }
 
 }

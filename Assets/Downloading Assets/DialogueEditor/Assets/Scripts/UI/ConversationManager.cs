@@ -97,7 +97,8 @@ namespace DialogueEditor
 
             m_uiOptions = new List<UIConversationButton>();
 
-            NpcIcon.sprite = BlankSprite;
+            if (NpcIcon != null)
+                NpcIcon.sprite = BlankSprite;
             DialogueText.text = "";
             TurnOffUI();
         }
@@ -289,8 +290,10 @@ namespace DialogueEditor
                         SetColorAlpha(NameText, 0);
 
                         DialogueText.text = "";
-                        NameText.text = m_currentSpeech.Name;
-                        NpcIcon.sprite = m_currentSpeech.Icon != null ? m_currentSpeech.Icon : BlankSprite;
+                        if (NameText != null)
+                            NameText.text = m_currentSpeech.Name;
+                        if (NpcIcon != null)
+                            NpcIcon.sprite = m_currentSpeech.Icon != null ? m_currentSpeech.Icon : BlankSprite;
                     }
                     break;
 
@@ -472,11 +475,13 @@ namespace DialogueEditor
             // Set sprite
             if (speech.Icon == null)
             {
-                NpcIcon.sprite = BlankSprite;
+                if (NpcIcon != null)
+                    NpcIcon.sprite = BlankSprite;
             }
             else
             {
-                NpcIcon.sprite = speech.Icon;
+                if (NpcIcon != null)
+                    NpcIcon.sprite = speech.Icon;
             }
 
             // Set font
@@ -490,7 +495,8 @@ namespace DialogueEditor
             }
 
             // Set name
-            NameText.text = speech.Name;
+            if (NameText != null)
+                NameText.text = speech.Name;
 
             // Set text
             if (string.IsNullOrEmpty(speech.Text))
@@ -639,7 +645,8 @@ namespace DialogueEditor
                     DialogueBackground.type = Image.Type.Simple;
             }
 
-            NpcIcon.sprite = BlankSprite;
+            if (NpcIcon != null)
+                NpcIcon.sprite = BlankSprite;
         }
 
         private void TurnOffUI()
@@ -722,6 +729,8 @@ namespace DialogueEditor
 
         private void SetColorAlpha(MaskableGraphic graphic, float a)
         {
+            if (graphic == null) return;
+
             Color col = graphic.color;
             col.a = a;
             graphic.color = col;

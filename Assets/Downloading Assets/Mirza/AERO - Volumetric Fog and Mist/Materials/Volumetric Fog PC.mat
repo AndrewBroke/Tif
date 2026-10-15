@@ -134,7 +134,7 @@ Material:
     - _AlphaToMask: 0
     - _Ambient_Light: 2
     - _Ambient_Light_Scale: 0.5
-    - _Anisotropy: 0.871
+    - _Anisotropy: 0.69
     - _Anisotropy_Blend: 0.095
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -209,7 +209,7 @@ Material:
     - _Main_Light_Self_Shadow_Remap_Max: 0.8
     - _Main_Light_Self_Shadow_Remap_Min: 0.2
     - _Main_Light_Self_Shadow_Steps: 4
-    - _Max_Distance: 40
+    - _Max_Distance: 50
     - _Metallic: 0
     - _OUTPUT: 0
     - _OcclusionStrength: 1

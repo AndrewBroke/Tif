@@ -1,0 +1,22 @@
+# Blender 4.1.0 MTL File: 'None'
+# www.blender.org
+
+newmtl CH-M-v03
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd Woman3.fbm/VRACHMERTV.png
+map_d Woman3.fbm/CH-M-v03.png
+
+newmtl Woman_2
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd Woman3.fbm/woman 2.png
+map_d Woman3.fbm/CH-W-SIMP.png

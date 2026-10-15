@@ -7,7 +7,14 @@ public class DialogueController : MonoBehaviour
 
     private void Awake()
     {
-        _playerMovementDelay = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementDelay>();
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var obj in objects)
+        {
+            if(obj.TryGetComponent(out _playerMovementDelay))
+            {
+                break;
+            }
+        }
     }
 
     /// <summary>
