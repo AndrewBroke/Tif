@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -7,18 +6,21 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float interactRadius = 0.5f;
     [SerializeField] private float interactDistance = 1f;
     [SerializeField] private LayerMask interactableLayerMask = ~0;
-    private const string InteractActionName = "Interact";
+    [Header("Отладка")]
+    [SerializeField] private bool debugInteraction = true;
+    private string lastDetectionKey;
     private Interactable currentInteractable;
     private InteractionMarker focusedMarker;
 
-    [SerializeField] private GameObject interractTip;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int DetectionLayerMask
     {
-        if (interractTip != null)
-            interractTip.SetActive(false);
+        get
+        {
+            int ignoredLayer = LayerMask.NameToLayer("IgnoreInteract");
+            return ignoredLayer >= 0
+                ? interactableLayerMask.value & ~(1 << ignoredLayer)
+                : interactableLayerMask.value;
+        }
     }
 
     // Update is called once per frame
@@ -39,6 +41,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Camera.main == null)
         {
+            LogDetection("no-camera", "Camera.main не найдена.");
             ClearCurrentInteractable();
             return;
         }
@@ -46,10 +49,58 @@ public class PlayerInteraction : MonoBehaviour
         Transform cam = Camera.main.transform;
         Vector3 origin = cam.position;
         Vector3 direction = cam.forward;
+        int detectionLayerMask = DetectionLayerMask;
 
-        if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactDistance, interactableLayerMask))
+        // SphereCast does not detect colliders overlapping its starting sphere.
+        Interactable nearbyInteractable = null;
+        float nearestDistance = float.PositiveInfinity;
+        string overlapDetails = "";
+        string overlapKey = "";
+        foreach (Collider nearbyCollider in Physics.OverlapSphere(origin, interactRadius, detectionLayerMask))
+        {
+            Interactable candidate = nearbyCollider.GetComponent<Interactable>();
+            Vector3 offset = nearbyCollider.ClosestPoint(origin) - origin;
+            float forwardDot = Vector3.Dot(offset, direction);
+            string reason = !nearbyCollider.CompareTag("Interact") ? "неверный тег"
+                : candidate == null ? "нет Interactable на коллайдере"
+                : forwardDot < 0f ? "ближайшая точка позади камеры" : "подходит";
+            if (debugInteraction)
+            {
+                overlapKey += $"{nearbyCollider.GetEntityId()}:{reason};";
+                overlapDetails += $"\n  {DescribeCollider(nearbyCollider)}: {reason}, distance={offset.magnitude:F3}, forwardDot={forwardDot:F3}";
+            }
+            if (!nearbyCollider.CompareTag("Interact"))
+                continue;
+
+            if (candidate == null)
+                continue;
+
+            if (forwardDot < 0f)
+                continue;
+
+            float distance = offset.sqrMagnitude;
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearbyInteractable = candidate;
+            }
+        }
+
+        if (nearbyInteractable != null)
+        {
+            LogDetection($"overlap:{nearbyInteractable.GetEntityId()}:{overlapKey}",
+                $"OverlapSphere выбрал '{nearbyInteractable.name}'. Пересечения:{overlapDetails}");
+            SetCurrentInteractable(nearbyInteractable);
+            return;
+        }
+
+        if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactDistance, detectionLayerMask))
         {
             Interactable hitInteractable = hit.collider.GetComponent<Interactable>();
+            string hitReason = !hit.collider.CompareTag("Interact") ? "неверный тег"
+                : hitInteractable == null ? "нет Interactable на коллайдере" : "подходит";
+            LogDetection($"cast:{hit.collider.GetEntityId()}:{hitReason}:{overlapKey}",
+                $"SphereCast: {DescribeCollider(hit.collider)}, distance={hit.distance:F3}, результат: {hitReason}. Пересечения у камеры:{overlapDetails}");
             if (!hit.collider.CompareTag("Interact"))
             {
                 ClearCurrentInteractable();
@@ -58,34 +109,59 @@ public class PlayerInteraction : MonoBehaviour
             
             if (hitInteractable != null)
             {
-                if (hitInteractable != currentInteractable)
-                {
-                    if (currentInteractable != null)
-                    {
-                        currentInteractable.enabled = false;
-                        if (interractTip != null)
-                            interractTip.SetActive(false);
-                    }
-                    currentInteractable = hitInteractable;
-                    currentInteractable.enabled = true;
-                    if (interractTip != null)
-                        interractTip.SetActive(true);
-                }
+                SetCurrentInteractable(hitInteractable);
                 return;
             }
         }
+        else
+        {
+            LogDetection($"miss:{overlapKey}",
+                $"SphereCast ничего не нашёл. Пересечения у камеры:{overlapDetails}");
+        }
 
         ClearCurrentInteractable();
+    }
+
+    private void LogDetection(string key, string details)
+    {
+        if (!debugInteraction || lastDetectionKey == key)
+            return;
+
+        lastDetectionKey = key;
+        Debug.Log($"[PlayerInteraction] {details}\n" +
+            $"Текущая цель: {(currentInteractable != null ? currentInteractable.name : "нет")}; " +
+            $"radius={interactRadius}, distance={interactDistance}, mask={interactableLayerMask.value}, effectiveMask={DetectionLayerMask}, " +
+            $"queriesHitTriggers={Physics.queriesHitTriggers}, frame={Time.frameCount}", this);
+    }
+
+    private static string DescribeCollider(Collider collider)
+    {
+        Interactable parentInteractable = collider.GetComponentInParent<Interactable>();
+        return $"'{collider.name}' (id={collider.GetEntityId()}, tag={collider.tag}, " +
+            $"layer={LayerMask.LayerToName(collider.gameObject.layer)} [{collider.gameObject.layer}], " +
+            $"trigger={collider.isTrigger}, Interactable в родителях={(parentInteractable != null ? parentInteractable.name : "нет")})";
+    }
+
+    private void SetCurrentInteractable(Interactable interactable)
+    {
+        if (currentInteractable == interactable)
+            return;
+
+        ClearCurrentInteractable();
+        currentInteractable = interactable;
+        currentInteractable.enabled = true;
+        if (debugInteraction)
+            Debug.Log($"[PlayerInteraction] Цель включена: '{currentInteractable.name}', active={currentInteractable.isActiveAndEnabled}, frame={Time.frameCount}", currentInteractable);
     }
 
     private void ClearCurrentInteractable()
     {
         if (currentInteractable != null)
         {
+            if (debugInteraction)
+                Debug.Log($"[PlayerInteraction] Цель потеряна/сменена: '{currentInteractable.name}', enabled={currentInteractable.enabled}, activeInHierarchy={currentInteractable.gameObject.activeInHierarchy}, frame={Time.frameCount}", currentInteractable);
             currentInteractable.enabled = false;
             currentInteractable = null;
-            if (interractTip != null)
-                interractTip.SetActive(false);
         }
     }
 
@@ -94,6 +170,8 @@ public class PlayerInteraction : MonoBehaviour
         InteractionMarker next = currentInteractable != null && currentInteractable.isActiveAndEnabled
             ? currentInteractable.GetComponentInChildren<InteractionMarker>()
             : null;
+        if (debugInteraction && focusedMarker != next)
+            Debug.Log($"[PlayerInteraction] Маркер: '{(focusedMarker != null ? focusedMarker.name : "нет")}' -> '{(next != null ? next.name : "нет")}', frame={Time.frameCount}", this);
         if (focusedMarker != next && focusedMarker != null)
             focusedMarker.SetFocused(false);
         focusedMarker = next;
@@ -103,6 +181,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnDisable()
     {
+        if (debugInteraction)
+            Debug.Log("[PlayerInteraction] PlayerInteraction отключён.", this);
         ClearCurrentInteractable();
         if (focusedMarker != null)
             focusedMarker.SetFocused(false);
