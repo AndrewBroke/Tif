@@ -31,7 +31,6 @@ public class RouteController : MonoBehaviour
 
     public void StartRoute(Transform routeParent)
     {
-        print("Начат маршрут: " + routeParent.name);
         if (routeParent == null || agent == null)
             return;
 
@@ -56,10 +55,6 @@ public class RouteController : MonoBehaviour
         {
             animator.SetBool("Walk", agent.velocity.sqrMagnitude >= 0.1f ? true : false);
         }
-        else
-        {
-            print($"Аниматор на объекте {gameObject.name} не найден");   
-        }
 
         if (!routeInProgress || agent.pathPending)
             return;
@@ -75,7 +70,6 @@ public class RouteController : MonoBehaviour
             }
             else
             {
-                print("Вперед!");
                 agent.SetDestination(routePoints[currentPointIndex].position);
             }
         }

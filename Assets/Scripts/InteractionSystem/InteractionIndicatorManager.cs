@@ -151,6 +151,15 @@ public class InteractionIndicatorManager : MonoBehaviour
 
     private void UpdateView(InteractionMarker marker, MarkerView view)
     {
+        if (marker == null || !marker.HasInteractionTag)
+        {
+            view.alpha = 0f;
+            view.group.alpha = 0f;
+            view.ui.SetFocused(false);
+            view.root.gameObject.SetActive(false);
+            return;
+        }
+
         float targetAlpha = 0f;
         Vector3 screenPoint = Vector3.zero;
         bool onScreen = false;

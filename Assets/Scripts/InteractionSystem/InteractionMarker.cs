@@ -84,8 +84,18 @@ public class InteractionMarker : MonoBehaviour
 
     public bool IsFocused => isFocused && CanDisplay;
 
+    public bool HasInteractionTag
+    {
+        get
+        {
+            Interactable owner = GetComponentInParent<Interactable>();
+            return owner != null ? owner.CompareTag("Interact") : CompareTag("Interact");
+        }
+    }
+
     public bool CanDisplay =>
         isActiveAndEnabled &&
+        HasInteractionTag &&
         showMarker &&
         interactionAvailable;
 
