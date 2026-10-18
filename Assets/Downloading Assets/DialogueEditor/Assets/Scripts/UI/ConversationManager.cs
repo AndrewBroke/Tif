@@ -163,6 +163,12 @@ namespace DialogueEditor
                 OnConversationEnded.Invoke();
         }
 
+        // An interruption must not invoke events intended for normal completion.
+        public void CancelConversation()
+        {
+            SetState(eState.TransitioningDialogueOff);
+        }
+
         public void SelectNextOption()
         {
             int next = m_currentSelectedIndex + 1;

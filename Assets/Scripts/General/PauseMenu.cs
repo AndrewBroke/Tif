@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using StarterAssets;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using DialogueEditor;
+using System.Collections.Generic;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider sensitivitySlider;
+    [Tooltip("Active objects to close on Esc before opening the pause menu.")]
+    [SerializeField] private List<GameObject> closeOnEscape = new List<GameObject>();
 
     [Header("Player")]
     [SerializeField] private FirstPersonController playerController;
@@ -23,9 +27,20 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private UnityEvent onContinue;
 
     private bool isPaused;
+    private bool isClosingDialogue;
+    private PlayerMovementDelay playerMovementDelay;
 
     private const string VolumeKey = "MasterVolume";
     private const string SensitivityKey = "MouseSensitivity";
+
+    private void Awake()
+    {
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (player.TryGetComponent(out playerMovementDelay))
+                break;
+        }
+    }
 
     private void Start()
     {
@@ -54,12 +69,64 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
+        ConversationManager conversationManager = ConversationManager.Instance;
+        bool isDialogueActive = conversationManager != null && conversationManager.IsConversationActive;
+
+        if (!isDialogueActive)
+            isClosingDialogue = false;
+
         if (Keyboard.current != null &&
             Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            TogglePause();
-            
+            if (isPaused)
+            {
+                ResumeGame();
+                return;
+            }
+
+            bool closedObject = false;
+            foreach (GameObject uiObject in closeOnEscape)
+            {
+                if (uiObject == null || !uiObject.activeInHierarchy)
+                    continue;
+
+                uiObject.SetActive(false);
+                closedObject = true;
+            }
+
+            if (isDialogueActive)
+            {
+                // Ignore further presses while the dialogue fades out.
+                if (!isClosingDialogue || DialogueController.ActiveDialogue != null)
+                {
+                    isClosingDialogue = true;
+                    DialogueController activeDialogue = DialogueController.ActiveDialogue;
+                    if (activeDialogue != null)
+                        activeDialogue.InterruptDialogue();
+                    else
+                    {
+                        conversationManager.CancelConversation();
+                        RestorePlayerControls();
+                    }
+                }
+
+                return;
+            }
+
+            if (closedObject)
+                RestorePlayerControls();
+            else
+                PauseGame();
         }
+    }
+
+    private void RestorePlayerControls()
+    {
+        if (playerMovementDelay != null)
+            playerMovementDelay.UnlockControls();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void TogglePause()
@@ -72,6 +139,9 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        if (playerMovementDelay != null)
+            playerMovementDelay.LockControls();
+
         onPause?.Invoke();
         isPaused = true;
 
@@ -85,6 +155,10 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        // Start also calls this method; preserve the player's initial movement delay.
+        if (isPaused && playerMovementDelay != null)
+            playerMovementDelay.UnlockControls();
+
         onContinue?.Invoke();
         isPaused = false;
 
