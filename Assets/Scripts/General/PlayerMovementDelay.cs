@@ -34,6 +34,8 @@ public class PlayerMovementDelay : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (!lockOnStart) return;
 
         LockControls();
