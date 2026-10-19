@@ -8622,8 +8622,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.005275439, y: 0.0042360686, z: 0.0028755974}
-  m_Center: {x: -0.00074088736, y: -0.00003724557, z: -0.0000019041565}
+  m_Size: {x: 0.012626394, y: 0.009927681, z: 0.006657623}
+  m_Center: {x: -0.0012724953, y: -0.0009828026, z: -0.00046832504}
 --- !u!114 &1182710537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10664,7 +10664,6 @@ MonoBehaviour:
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 65
-  logInteractionDiagnostics: 1
 --- !u!114 &1359415539
 MonoBehaviour:
   m_ObjectHideFlags: 0
