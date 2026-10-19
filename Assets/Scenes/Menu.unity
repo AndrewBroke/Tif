@@ -174,11 +174,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11355186}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  available: 1
+  oneShot: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -220,7 +222,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 11355189}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -938,6 +940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  available: 1
+  oneShot: 0
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -3718,11 +3722,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120225129}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  available: 1
+  oneShot: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -3752,7 +3758,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1120225133}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

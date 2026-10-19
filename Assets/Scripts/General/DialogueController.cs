@@ -6,22 +6,35 @@ public class DialogueController : MonoBehaviour
     public static DialogueController ActiveDialogue { get; private set; }
 
     private PlayerMovementDelay _playerMovementDelay;
+    private Interactable pendingInteraction;
+    private string tagBeforeDialogue;
 
-    private void OnEnable()
+    private void OnDestroy()
     {
-        ConversationManager.OnConversationEnded += ClearActiveDialogue;
-    }
-
-    private void OnDisable()
-    {
-        ConversationManager.OnConversationEnded -= ClearActiveDialogue;
         ClearActiveDialogue();
     }
 
     private void ClearActiveDialogue()
     {
+        ConversationManager.OnConversationEnded -= HandleConversationEnded;
         if (ActiveDialogue == this)
             ActiveDialogue = null;
+    }
+
+    private void HandleConversationEnded()
+    {
+        if (ActiveDialogue != this)
+            return;
+
+        CompletePendingInteraction();
+        ClearActiveDialogue();
+    }
+
+    private void CompletePendingInteraction()
+    {
+        if (pendingInteraction != null)
+            pendingInteraction.CompleteInteraction();
+        pendingInteraction = null;
     }
 
     private void Awake()
@@ -42,10 +55,34 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void StartDialogue(NPCConversation conversation)
     {
-        ActiveDialogue = this;
-        EnableDialogueMode();
+        if (ActiveDialogue == this)
+            return;
 
-        ConversationManager.Instance.StartConversation(conversation);
+        if (ActiveDialogue != null)
+            ActiveDialogue.InterruptDialogue();
+
+        if (TryGetComponent(out Interactable interactable) && interactable.DeferCompletion())
+            pendingInteraction = interactable;
+
+        tagBeforeDialogue = gameObject.tag;
+        ActiveDialogue = this;
+        // Keep tracking an active conversation even if a scene event disables its source.
+        ConversationManager.OnConversationEnded += HandleConversationEnded;
+
+        try
+        {
+            EnableDialogueMode();
+            ConversationManager.Instance.StartConversation(conversation);
+        }
+        catch
+        {
+            if (pendingInteraction != null)
+                pendingInteraction.CancelInteraction();
+            pendingInteraction = null;
+            RestorePlayerControls();
+            ClearActiveDialogue();
+            throw;
+        }
     }
 
     /// <summary>
@@ -57,10 +94,12 @@ public class DialogueController : MonoBehaviour
             return;
 
         ConversationManager.Instance.CancelConversation();
-        DisableDialogueMode();
+        if (pendingInteraction != null)
+            pendingInteraction.CancelInteraction();
+        pendingInteraction = null;
+        RestorePlayerControls();
 
-        if (TryGetComponent(out SetTagObject tagObject))
-            tagObject.SetTag();
+        gameObject.tag = tagBeforeDialogue;
 
         ClearActiveDialogue();
     }
@@ -79,7 +118,15 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void DisableDialogueMode()
     {
-        _playerMovementDelay.UnlockControls();
+        CompletePendingInteraction();
+        ClearActiveDialogue();
+        RestorePlayerControls();
+    }
+
+    private void RestorePlayerControls()
+    {
+        if (_playerMovementDelay != null)
+            _playerMovementDelay.UnlockControls();
         HideCursor();
     }
 

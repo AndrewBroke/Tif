@@ -175,7 +175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11355186}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -209,7 +209,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 11355189}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -219,6 +219,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 1
 --- !u!65 &11355190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -335,7 +337,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: "\u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C"
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &25764229
@@ -786,7 +787,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179422484}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -820,7 +821,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 179422487}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -830,6 +831,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 1
 --- !u!65 &179422488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -946,7 +949,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: "\u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C"
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &183199626 stripped
@@ -1875,6 +1877,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 0
 --- !u!114 &300045772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1896,7 +1900,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: "\u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C"
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &303102216 stripped
@@ -5028,33 +5031,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1271148123}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: DisableDialogueMode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 830891844}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1271148122}
-        m_TargetAssemblyTypeName: SetTagObject, Assembly-CSharp
-        m_MethodName: SetTag
+      - m_Target: {fileID: 830891846}
+        m_TargetAssemblyTypeName: InteractionPanel, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5252,6 +5231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830891845}
+  - component: {fileID: 830891846}
   m_Layer: 5
   m_Name: "\u0417\u0430\u043F\u0438\u0441\u043A\u0430"
   m_TagString: Untagged
@@ -5280,6 +5260,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000061035, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &830891846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830891844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fc71dd4b7a4fd394bdf72e1842ce38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionPanel
+  source: {fileID: 1271148124}
 --- !u!1 &834279079
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,7 +5684,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887582515}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -5713,7 +5706,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 887582519}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5747,6 +5740,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 1
 --- !u!136 &887582520
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5799,7 +5794,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: 
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &926388086 stripped
@@ -7607,7 +7601,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120225129}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -7629,7 +7623,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1120225133}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7675,6 +7669,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 1
 --- !u!136 &1120225134
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7727,7 +7723,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: "\u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C"
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &1140505695
@@ -8581,7 +8576,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182710530}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -8601,6 +8596,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 0
 --- !u!65 &1182710536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8643,7 +8640,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: "\u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C"
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &1183701279
@@ -9587,7 +9583,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271148121}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -9621,7 +9617,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1271148124}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9631,6 +9627,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 0
 --- !u!65 &1271148125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9747,7 +9745,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: 
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &1276344456
@@ -12878,7 +12875,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731428408}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -12912,7 +12909,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1731428412}
         m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: set_enabled
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12922,6 +12919,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 1
 --- !u!65 &1731428413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12995,7 +12994,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: "\u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C"
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1 &1759302278 stripped
@@ -13893,7 +13891,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825536600}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5405f366123acc841ab856b83816ef82, type: 3}
   m_Name: 
@@ -13913,6 +13911,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  available: 1
+  oneShot: 0
 --- !u!65 &1825536603
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14029,7 +14029,6 @@ MonoBehaviour:
   minOpacity: 0.15
   maxOpacity: 1
   interactionText: "\u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C"
-  interactionAvailable: 1
   showMarker: 1
   hideWhenOccluded: 1
 --- !u!1001 &1829997681

@@ -58,9 +58,6 @@ public class InteractionMarker : MonoBehaviour
     [Header("Взаимодействие")]
     [SerializeField] private string interactionText = "Взаимодействовать";
 
-    [Tooltip("Можно ли сейчас взаимодействовать с объектом")]
-    [SerializeField] private bool interactionAvailable = true;
-
     [Tooltip("Показывать ли маркер")]
     [SerializeField] private bool showMarker = true;
 
@@ -93,11 +90,15 @@ public class InteractionMarker : MonoBehaviour
         }
     }
 
-    public bool CanDisplay =>
-        isActiveAndEnabled &&
-        HasInteractionTag &&
-        showMarker &&
-        interactionAvailable;
+    public bool CanDisplay
+    {
+        get
+        {
+            Interactable owner = GetComponentInParent<Interactable>();
+            return isActiveAndEnabled && HasInteractionTag && showMarker &&
+                owner != null && owner.CanInteract;
+        }
+    }
 
     // Получить прозрачность с учётом расстояния
     public float GetTargetOpacity(Vector3 viewerPosition)
@@ -147,13 +148,15 @@ public class InteractionMarker : MonoBehaviour
     // Игрок навёл взгляд
     public void SetFocused(bool focused)
     {
-        isFocused = focused && interactionAvailable;
+        isFocused = focused && CanDisplay;
     }
 
     // Разрешить / запретить взаимодействие
     public void SetAvailable(bool available)
     {
-        interactionAvailable = available;
+        Interactable owner = GetComponentInParent<Interactable>();
+        if (owner != null)
+            owner.SetAvailable(available);
 
         if (!available)
             isFocused = false;

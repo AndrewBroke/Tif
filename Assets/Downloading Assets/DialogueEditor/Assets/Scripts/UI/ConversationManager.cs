@@ -76,6 +76,7 @@ namespace DialogueEditor
         private Conversation m_conversation;
         private SpeechNode m_currentSpeech;
         private OptionNode m_selectedOption;
+        private TMPro.TMP_FontAsset m_defaultDialogueFont;
 
         // Selection options
         private List<UIConversationButton> m_uiOptions;
@@ -96,6 +97,8 @@ namespace DialogueEditor
             Instance = this;
 
             m_uiOptions = new List<UIConversationButton>();
+            m_currentSelectedIndex = -1;
+            m_defaultDialogueFont = DialogueText.font;
 
             if (NpcIcon != null)
                 NpcIcon.sprite = BlankSprite;
@@ -147,6 +150,8 @@ namespace DialogueEditor
         public void StartConversation(NPCConversation conversation)
         {
             m_conversation = conversation.Deserialize();
+            ClearOptions();
+            m_selectedOption = null;
             if (OnConversationStarted != null)
                 OnConversationStarted.Invoke();
 
@@ -166,6 +171,8 @@ namespace DialogueEditor
         // An interruption must not invoke events intended for normal completion.
         public void CancelConversation()
         {
+            ClearOptions();
+            m_selectedOption = null;
             SetState(eState.TransitioningDialogueOff);
         }
 
@@ -373,16 +380,14 @@ namespace DialogueEditor
         private void TransitionOptionsOn_Update()
         {
             m_stateTime += Time.deltaTime;
-            float t = m_stateTime / TRANSITION_TIME;
-
-            if (t > 1)
-            {
-                SetState(eState.Idle);
-                return;
-            }
+            float t = Mathf.Clamp01(m_stateTime / TRANSITION_TIME);
 
             for (int i = 0; i < m_uiOptions.Count; i++)
                 m_uiOptions[i].SetAlpha(t);
+
+            // A slow frame can skip the fade entirely; still make every answer visible.
+            if (m_stateTime >= TRANSITION_TIME)
+                SetState(eState.Idle);
         }
 
         private void Idle_Update()
@@ -476,7 +481,6 @@ namespace DialogueEditor
 
             // Clear current options
             ClearOptions();
-            m_currentSelectedIndex = 0;
 
             // Set sprite
             if (speech.Icon == null)
@@ -497,7 +501,7 @@ namespace DialogueEditor
             }
             else
             {
-                DialogueText.font = null;
+                DialogueText.font = m_defaultDialogueFont;
             }
 
             // Set name
@@ -728,9 +732,15 @@ namespace DialogueEditor
         {
             while (m_uiOptions.Count != 0)
             {
-                GameObject.Destroy(m_uiOptions[0].gameObject);
+                if (m_uiOptions[0] != null)
+                {
+                    // Destroy is deferred; hide immediately so old buttons leave the layout now.
+                    m_uiOptions[0].gameObject.SetActive(false);
+                    GameObject.Destroy(m_uiOptions[0].gameObject);
+                }
                 m_uiOptions.RemoveAt(0);
             }
+            m_currentSelectedIndex = -1;
         }
 
         private void SetColorAlpha(MaskableGraphic graphic, float a)
@@ -751,7 +761,7 @@ namespace DialogueEditor
             if (index > m_uiOptions.Count - 1)
                 index = m_uiOptions.Count - 1;
 
-            if (m_currentSelectedIndex >= 0)
+            if (m_currentSelectedIndex >= 0 && m_currentSelectedIndex < m_uiOptions.Count)
                 m_uiOptions[m_currentSelectedIndex].SetHovering(false);
             m_currentSelectedIndex = index;
             m_uiOptions[index].SetHovering(true);
@@ -759,7 +769,7 @@ namespace DialogueEditor
 
         private void UnselectOption()
         {
-            if (m_currentSelectedIndex < 0) { return; }
+            if (m_currentSelectedIndex < 0 || m_currentSelectedIndex >= m_uiOptions.Count) { return; }
 
             m_uiOptions[m_currentSelectedIndex].SetHovering(false);
             m_currentSelectedIndex = -1;

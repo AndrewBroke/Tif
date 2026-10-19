@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private LayerMask interactableLayerMask = ~0;
     private Interactable currentInteractable;
     private InteractionMarker focusedMarker;
+    private InputAction interactAction;
 
     private int DetectionLayerMask
     {
@@ -20,10 +22,21 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        interactAction = InputSystem.actions?.FindAction("Player/Interact");
+    }
+
     void Update()
     {
         DetectInteractable();
+
+        if (interactAction != null && interactAction.WasPressedThisFrame())
+            currentInteractable?.Interact();
+
+        if (currentInteractable != null && !currentInteractable.CanInteract)
+            ClearCurrentInteractable();
+
         UpdateMarkerFocus();
     }
 
@@ -58,7 +71,7 @@ public class PlayerInteraction : MonoBehaviour
             if (!nearbyCollider.CompareTag("Interact"))
                 continue;
 
-            if (candidate == null)
+            if (candidate == null || !candidate.CanInteract)
                 continue;
 
             if (forwardDot < 0f)
@@ -87,7 +100,7 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
             
-            if (hitInteractable != null)
+            if (hitInteractable != null && hitInteractable.CanInteract)
             {
                 SetCurrentInteractable(hitInteractable);
                 return;
@@ -99,26 +112,17 @@ public class PlayerInteraction : MonoBehaviour
 
     private void SetCurrentInteractable(Interactable interactable)
     {
-        if (currentInteractable == interactable)
-            return;
-
-        ClearCurrentInteractable();
         currentInteractable = interactable;
-        currentInteractable.enabled = true;
     }
 
     private void ClearCurrentInteractable()
     {
-        if (currentInteractable != null)
-        {
-            currentInteractable.enabled = false;
-            currentInteractable = null;
-        }
+        currentInteractable = null;
     }
 
     private void UpdateMarkerFocus()
     {
-        InteractionMarker next = currentInteractable != null && currentInteractable.isActiveAndEnabled
+        InteractionMarker next = currentInteractable != null && currentInteractable.CanInteract
             ? currentInteractable.GetComponentInChildren<InteractionMarker>()
             : null;
         if (focusedMarker != next && focusedMarker != null)
