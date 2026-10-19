@@ -10,6 +10,19 @@ public class Interactable : MonoBehaviour
     [Tooltip("Запретить повторное использование после завершения действия.")]
     [SerializeField] private bool oneShot;
 
+    [Tooltip("Root of this character body. Its non-interactive colliders do not obstruct this action. Do not assign environment or shared scene roots.")]
+    [SerializeField] private Transform interactionBodyRoot;
+
+    // Explicit ownership only: never infer an owner from an arbitrary common ancestor
+    // or ignore an entire layer. Other interactables remain physical obstacles.
+    internal bool OwnsInteractionCollider(Collider collider)
+    {
+        if (collider == null) return false;
+        if (collider.TryGetComponent(out Interactable owner)) return owner == this;
+        return interactionBodyRoot != null && transform.IsChildOf(interactionBodyRoot) &&
+            collider.transform.IsChildOf(interactionBodyRoot);
+    }
+
     private bool isExecuting;
     private bool isCompleted;
     private bool completionPending;
