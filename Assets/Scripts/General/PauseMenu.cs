@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using DialogueEditor;
 using System.Collections.Generic;
 
+[DefaultExecutionOrder(-200)]
 public class PauseMenu : MonoBehaviour
 {
     [Header("UI")]
@@ -28,19 +29,10 @@ public class PauseMenu : MonoBehaviour
 
     private bool isPaused;
     private bool isClosingDialogue;
-    private PlayerMovementDelay playerMovementDelay;
+    private float timeScaleBeforePause = 1f;
 
     private const string VolumeKey = "MasterVolume";
     private const string SensitivityKey = "MouseSensitivity";
-
-    private void Awake()
-    {
-        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            if (player.TryGetComponent(out playerMovementDelay))
-                break;
-        }
-    }
 
     private void Start()
     {
@@ -106,27 +98,15 @@ public class PauseMenu : MonoBehaviour
                     else
                     {
                         conversationManager.CancelConversation();
-                        RestorePlayerControls();
                     }
                 }
 
                 return;
             }
 
-            if (closedObject)
-                RestorePlayerControls();
-            else
+            if (!closedObject)
                 PauseGame();
         }
-    }
-
-    private void RestorePlayerControls()
-    {
-        if (playerMovementDelay != null)
-            playerMovementDelay.UnlockControls();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     public void TogglePause()
@@ -139,35 +119,34 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        if (playerMovementDelay != null)
-            playerMovementDelay.LockControls();
-
-        onPause?.Invoke();
+        if (isPaused || !isActiveAndEnabled) return;
+        timeScaleBeforePause = Time.timeScale;
         isPaused = true;
-
-        pauseMenu.SetActive(true);
-
+        PlayerControlLocks.Acquire(this, showCursor: true);
         Time.timeScale = 0f;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        pauseMenu.SetActive(true);
+        onPause?.Invoke();
     }
 
     public void ResumeGame()
     {
-        // Start also calls this method; preserve the player's initial movement delay.
-        if (isPaused && playerMovementDelay != null)
-            playerMovementDelay.UnlockControls();
-
-        onContinue?.Invoke();
+        if (!isPaused) return;
         isPaused = false;
-
+        Time.timeScale = timeScaleBeforePause;
+        PlayerControlLocks.Release(this);
         pauseMenu.SetActive(false);
+        onContinue?.Invoke();
+    }
 
-        Time.timeScale = 1f;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+    private void OnDisable()
+    {
+        if (isPaused)
+        {
+            isPaused = false;
+            Time.timeScale = timeScaleBeforePause;
+            if (pauseMenu != null) pauseMenu.SetActive(false);
+        }
+        PlayerControlLocks.Release(this);
     }
 
     public void SetVolume(float value)

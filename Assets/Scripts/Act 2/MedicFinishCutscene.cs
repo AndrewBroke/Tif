@@ -109,7 +109,7 @@ public class MedicFinishCutscene : MonoBehaviour
     // Can be called by a UnityEvent in the existing interaction system.
     public void Play()
     {
-        if (IsPlaying) return;
+        if (!isActiveAndEnabled || IsPlaying) return;
 
         if (logPivot == null || playerCameraRoot == null || blackScreen == null)
         {
@@ -121,119 +121,127 @@ public class MedicFinishCutscene : MonoBehaviour
         logPivot.transform.parent.GetComponent<Animator>().enabled = false;
 
         IsPlaying = true;
+        PlayerControlLocks.Acquire(this);
         StartCoroutine(Sequence());
     }
 
     private IEnumerator Sequence()
     {
-        if (!hasInitialLogPose)
+        try
         {
-            initialLogPosition = logPivot.localPosition;
-            initialLogRotation = logPivot.localRotation;
-            hasInitialLogPose = true;
-        }
+            if (!hasInitialLogPose)
+            {
+                initialLogPosition = logPivot.localPosition;
+                initialLogRotation = logPivot.localRotation;
+                hasInitialLogPose = true;
+            }
 
-        logPivot.localPosition = initialLogPosition;
-        logPivot.localRotation = initialLogRotation;
-        logPivot.gameObject.SetActive(true);
-        blackScreen.gameObject.SetActive(true);
-        blackScreen.alpha = 0f;
+            logPivot.localPosition = initialLogPosition;
+            logPivot.localRotation = initialLogRotation;
+            logPivot.gameObject.SetActive(true);
+            blackScreen.gameObject.SetActive(true);
+            blackScreen.alpha = 0f;
 
-        Pose start = CapturePose();
-        Pose raised = OffsetPose(start, raisedLogPosition, raisedLogRotation,
-            raisedCameraPosition, raisedCameraRotation, raisedLookTargetPosition);
-        Pose lowered = OffsetPose(start, loweredLogPosition, loweredLogRotation,
-            loweredCameraPosition, loweredCameraRotation, loweredLookTargetPosition);
+            Pose start = CapturePose();
+            Pose raised = OffsetPose(start, raisedLogPosition, raisedLogRotation,
+                raisedCameraPosition, raisedCameraRotation, raisedLookTargetPosition);
+            Pose lowered = OffsetPose(start, loweredLogPosition, loweredLogRotation,
+                loweredCameraPosition, loweredCameraRotation, loweredLookTargetPosition);
 
-        // Disable the player's movement/look controller through onBegin if it fights the camera rig.
-        onBegin?.Invoke();
+            // Disable the player's movement/look controller through onBegin if it fights the camera rig.
+            onBegin?.Invoke();
 
-        // 1. Slow lift: move both the log and camera.
-        yield return AnimatePose(start, raised, raiseTime, raiseCurve, false);
+            // 1. Slow lift: move both the log and camera.
+            yield return AnimatePose(start, raised, raiseTime, raiseCurve, false);
 
-        // 2. Hold at the top.
-        if (raisedPause > 0f)
-            yield return new WaitForSecondsRealtime(raisedPause);
+            // 2. Hold at the top.
+            if (raisedPause > 0f)
+                yield return new WaitForSecondsRealtime(raisedPause);
 
-        // 3. Lower the log and the camera, fading to black BEFORE the hidden moment.
-        yield return AnimatePose(raised, lowered, lowerTime, lowerCurve, true);
-        blackScreen.alpha = 1f;
+            // 3. Lower the log and the camera, fading to black BEFORE the hidden moment.
+            yield return AnimatePose(raised, lowered, lowerTime, lowerCurve, true);
+            blackScreen.alpha = 1f;
 
-        if (impactDelayAfterBlack > 0f)
-            yield return new WaitForSecondsRealtime(impactDelayAfterBlack);
+            if (impactDelayAfterBlack > 0f)
+                yield return new WaitForSecondsRealtime(impactDelayAfterBlack);
 
-        // 4. Fully black: cue audio and trigger the medic Animator.
-        if (impactSource != null && impactSound != null)
-            impactSource.PlayOneShot(impactSound);
+            // 4. Fully black: cue audio and trigger the medic Animator.
+            if (impactSource != null && impactSound != null)
+                impactSource.PlayOneShot(impactSound);
 
-        medicBefore.SetActive(false);
-        medicDead.SetActive(true);
+            medicBefore.SetActive(false);
+            medicDead.SetActive(true);
 
-        if (ringingSource != null && ringingSound != null)
-        {
-            ringingSource.Stop();
-            ringingSource.clip = ringingSound;
-            ringingSource.loop = true;
-            ringingSource.volume = ringingVolume;
-            ringingSource.Play();
-        }
+            if (ringingSource != null && ringingSound != null)
+            {
+                ringingSource.Stop();
+                ringingSource.clip = ringingSound;
+                ringingSource.loop = true;
+                ringingSource.volume = ringingVolume;
+                ringingSource.Play();
+            }
 
-        if (hideLogAfterImpact)
+            if (hideLogAfterImpact)
+                logPivot.gameObject.SetActive(false);
+
+            onImpact?.Invoke();
+
+            // Return the camera to its original orientation invisibly during blackout.
+            Pose returnPose = lowered;
+            returnPose.cameraPosition = start.cameraPosition;
+            returnPose.cameraRotation = start.cameraRotation;
+            returnPose.lookPosition = start.lookPosition;
+
+            float returnDuration = Mathf.Min(cameraReturnTime, blackoutTime);
+            yield return AnimatePose(lowered, returnPose, returnDuration,
+                AnimationCurve.EaseInOut(0f, 0f, 1f, 1f), false);
+
+            if (blackoutTime > returnDuration)
+                yield return new WaitForSecondsRealtime(blackoutTime - returnDuration);
+
+            // 5. A brief, half-open blink. No graphic action is shown.
+            float blinkAlpha = 1f - blinkVisibility;
+            yield return FadeBlack(1f, blinkAlpha, blinkOpenTime);
+            yield return FadeBlack(blinkAlpha, 1f, blinkCloseTime);
+
+            // 6. Reveal the scene, gradually fading out the ringing sound.
+            float originalRingVolume = ringingSource != null ? ringingSource.volume : 0f;
+            float elapsed = 0f;
+
+            while (elapsed < revealTime)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float t = revealTime <= 0f ? 1f : Mathf.Clamp01(elapsed / revealTime);
+                float eased = Mathf.SmoothStep(0f, 1f, t);
+                blackScreen.alpha = 1f - eased;
+
+                if (ringingSource != null && ringingSource.isPlaying)
+                    ringingSource.volume = Mathf.Lerp(originalRingVolume, 0f, eased);
+
+                yield return null;
+            }
+
+            blackScreen.alpha = 0f;
+
+            if (ringingSource != null)
+            {
+                ringingSource.Stop();
+                ringingSource.volume = ringingVolume;
+            }
+
+            // The log pivot is reset so Play() will not accumulate offsets if retriggered.
+            logPivot.localPosition = initialLogPosition;
+            logPivot.localRotation = initialLogRotation;
+            ApplyCameraPose(start);
+
             logPivot.gameObject.SetActive(false);
-
-        onImpact?.Invoke();
-
-        // Return the camera to its original orientation invisibly during blackout.
-        Pose returnPose = lowered;
-        returnPose.cameraPosition = start.cameraPosition;
-        returnPose.cameraRotation = start.cameraRotation;
-        returnPose.lookPosition = start.lookPosition;
-
-        float returnDuration = Mathf.Min(cameraReturnTime, blackoutTime);
-        yield return AnimatePose(lowered, returnPose, returnDuration,
-            AnimationCurve.EaseInOut(0f, 0f, 1f, 1f), false);
-
-        if (blackoutTime > returnDuration)
-            yield return new WaitForSecondsRealtime(blackoutTime - returnDuration);
-
-        // 5. A brief, half-open blink. No graphic action is shown.
-        float blinkAlpha = 1f - blinkVisibility;
-        yield return FadeBlack(1f, blinkAlpha, blinkOpenTime);
-        yield return FadeBlack(blinkAlpha, 1f, blinkCloseTime);
-
-        // 6. Reveal the scene, gradually fading out the ringing sound.
-        float originalRingVolume = ringingSource != null ? ringingSource.volume : 0f;
-        float elapsed = 0f;
-
-        while (elapsed < revealTime)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            float t = revealTime <= 0f ? 1f : Mathf.Clamp01(elapsed / revealTime);
-            float eased = Mathf.SmoothStep(0f, 1f, t);
-            blackScreen.alpha = 1f - eased;
-
-            if (ringingSource != null && ringingSource.isPlaying)
-                ringingSource.volume = Mathf.Lerp(originalRingVolume, 0f, eased);
-
-            yield return null;
+            onFinished?.Invoke();
         }
-
-        blackScreen.alpha = 0f;
-
-        if (ringingSource != null)
+        finally
         {
-            ringingSource.Stop();
-            ringingSource.volume = ringingVolume;
+            IsPlaying = false;
+            PlayerControlLocks.Release(this);
         }
-
-        // The log pivot is reset so Play() will not accumulate offsets if retriggered.
-        logPivot.localPosition = initialLogPosition;
-        logPivot.localRotation = initialLogRotation;
-        ApplyCameraPose(start);
-
-        IsPlaying = false;
-        logPivot.gameObject.SetActive(false);
-        onFinished?.Invoke();
     }
 
     private Pose CapturePose()
@@ -324,4 +332,11 @@ public class MedicFinishCutscene : MonoBehaviour
 
         blackScreen.alpha = to;
     }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        IsPlaying = false;
+        PlayerControlLocks.Release(this);
+    }
+
 }

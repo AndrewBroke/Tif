@@ -5,13 +5,19 @@ public class DialogueController : MonoBehaviour
 {
     public static DialogueController ActiveDialogue { get; private set; }
 
-    private PlayerMovementDelay _playerMovementDelay;
     private Interactable pendingInteraction;
     private string tagBeforeDialogue;
+
+    private void OnDisable()
+    {
+        InterruptDialogue();
+        PlayerControlLocks.Release(this);
+    }
 
     private void OnDestroy()
     {
         ClearActiveDialogue();
+        PlayerControlLocks.Release(this);
     }
 
     private void ClearActiveDialogue()
@@ -26,8 +32,7 @@ public class DialogueController : MonoBehaviour
         if (ActiveDialogue != this)
             return;
 
-        CompletePendingInteraction();
-        ClearActiveDialogue();
+        DisableDialogueMode();
     }
 
     private void CompletePendingInteraction()
@@ -37,25 +42,13 @@ public class DialogueController : MonoBehaviour
         pendingInteraction = null;
     }
 
-    private void Awake()
-    {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var obj in objects)
-        {
-            if(obj.TryGetComponent(out _playerMovementDelay))
-            {
-                break;
-            }
-        }
-    }
-
     /// <summary>
     /// Starts a dialogue via DialogueEditor.
     /// Stops player movement and shows the cursor.
     /// </summary>
     public void StartDialogue(NPCConversation conversation)
     {
-        if (ActiveDialogue == this)
+        if (!isActiveAndEnabled || ActiveDialogue == this)
             return;
 
         if (ActiveDialogue != null)
@@ -66,7 +59,6 @@ public class DialogueController : MonoBehaviour
 
         tagBeforeDialogue = gameObject.tag;
         ActiveDialogue = this;
-        // Keep tracking an active conversation even if a scene event disables its source.
         ConversationManager.OnConversationEnded += HandleConversationEnded;
 
         try
@@ -93,7 +85,8 @@ public class DialogueController : MonoBehaviour
         if (ActiveDialogue != this)
             return;
 
-        ConversationManager.Instance.CancelConversation();
+        if (ConversationManager.Instance != null)
+            ConversationManager.Instance.CancelConversation();
         if (pendingInteraction != null)
             pendingInteraction.CancelInteraction();
         pendingInteraction = null;
@@ -109,8 +102,7 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void EnableDialogueMode()
     {
-        _playerMovementDelay.LockControls();
-        ShowCursor();
+        PlayerControlLocks.Acquire(this, showCursor: true);
     }
 
     /// <summary>
@@ -125,20 +117,6 @@ public class DialogueController : MonoBehaviour
 
     private void RestorePlayerControls()
     {
-        if (_playerMovementDelay != null)
-            _playerMovementDelay.UnlockControls();
-        HideCursor();
-    }
-
-    private void ShowCursor()
-    {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    private void HideCursor()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerControlLocks.Release(this);
     }
 }

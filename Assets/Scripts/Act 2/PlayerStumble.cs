@@ -65,7 +65,7 @@ public class PlayerStumble : MonoBehaviour
 
     public void StartFall()
     {
-        if (isFalling) return;
+        if (!isActiveAndEnabled || isFalling) return;
         if (onlyOnce && wasActivated) return;
         if (playerCameraRoot == null) return;
 
@@ -74,72 +74,80 @@ public class PlayerStumble : MonoBehaviour
 
     private IEnumerator FallSequence()
     {
-        isFalling = true;
-        wasActivated = true;
-
-        // Блокируем управление
-        onFallStart?.Invoke();
-
-        // Запоминаем исходное положение камеры
-        originalPosition = playerCameraRoot.localPosition;
-        originalRotation = playerCameraRoot.localRotation;
-
-        // 1. Спотыкание
-        yield return AnimateCamera(
-            Vector3.zero,
-            stumblePosition,
-            Vector3.zero,
-            stumbleRotation,
-            stumbleTime
-        );
-
-        // 2. Падение
-        yield return AnimateCamera(
-            stumblePosition,
-            fallPosition,
-            stumbleRotation,
-            fallRotation,
-            fallTime
-        );
-
-        // 3. Эффект удара о землю
-        if (volumeAnimator != null)
+        try
         {
-            volumeAnimator.SetTrigger("Hit");
+            isFalling = true;
+            PlayerControlLocks.Acquire(this);
+            wasActivated = true;
+
+            // Блокируем управление
+            onFallStart?.Invoke();
+
+            // Запоминаем исходное положение камеры
+            originalPosition = playerCameraRoot.localPosition;
+            originalRotation = playerCameraRoot.localRotation;
+
+            // 1. Спотыкание
+            yield return AnimateCamera(
+                Vector3.zero,
+                stumblePosition,
+                Vector3.zero,
+                stumbleRotation,
+                stumbleTime
+            );
+
+            // 2. Падение
+            yield return AnimateCamera(
+                stumblePosition,
+                fallPosition,
+                stumbleRotation,
+                fallRotation,
+                fallTime
+            );
+
+            // 3. Эффект удара о землю
+            if (volumeAnimator != null)
+            {
+                volumeAnimator.SetTrigger("Hit");
+            }
+
+            // 4. Лежим на земле
+            yield return new WaitForSeconds(groundPause);
+
+            // 5. Поднимаем голову
+            yield return AnimateCamera(
+                fallPosition,
+                lookPosition,
+                fallRotation,
+                lookRotation,
+                headLiftTime
+            );
+
+            // 6. Смотрим вперёд
+            yield return new WaitForSeconds(lookPause);
+
+            // 7. Поднимаемся
+            yield return AnimateCamera(
+                lookPosition,
+                Vector3.zero,
+                lookRotation,
+                Vector3.zero,
+                standUpTime
+            );
+
+            // Восстанавливаем исходное положение
+            playerCameraRoot.localPosition = originalPosition;
+            playerCameraRoot.localRotation = originalRotation;
+
+
+            // Возвращаем управление
+            onFallEnd?.Invoke();
         }
-
-        // 4. Лежим на земле
-        yield return new WaitForSeconds(groundPause);
-
-        // 5. Поднимаем голову
-        yield return AnimateCamera(
-            fallPosition,
-            lookPosition,
-            fallRotation,
-            lookRotation,
-            headLiftTime
-        );
-
-        // 6. Смотрим вперёд
-        yield return new WaitForSeconds(lookPause);
-
-        // 7. Поднимаемся
-        yield return AnimateCamera(
-            lookPosition,
-            Vector3.zero,
-            lookRotation,
-            Vector3.zero,
-            standUpTime
-        );
-
-        // Восстанавливаем исходное положение
-        playerCameraRoot.localPosition = originalPosition;
-        playerCameraRoot.localRotation = originalRotation;
-
-        isFalling = false;
-
-        // Возвращаем управление
-        onFallEnd?.Invoke();
+        finally
+        {
+            isFalling = false;
+            PlayerControlLocks.Release(this);
+        }
     }
 
     private IEnumerator AnimateCamera(
@@ -202,4 +210,11 @@ public class PlayerStumble : MonoBehaviour
         playerCameraRoot.localRotation =
             originalRotation * rotation;
     }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        isFalling = false;
+        PlayerControlLocks.Release(this);
+    }
+
 }

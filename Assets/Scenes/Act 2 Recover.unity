@@ -8908,18 +8908,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: LockControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   tagToCompare: Player
 --- !u!65 &244380830
 BoxCollider:
@@ -22918,7 +22906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   available: 1
-  oneShot: 0
+  oneShot: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -22934,9 +22922,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 496084147}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 496084148}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25025,18 +25013,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2072685554}
         m_TargetAssemblyTypeName: PlayerTeleporter, Assembly-CSharp
         m_MethodName: Teleport
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: LockControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27677,18 +27653,6 @@ MonoBehaviour:
       - m_Target: {fileID: 721742182}
         m_TargetAssemblyTypeName: PlayerTeleporter, Assembly-CSharp
         m_MethodName: Teleport
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: LockControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34083,7 +34047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   available: 1
-  oneShot: 0
+  oneShot: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -34111,9 +34075,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1006118822}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1006118821}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34619,22 +34583,22 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1552511485}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1552511486}
+        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+        m_MethodName: DisableDialogueMode
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1552511486}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: DisableDialogueMode
-        m_Mode: 1
+      - m_Target: {fileID: 1552511485}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -39160,34 +39124,10 @@ MonoBehaviour:
   volumeAnimator: {fileID: 598094712}
   onFallStart:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: LockControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onFallEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: UnlockControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   stumbleTime: 0.2
   fallTime: 0.45
   groundPause: 0.3
@@ -40208,34 +40148,10 @@ MonoBehaviour:
   defaultSensitivity: 1
   onPause:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: LockControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onContinue:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: UnlockControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1243754381
 Transform:
   m_ObjectHideFlags: 0
@@ -44702,18 +44618,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: LockControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   tagToCompare: Player
 --- !u!65 &1494126911
 BoxCollider:
@@ -44978,7 +44882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   available: 1
-  oneShot: 0
+  oneShot: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -44994,9 +44898,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1500099041}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1500099042}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50929,7 +50833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   available: 1
-  oneShot: 0
+  oneShot: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -50957,9 +50861,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1552511486}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1552511487}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51650,6 +51554,18 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1500099041}
+        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+        m_MethodName: DisableDialogueMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -51678,18 +51594,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1500099041}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: DisableDialogueMode
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -63586,19 +63490,7 @@ MonoBehaviour:
   afterTeleportDelay: 0.3
   OnStart:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217218373}
-        m_TargetAssemblyTypeName: PlayerMovementDelay, Assembly-CSharp
-        m_MethodName: LockControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnTeleported:
     m_PersistentCalls:
       m_Calls: []
@@ -64452,7 +64344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   available: 1
-  oneShot: 0
+  oneShot: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -64492,9 +64384,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2055196573}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 2055196574}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAvailable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

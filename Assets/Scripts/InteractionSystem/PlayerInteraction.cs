@@ -29,12 +29,20 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        if (PlayerControlLocks.InteractionsBlocked)
+        {
+            ClearCurrentInteractable();
+            UpdateMarkerFocus();
+            return;
+        }
+
         DetectInteractable();
 
         if (interactAction != null && interactAction.WasPressedThisFrame())
             currentInteractable?.Interact();
 
-        if (currentInteractable != null && !currentInteractable.CanInteract)
+        if (PlayerControlLocks.InteractionsBlocked ||
+            (currentInteractable != null && !currentInteractable.CanInteract))
             ClearCurrentInteractable();
 
         UpdateMarkerFocus();

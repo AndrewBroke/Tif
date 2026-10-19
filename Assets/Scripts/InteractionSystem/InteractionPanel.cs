@@ -6,6 +6,11 @@ public sealed class InteractionPanel : MonoBehaviour
     [Tooltip("Действие, открывающее эту панель. При закрытии оно снова становится доступным.")]
     [SerializeField] private Interactable source;
 
+    private void OnEnable()
+    {
+        PlayerControlLocks.Acquire(this, showCursor: true);
+    }
+
     public void Close()
     {
         gameObject.SetActive(false);
@@ -13,7 +18,7 @@ public sealed class InteractionPanel : MonoBehaviour
 
     private void OnDisable()
     {
-        // Component reloads/disabling alone are not a panel close.
+        PlayerControlLocks.Release(this);
         if (source == null || gameObject.activeInHierarchy)
             return;
 

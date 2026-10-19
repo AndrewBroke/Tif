@@ -95,7 +95,8 @@ public class InteractionMarker : MonoBehaviour
         get
         {
             Interactable owner = GetComponentInParent<Interactable>();
-            return isActiveAndEnabled && HasInteractionTag && showMarker &&
+            return !PlayerControlLocks.InteractionsBlocked &&
+                isActiveAndEnabled && HasInteractionTag && showMarker &&
                 owner != null && owner.CanInteract;
         }
     }

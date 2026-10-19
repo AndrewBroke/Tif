@@ -151,7 +151,7 @@ public class InteractionIndicatorManager : MonoBehaviour
 
     private void UpdateView(InteractionMarker marker, MarkerView view)
     {
-        if (marker == null || !marker.HasInteractionTag)
+        if (PlayerControlLocks.InteractionsBlocked || marker == null || !marker.HasInteractionTag)
         {
             view.alpha = 0f;
             view.group.alpha = 0f;

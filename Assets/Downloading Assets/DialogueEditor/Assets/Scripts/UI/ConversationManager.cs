@@ -108,7 +108,19 @@ namespace DialogueEditor
 
         private void OnDestroy()
         {
-            Instance = null;
+            PlayerControlLocks.Release(this);
+            if (Instance == this)
+                Instance = null;
+        }
+
+        private void OnDisable()
+        {
+            if (Instance != this)
+                return;
+            if (DialogueController.ActiveDialogue != null)
+                DialogueController.ActiveDialogue.InterruptDialogue();
+            ClearOptions();
+            TurnOffUI();
         }
 
         private void Update()
@@ -149,15 +161,26 @@ namespace DialogueEditor
 
         public void StartConversation(NPCConversation conversation)
         {
+            if (!isActiveAndEnabled)
+                throw new System.InvalidOperationException("ConversationManager is disabled.");
             m_conversation = conversation.Deserialize();
-            ClearOptions();
-            m_selectedOption = null;
-            if (OnConversationStarted != null)
-                OnConversationStarted.Invoke();
+            PlayerControlLocks.Acquire(this, showCursor: true);
+            try
+            {
+                ClearOptions();
+                m_selectedOption = null;
+                if (OnConversationStarted != null)
+                    OnConversationStarted.Invoke();
 
-            TurnOnUI();
-            m_currentSpeech = m_conversation.Root;
-            SetState(eState.TransitioningDialogueBoxOn);
+                TurnOnUI();
+                m_currentSpeech = m_conversation.Root;
+                SetState(eState.TransitioningDialogueBoxOn);
+            }
+            catch
+            {
+                PlayerControlLocks.Release(this);
+                throw;
+            }
         }
 
         public void EndConversation()
@@ -174,6 +197,7 @@ namespace DialogueEditor
             ClearOptions();
             m_selectedOption = null;
             SetState(eState.TransitioningDialogueOff);
+            PlayerControlLocks.Release(this);
         }
 
         public void SelectNextOption()
@@ -661,6 +685,7 @@ namespace DialogueEditor
 
         private void TurnOffUI()
         {
+            PlayerControlLocks.Release(this);
             DialoguePanel.gameObject.SetActive(false);
             OptionsPanel.gameObject.SetActive(false);
             SetState(eState.Off);

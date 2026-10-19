@@ -56,7 +56,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (!CanInteract)
+        if (PlayerControlLocks.InteractionsBlocked || !CanInteract)
             return;
 
         availableBeforeInteraction = available;

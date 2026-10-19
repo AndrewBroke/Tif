@@ -39,7 +39,7 @@ public class PlayerTeleporter : MonoBehaviour
 
     public void Teleport()
     {
-        if (isTeleporting)
+        if (!isActiveAndEnabled || isTeleporting)
             return;
 
         if (player == null || cameraRoot == null)
@@ -53,40 +53,48 @@ public class PlayerTeleporter : MonoBehaviour
 
     private IEnumerator TeleportRoutine()
     {
-        isTeleporting = true;
+        try
+        {
+            isTeleporting = true;
+            PlayerControlLocks.Acquire(this);
 
-        // Блокируем управление и запускаем затемнение
-        OnStart?.Invoke();
+            // Блокируем управление и запускаем затемнение
+            OnStart?.Invoke();
 
-        yield return FadeBlackScreen(1f, fadeToBlackDuration);
+            yield return FadeBlackScreen(1f, fadeToBlackDuration);
 
-        if (beforeTeleportDelay > 0)
-            yield return new WaitForSecondsRealtime(beforeTeleportDelay);
+            if (beforeTeleportDelay > 0)
+                yield return new WaitForSecondsRealtime(beforeTeleportDelay);
 
-        // Перемещаем игрока
-        player.SetPositionAndRotation(
-            targetPosition,
-            Quaternion.Euler(targetRotation)
-        );
+            // Перемещаем игрока
+            player.SetPositionAndRotation(
+                targetPosition,
+                Quaternion.Euler(targetRotation)
+            );
 
-        // Поворачиваем Camera Root
-        cameraRoot.localRotation =
-            Quaternion.Euler(cameraRootRotation);
+            // Поворачиваем Camera Root
+            cameraRoot.localRotation =
+                Quaternion.Euler(cameraRootRotation);
 
-        Physics.SyncTransforms();
+            Physics.SyncTransforms();
 
-        // Игрок перемещён, экран пока остаётся чёрным
-        OnTeleported?.Invoke();
+            // Игрок перемещён, экран пока остаётся чёрным
+            OnTeleported?.Invoke();
 
-        if (afterTeleportDelay > 0)
-            yield return new WaitForSecondsRealtime(afterTeleportDelay);
+            if (afterTeleportDelay > 0)
+                yield return new WaitForSecondsRealtime(afterTeleportDelay);
 
-        yield return FadeBlackScreen(0f, fadeFromBlackDuration);
+            yield return FadeBlackScreen(0f, fadeFromBlackDuration);
 
-        // Возвращаем управление
-        OnEnd?.Invoke();
+            // Возвращаем управление
+            OnEnd?.Invoke();
 
-        isTeleporting = false;
+        }
+        finally
+        {
+            isTeleporting = false;
+            PlayerControlLocks.Release(this);
+        }
     }
 
     private IEnumerator FadeBlackScreen(float targetAlpha, float duration)
@@ -118,4 +126,11 @@ public class PlayerTeleporter : MonoBehaviour
 
         Teleport();
     }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        isTeleporting = false;
+        PlayerControlLocks.Release(this);
+    }
+
 }
