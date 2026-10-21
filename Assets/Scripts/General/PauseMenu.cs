@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using StarterAssets;
@@ -13,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Slider volumeSlider;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider sensitivitySlider;
     [Tooltip("Active objects to close on Esc before opening the pause menu.")]
     [SerializeField] private List<GameObject> closeOnEscape = new List<GameObject>();
@@ -44,7 +46,7 @@ public class PauseMenu : MonoBehaviour
         );
 
         volumeSlider.minValue = 0f;
-        volumeSlider.maxValue = 1f;
+        volumeSlider.maxValue = 2f;
         volumeSlider.value = volume;
 
         sensitivitySlider.minValue = minSensitivity;
@@ -151,7 +153,14 @@ public class PauseMenu : MonoBehaviour
 
     public void SetVolume(float value)
     {
-        AudioListener.volume = value;
+        value = Mathf.Clamp(value, 0f, 2f);
+        if (audioMixer != null)
+        {
+            float decibels = value <= 1f
+                ? (value > 0f ? Mathf.Max(-80f, Mathf.Log10(value) * 20f) : -80f)
+                : (value - 1f) * 20f;
+            audioMixer.SetFloat(VolumeKey, decibels);
+        }
 
         PlayerPrefs.SetFloat(VolumeKey, value);
         PlayerPrefs.Save();
