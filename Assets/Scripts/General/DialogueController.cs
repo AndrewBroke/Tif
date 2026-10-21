@@ -4,6 +4,8 @@ using DialogueEditor;
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController ActiveDialogue { get; private set; }
+    // Instance-scoped notification: true = completed, false = interrupted.
+    public event System.Action<bool> Finished;
 
     private Interactable pendingInteraction;
     private string tagBeforeDialogue;
@@ -95,6 +97,7 @@ public class DialogueController : MonoBehaviour
         gameObject.tag = tagBeforeDialogue;
 
         ClearActiveDialogue();
+        Finished?.Invoke(false);
     }
 
     /// <summary>
@@ -110,9 +113,12 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void DisableDialogueMode()
     {
+        bool wasActive = ActiveDialogue == this;
         CompletePendingInteraction();
         ClearActiveDialogue();
         RestorePlayerControls();
+        if (wasActive)
+            Finished?.Invoke(true);
     }
 
     private void RestorePlayerControls()

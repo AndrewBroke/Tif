@@ -42,6 +42,7 @@ public class LogSwingController : MonoBehaviour
     private Coroutine currentAnimation;
 
     public bool IsPlaying => currentAnimation != null;
+    public event System.Action<bool> Finished;
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class LogSwingController : MonoBehaviour
     {
         if (currentAnimation != null)
         {
-            StopCoroutine(currentAnimation);
+            StopSwing();
         }
 
         ResetPose();
@@ -105,6 +106,7 @@ public class LogSwingController : MonoBehaviour
 
         ResetPose();
         currentAnimation = null;
+        Finished?.Invoke(true);
     }
 
     private IEnumerator Animate(
@@ -145,6 +147,7 @@ public class LogSwingController : MonoBehaviour
 
     public void StopSwing()
     {
+        bool wasPlaying = currentAnimation != null;
         if (currentAnimation != null)
         {
             StopCoroutine(currentAnimation);
@@ -152,6 +155,8 @@ public class LogSwingController : MonoBehaviour
         }
 
         ResetPose();
+        if (wasPlaying)
+            Finished?.Invoke(false);
     }
 
     private void OnDisable()
