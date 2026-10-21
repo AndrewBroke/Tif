@@ -23,11 +23,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 65614635008
-    m_Localized: Exit
+    m_Localized: Quit
     m_Metadata:
       m_Items: []
   - m_Id: 15921878504824832
-    m_Localized: "\u0422\u0418\u0424"
+    m_Localized: TIF
     m_Metadata:
       m_Items: []
   - m_Id: 15922041344483328
