@@ -76,6 +76,7 @@ public class PlayerPushReaction : MonoBehaviour
     private float startingVolumeWeight;
 
     public bool IsReacting { get; private set; }
+    public event System.Action<bool> Finished;
 
     private void Awake()
     {
@@ -95,6 +96,7 @@ public class PlayerPushReaction : MonoBehaviour
     // Call from UnityEvent or another script.
     public void Push()
     {
+        if (!isActiveAndEnabled) return;
         if (characterController == null || cameraEffectPivot == null)
         {
             Debug.LogError("PlayerPushReaction: assign CharacterController and Camera Effect Pivot.", this);
@@ -103,8 +105,7 @@ public class PlayerPushReaction : MonoBehaviour
 
         if (pushCoroutine != null)
         {
-            StopCoroutine(pushCoroutine);
-            RestoreVisuals();
+            StopReaction();
         }
 
         IsReacting = true;
@@ -154,6 +155,7 @@ public class PlayerPushReaction : MonoBehaviour
         RestoreVisuals();
         IsReacting = false;
         pushCoroutine = null;
+        Finished?.Invoke(true);
     }
 
     private void RestoreVisuals()
@@ -168,8 +170,9 @@ public class PlayerPushReaction : MonoBehaviour
             volume.weight = startingVolumeWeight;
     }
 
-    private void OnDisable()
+    public void StopReaction()
     {
+        bool wasReacting = IsReacting;
         if (pushCoroutine != null)
         {
             StopCoroutine(pushCoroutine);
@@ -178,5 +181,9 @@ public class PlayerPushReaction : MonoBehaviour
 
         RestoreVisuals();
         IsReacting = false;
+        if (wasReacting)
+            Finished?.Invoke(false);
     }
+
+    private void OnDisable() => StopReaction();
 }

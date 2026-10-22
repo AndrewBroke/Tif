@@ -16,6 +16,8 @@ public class RouteController : MonoBehaviour
     [Tooltip("Repeat the route without invoking On End Events.")]
     [SerializeField] private bool patrolEnabled;
     [SerializeField] private PatrolMode patrolMode;
+    [Tooltip("Wait at each end of a PingPong patrol, in seconds, with a random variation of +/-20%.")]
+    [SerializeField, Min(0f)] private float stopTime;
     // Runs on component Start, not on each StartRoute call (scene compatibility).
     [SerializeField] private UnityEvent onStartEvents;
     [SerializeField] private UnityEvent onEndEvents;
@@ -25,6 +27,8 @@ public class RouteController : MonoBehaviour
     private int currentPointIndex;
     private int routeDirection = 1;
     private bool routeInProgress;
+    private bool waitingAtPatrolEnd;
+    private float remainingStopTime;
     Animator animator;
 
     private void Awake()
@@ -51,7 +55,7 @@ public class RouteController : MonoBehaviour
             routePoints.Add(child);
         }
 
-        currentPointIndex = 0;
+        currentPointIndex = patrolEnabled ? GetClosestPointIndex() : 0;
         routeDirection = 1;
         MoveToCurrentPoint();
     }
@@ -73,11 +77,21 @@ public class RouteController : MonoBehaviour
     {
         if(animator != null)
         {
-            animator.SetBool("Walk", CanMove() && agent.velocity.sqrMagnitude >= 0.1f);
+            animator.SetBool("Walk", routeInProgress && !waitingAtPatrolEnd && CanMove() && agent.velocity.sqrMagnitude >= 0.1f);
         }
 
         if (!routeInProgress || !CanMove() || agent.pathPending)
             return;
+
+        bool finishedWaiting = waitingAtPatrolEnd;
+        if (waitingAtPatrolEnd)
+        {
+            remainingStopTime -= Time.deltaTime;
+            if (remainingStopTime > 0f && patrolEnabled)
+                return;
+
+            waitingAtPatrolEnd = false;
+        }
 
         float arrivalDistance = Mathf.Max(pointSwitchDistance, agent.stoppingDistance);
         if (agent.pathStatus != NavMeshPathStatus.PathComplete ||
@@ -99,6 +113,14 @@ public class RouteController : MonoBehaviour
 
                 if (patrolMode == PatrolMode.PingPong)
                 {
+                    if (routePoints.Count > 1 && stopTime > 0f && !finishedWaiting)
+                    {
+                        remainingStopTime = stopTime * Random.Range(0.8f, 1.2f);
+                        waitingAtPatrolEnd = true;
+                        agent.isStopped = true;
+                        return;
+                    }
+
                     routeDirection = -routeDirection;
                     nextPointIndex = routePoints.Count > 1 ? currentPointIndex + routeDirection : 0;
                 }
@@ -123,10 +145,24 @@ public class RouteController : MonoBehaviour
         if (routeInProgress || !CanMove() || routePoints.Count == 0)
             return;
 
-        if (currentPointIndex >= routePoints.Count)
+        if (patrolEnabled)
+            currentPointIndex = GetClosestPointIndex();
+        else if (currentPointIndex >= routePoints.Count)
             currentPointIndex = routePoints.Count - 1;
 
         MoveToCurrentPoint();
+    }
+
+    public void ContinuePatrol()
+    {
+        patrolEnabled = true;
+        ContinueRoute();
+    }
+
+    // Pause for interaction, keeping the route and PingPong direction for ContinuePatrol.
+    public void StopPatrol()
+    {
+        StopRoute();
     }
 
     public void StopRoute()
@@ -135,6 +171,8 @@ public class RouteController : MonoBehaviour
             return;
 
         routeInProgress = false;
+        waitingAtPatrolEnd = false;
+        remainingStopTime = 0f;
         if (CanMove())
             agent.isStopped = true;
     }
@@ -150,8 +188,32 @@ public class RouteController : MonoBehaviour
         return agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh;
     }
 
+    private int GetClosestPointIndex()
+    {
+        int closestPointIndex = 0;
+        float closestSqrDistance = float.PositiveInfinity;
+        Vector3 position = agent.transform.position;
+
+        for (int i = 0; i < routePoints.Count; i++)
+        {
+            if (routePoints[i] == null)
+                continue;
+
+            float sqrDistance = (routePoints[i].position - position).sqrMagnitude;
+            if (sqrDistance < closestSqrDistance)
+            {
+                closestSqrDistance = sqrDistance;
+                closestPointIndex = i;
+            }
+        }
+
+        return closestPointIndex;
+    }
+
     private void MoveToCurrentPoint()
     {
+        waitingAtPatrolEnd = false;
+        remainingStopTime = 0f;
         Transform point = routePoints[currentPointIndex];
         routeInProgress = point != null && agent.SetDestination(point.position);
         agent.isStopped = !routeInProgress;

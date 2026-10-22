@@ -16,11 +16,63 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 23f8d00b7db24c440b78f594ebb5c527
   m_Entries:
   - m_Id: 65614635008
-    m_Key: EXIT
+    m_Key: menu_quit
     m_Metadata:
       m_Items: []
   - m_Id: 17979924480
-    m_Key: PLAY
+    m_Key: menu_continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921878504824832
+    m_Key: game_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922041344483328
+    m_Key: menu_restart_chapter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922669810606080
+    m_Key: settings_sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922742795689984
+    m_Key: settings_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922818830032896
+    m_Key: settings_controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922865974009856
+    m_Key: settings_camera_sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922923620524032
+    m_Key: settings_language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922970726752256
+    m_Key: current_language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923126658392064
+    m_Key: settings_graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923175245209600
+    m_Key: settings_quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923282053160960
+    m_Key: quality_medium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923452446760960
+    m_Key: quality_high
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923509623513088
+    m_Key: quality_low
     m_Metadata:
       m_Items: []
   m_Metadata:

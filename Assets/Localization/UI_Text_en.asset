@@ -19,11 +19,63 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 17979924480
-    m_Localized: Play
+    m_Localized: Continue
     m_Metadata:
       m_Items: []
   - m_Id: 65614635008
-    m_Localized: Exit
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15921878504824832
+    m_Localized: TIF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922041344483328
+    m_Localized: Restart Chapter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922669810606080
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922742795689984
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922818830032896
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922865974009856
+    m_Localized: Camera Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922923620524032
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15922970726752256
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923126658392064
+    m_Localized: Graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923175245209600
+    m_Localized: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923282053160960
+    m_Localized: Medium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923452446760960
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15923509623513088
+    m_Localized: Low
     m_Metadata:
       m_Items: []
   references:

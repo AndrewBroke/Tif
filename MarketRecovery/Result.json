@@ -1,0 +1,70 @@
+{
+    "markets": [
+        {
+            "market": "Разрушенный рынок 1",
+            "tippedStalls": 2,
+            "groundProps": 71,
+            "hiddenGoods": 0,
+            "retainedProps": 64,
+            "largestPropTravel": 2.144456148147583,
+            "largestStallTravel": 1.9416486024856568,
+            "ground": [
+                "Market2: Plane y=15,439",
+                "Market3: Plane y=15,654",
+                "Market5: Plane y=15,526",
+                "Market6: Plane y=15,583",
+                "Market7: Plane y=15,535",
+                "Market1: Plane y=15,232",
+                "Market4: Plane y=15,533"
+            ],
+            "obstructedProps": [],
+            "intersectingStalls": [],
+            "maximumPropPenetration": 0.0,
+            "maximumSupportGap": 0.009050369262695313
+        },
+        {
+            "market": "Разрушенный рынок 2",
+            "tippedStalls": 6,
+            "groundProps": 131,
+            "hiddenGoods": 0,
+            "retainedProps": 4,
+            "largestPropTravel": 2.428752899169922,
+            "largestStallTravel": 1.4061781167984009,
+            "ground": [
+                "Market7: Plane y=15,441",
+                "Market1: Plane y=15,527",
+                "Market2: Plane y=16,088",
+                "Market3: Plane y=15,640",
+                "Market4: Plane y=16,124",
+                "Market5: Plane y=15,958",
+                "Market6: Plane y=15,763"
+            ],
+            "obstructedProps": [],
+            "intersectingStalls": [],
+            "maximumPropPenetration": 0.0,
+            "maximumSupportGap": 0.009068489074707032
+        },
+        {
+            "market": "Разрушенный рынок 3",
+            "tippedStalls": 2,
+            "groundProps": 65,
+            "hiddenGoods": 48,
+            "retainedProps": 22,
+            "largestPropTravel": 2.907064199447632,
+            "largestStallTravel": 1.3453623056411744,
+            "ground": [
+                "Market1: Plane y=15,732",
+                "Market3: Plane y=16,075",
+                "Market4: Plane y=15,938",
+                "Market6: Plane y=15,600",
+                "Market7: Plane y=15,954",
+                "Market2: Plane y=15,809",
+                "Market5: Plane y=16,004"
+            ],
+            "obstructedProps": [],
+            "intersectingStalls": [],
+            "maximumPropPenetration": 0.0,
+            "maximumSupportGap": 0.009046554565429688
+        }
+    ]
+}
