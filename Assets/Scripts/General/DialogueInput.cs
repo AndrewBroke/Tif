@@ -8,7 +8,6 @@ public class DialogueInput : MonoBehaviour
 {
     private ConversationManager conversationManager;
     private InputAction dialoguePress;
-    private bool enabledAction;
 
     private void Awake()
     {
@@ -17,23 +16,23 @@ public class DialogueInput : MonoBehaviour
 
     private void OnEnable()
     {
-        dialoguePress = InputSystem.actions?.FindAction("DialoguePress");
-        if (dialoguePress == null)
+        InputAction sourceAction = InputSystem.actions?.FindAction("DialoguePress");
+        if (sourceAction == null)
         {
             Debug.LogWarning("DialogueInput: DialoguePress action was not found in InputSystem.actions.", this);
             return;
         }
 
-        enabledAction = !dialoguePress.enabled;
-        if (enabledAction)
-            dialoguePress.Enable();
+        // PlayerInput disables its action map while dialogue locks gameplay controls.
+        // Listen independently, keeping the bindings configured on DialoguePress.
+        dialoguePress = sourceAction.Clone();
+        dialoguePress.Enable();
     }
 
     private void OnDisable()
     {
-        if (enabledAction)
-            dialoguePress?.Disable();
-        enabledAction = false;
+        dialoguePress?.Disable();
+        dialoguePress?.Dispose();
         dialoguePress = null;
     }
 
