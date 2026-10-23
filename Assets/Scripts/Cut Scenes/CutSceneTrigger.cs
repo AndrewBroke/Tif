@@ -24,7 +24,6 @@ public class CutSceneTrigger : MonoBehaviour
             return;
         }
 
-        cutSceneController.LockControls();
         cutSceneController.StartCutScene(cutSceneAsset);
 
         if (destroyAfterTrigger)

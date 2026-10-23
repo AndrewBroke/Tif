@@ -27,6 +27,7 @@ namespace DialogueEditor
         [SerializeField] private TMPro.TextMeshProUGUI TextMesh = null;
         [SerializeField] private Image OptionBackgroundImage = null;
         private RectTransform m_rect;
+        private TMPro.TMP_FontAsset m_defaultFont;
 
         // Node data
         private eButtonType m_buttonType;
@@ -46,6 +47,7 @@ namespace DialogueEditor
         private void Awake()
         {
             m_rect = GetComponent<RectTransform>();
+            m_defaultFont = TextMesh.font;
         }
 
         private void Update()
@@ -151,14 +153,7 @@ namespace DialogueEditor
         public void InitButton(OptionNode option)
         {
             // Set font
-            if (option.TMPFont != null)
-            {
-                TextMesh.font = option.TMPFont;
-            }
-            else
-            {
-                TextMesh.font = null;
-            }
+            TextMesh.font = option.TMPFont != null ? option.TMPFont : m_defaultFont;
         }
 
         public void SetAlpha(float a)
@@ -180,22 +175,22 @@ namespace DialogueEditor
             {
                 case eButtonType.Option:
                     {
+                        TextMesh.font = node.TMPFont != null ? node.TMPFont : m_defaultFont;
                         TextMesh.text = node.Text;
-                        TextMesh.font = node.TMPFont;
                     }
                     break;
 
                 case eButtonType.Speech:
                     {
+                        TextMesh.font = continueFont != null ? continueFont : m_defaultFont;
                         TextMesh.text = "Continue.";
-                        TextMesh.font = continueFont;
                     }
                     break;
 
                 case eButtonType.End:
                     {
+                        TextMesh.font = endFont != null ? endFont : m_defaultFont;
                         TextMesh.text = "End.";
-                        TextMesh.font = endFont;
                     }
                     break;
             }

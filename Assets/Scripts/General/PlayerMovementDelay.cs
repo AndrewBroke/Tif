@@ -5,20 +5,12 @@ using UnityEngine.InputSystem;
 #endif
 using StarterAssets;
 
-/// <summary>
-/// Блокирует управление игроком на старте сцены и автоматически
-/// снимает блокировку через заданное время.
-/// Навесьте на тот же объект, где находятся PlayerInput и StarterAssetsInputs
-/// (префаб FirstPersonController из Starter Assets).
-/// </summary>
+/// <summary>Applies shared locks to Starter Assets and owns the scene start delay.</summary>
+[DefaultExecutionOrder(-300)]
 public class PlayerMovementDelay : MonoBehaviour
 {
-    [Tooltip("Сколько секунд после загрузки сцены управление будет заблокировано")]
     [SerializeField] private float lockDuration = 3f;
-
-    [Tooltip("Блокировать ли управление сразу при старте")]
     [SerializeField] private bool lockOnStart = true;
-
 #if ENABLE_INPUT_SYSTEM
     private PlayerInput _playerInput;
 #endif
@@ -32,50 +24,63 @@ public class PlayerMovementDelay : MonoBehaviour
         _starterInputs = GetComponent<StarterAssetsInputs>();
     }
 
+    private void OnEnable()
+    {
+        PlayerControlLocks.Changed -= ApplyState;
+        PlayerControlLocks.Changed += ApplyState;
+        ApplyState();
+    }
+
     private void Start()
     {
         if (!lockOnStart) return;
-
         LockControls();
-
         if (lockDuration > 0f)
-        {
             StartCoroutine(UnlockAfterDelay(lockDuration));
-        }
     }
 
-    /// <summary>
-    /// Полная блокировка ввода: PlayerInput отключается, значения обнуляются.
-    /// </summary>
-    public void LockControls()
-    {
-#if ENABLE_INPUT_SYSTEM
-        if (_playerInput != null)
-        {
-            _playerInput.enabled = false;
-        }
-#endif
+    // Compatibility pair: owns ONLY this component's lock.
+    public void LockControls() => PlayerControlLocks.Acquire(this);
+    public void UnlockControls() => PlayerControlLocks.Release(this);
 
+    private void ApplyState()
+    {
+        bool blocked = PlayerControlLocks.IsBlocked;
+#if ENABLE_INPUT_SYSTEM
+        if (_playerInput != null && _playerInput.enabled == blocked)
+            _playerInput.enabled = !blocked;
+#endif
         if (_starterInputs != null)
         {
-            _starterInputs.move = Vector2.zero;
-            _starterInputs.look = Vector2.zero;
-            _starterInputs.jump = false;
-            _starterInputs.sprint = false;
+            _starterInputs.cursorLocked = !PlayerControlLocks.WantsCursor;
+            _starterInputs.cursorInputForLook = !blocked;
+            if (blocked)
+            {
+                _starterInputs.move = Vector2.zero;
+                _starterInputs.look = Vector2.zero;
+                _starterInputs.jump = false;
+                _starterInputs.sprint = false;
+            }
         }
+        PlayerControlLocks.ApplyCursor();
     }
 
-    /// <summary>
-    /// Разблокировка ввода.
-    /// </summary>
-    public void UnlockControls()
+    private void Update() => ApplyState();
+    private void LateUpdate() => PlayerControlLocks.ApplyCursor();
+
+    private void OnDisable()
     {
-#if ENABLE_INPUT_SYSTEM
-        if (_playerInput != null)
-        {
-            _playerInput.enabled = true;
-        }
-#endif
+        StopAllCoroutines();
+        UnlockControls();
+        // Keep applying other owners' changes even if only this component is disabled.
+        ApplyState();
+    }
+
+    private void OnDestroy()
+    {
+        PlayerControlLocks.Changed -= ApplyState;
+        UnlockControls();
+        ApplyState();
     }
 
     private IEnumerator UnlockAfterDelay(float time)

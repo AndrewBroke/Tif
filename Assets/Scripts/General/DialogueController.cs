@@ -3,23 +3,101 @@ using DialogueEditor;
 
 public class DialogueController : MonoBehaviour
 {
-    private PlayerMovementDelay _playerMovementDelay;
+    public static DialogueController ActiveDialogue { get; private set; }
+    // Instance-scoped notification: true = completed, false = interrupted.
+    public event System.Action<bool> Finished;
 
-    private void Awake()
+    private Interactable pendingInteraction;
+    private string tagBeforeDialogue;
+
+    private void OnDisable()
     {
-        _playerMovementDelay = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementDelay>();
+        InterruptDialogue();
+        PlayerControlLocks.Release(this);
+    }
+
+    private void OnDestroy()
+    {
+        ClearActiveDialogue();
+        PlayerControlLocks.Release(this);
+    }
+
+    private void ClearActiveDialogue()
+    {
+        ConversationManager.OnConversationEnded -= HandleConversationEnded;
+        if (ActiveDialogue == this)
+            ActiveDialogue = null;
+    }
+
+    private void HandleConversationEnded()
+    {
+        if (ActiveDialogue != this)
+            return;
+
+        DisableDialogueMode();
+    }
+
+    private void CompletePendingInteraction()
+    {
+        if (pendingInteraction != null)
+            pendingInteraction.CompleteInteraction();
+        pendingInteraction = null;
     }
 
     /// <summary>
-    /// Starts a dialogue via DialogueEditor (stub).
+    /// Starts a dialogue via DialogueEditor.
     /// Stops player movement and shows the cursor.
     /// </summary>
     public void StartDialogue(NPCConversation conversation)
     {
-        EnableDialogueMode();
+        if (!isActiveAndEnabled || ActiveDialogue == this)
+            return;
 
-        // TODO: Integrate with DialogueEditor to begin the conversation.
-        ConversationManager.Instance.StartConversation(conversation);
+        if (ActiveDialogue != null)
+            ActiveDialogue.InterruptDialogue();
+
+        if (TryGetComponent(out Interactable interactable) && interactable.DeferCompletion())
+            pendingInteraction = interactable;
+
+        tagBeforeDialogue = gameObject.tag;
+        ActiveDialogue = this;
+        ConversationManager.OnConversationEnded += HandleConversationEnded;
+
+        try
+        {
+            EnableDialogueMode();
+            ConversationManager.Instance.StartConversation(conversation);
+        }
+        catch
+        {
+            if (pendingInteraction != null)
+                pendingInteraction.CancelInteraction();
+            pendingInteraction = null;
+            RestorePlayerControls();
+            ClearActiveDialogue();
+            throw;
+        }
+    }
+
+    /// <summary>
+    /// Interrupts this conversation without completion events and allows interacting again.
+    /// </summary>
+    public void InterruptDialogue()
+    {
+        if (ActiveDialogue != this)
+            return;
+
+        if (ConversationManager.Instance != null)
+            ConversationManager.Instance.CancelConversation();
+        if (pendingInteraction != null)
+            pendingInteraction.CancelInteraction();
+        pendingInteraction = null;
+        RestorePlayerControls();
+
+        gameObject.tag = tagBeforeDialogue;
+
+        ClearActiveDialogue();
+        Finished?.Invoke(false);
     }
 
     /// <summary>
@@ -27,8 +105,7 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void EnableDialogueMode()
     {
-        _playerMovementDelay.LockControls();
-        ShowCursor();
+        PlayerControlLocks.Acquire(this, showCursor: true);
     }
 
     /// <summary>
@@ -36,19 +113,16 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void DisableDialogueMode()
     {
-        _playerMovementDelay.UnlockControls();
-        HideCursor();
+        bool wasActive = ActiveDialogue == this;
+        CompletePendingInteraction();
+        ClearActiveDialogue();
+        RestorePlayerControls();
+        if (wasActive)
+            Finished?.Invoke(true);
     }
 
-    private void ShowCursor()
+    private void RestorePlayerControls()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    private void HideCursor()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerControlLocks.Release(this);
     }
 }

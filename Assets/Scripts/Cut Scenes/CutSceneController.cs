@@ -3,35 +3,56 @@ using UnityEngine.Playables;
 
 public class CutSceneController : MonoBehaviour
 {
-    private PlayerMovementDelay playerMovementDelay;
-    [SerializeField] PlayableDirector director;
+    [SerializeField] private PlayableDirector director;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnEnable()
     {
-        playerMovementDelay = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementDelay>();
-
+        if (director == null) return;
+        director.played += HandlePlayed;
+        director.stopped += HandleStopped;
+        if (director.state == PlayState.Playing) LockControls();
     }
 
-    public void LockControls()
-    {
-        playerMovementDelay.LockControls();
-    }
+    public void LockControls() => PlayerControlLocks.Acquire(this);
+    public void UnlockControls() => PlayerControlLocks.Release(this);
 
-    public void UnlockControls()
+    private void HandlePlayed(PlayableDirector source) => LockControls();
+    private void HandleStopped(PlayableDirector source) => UnlockControls();
+
+    private void Update()
     {
-        playerMovementDelay.UnlockControls();
+        // Hold timelines can keep their last frame without a stopped notification.
+        if (director == null ||
+            (director.extrapolationMode == DirectorWrapMode.Hold && director.time >= director.duration))
+            UnlockControls();
     }
 
     public void StartCutScene(PlayableAsset cutScene)
     {
+        if (!isActiveAndEnabled || director == null || cutScene == null) return;
+        // Replacing a running timeline may invoke stopped; acquire after replacement.
+        director.Stop();
         director.playableAsset = cutScene;
-        director.Play();
+        LockControls();
+        try
+        {
+            director.Play();
+        }
+        catch
+        {
+            UnlockControls();
+            throw;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        if (director != null)
+        {
+            director.played -= HandlePlayed;
+            director.stopped -= HandleStopped;
+            director.Stop();
+        }
+        UnlockControls();
     }
 }

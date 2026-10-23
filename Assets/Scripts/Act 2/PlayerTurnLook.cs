@@ -12,8 +12,7 @@ public class PlayerTurnLook : MonoBehaviour
 
     void Start()
     {
-        if (target != null && cameraTransform != null)
-            LookAtTarget();
+        
     }
 
     public void LookAtTarget()
