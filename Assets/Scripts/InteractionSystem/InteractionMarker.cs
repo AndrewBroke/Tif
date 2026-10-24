@@ -149,12 +149,18 @@ public class InteractionMarker : MonoBehaviour
     // Игрок навёл взгляд
     public void SetFocused(bool focused)
     {
+        bool previous = isFocused;
         isFocused = focused && CanDisplay;
+        if (previous != isFocused && InteractionDiagnostics.Matches(this))
+            InteractionDiagnostics.Log(this, "MARKER_FOCUS",
+                $"caller=SetFocused; requested={focused}; focused={previous}->{isFocused}; {DiagnosticState()}");
     }
 
     // Разрешить / запретить взаимодействие
     public void SetAvailable(bool available)
     {
+        if (InteractionDiagnostics.Matches(this))
+            InteractionDiagnostics.Log(this, "MARKER_AVAILABLE", $"requested={available}; {DiagnosticState()}");
         Interactable owner = GetComponentInParent<Interactable>();
         if (owner != null)
             owner.SetAvailable(available);
@@ -166,6 +172,9 @@ public class InteractionMarker : MonoBehaviour
     // Включить / выключить отображение маркера
     public void SetMarkerVisible(bool visible)
     {
+        if (showMarker != visible && InteractionDiagnostics.Matches(this))
+            InteractionDiagnostics.Log(this, "MARKER_VISIBLE",
+                $"showMarker={showMarker}->{visible}; focused={isFocused}; {DiagnosticState()}");
         showMarker = visible;
 
         if (!visible)
@@ -185,8 +194,15 @@ public class InteractionMarker : MonoBehaviour
 
     private void OnDisable()
     {
+        if (InteractionDiagnostics.Matches(this))
+            InteractionDiagnostics.Log(this, "MARKER_DISABLED", $"focused={isFocused}; {DiagnosticState()}");
         isFocused = false;
     }
+
+    internal string DiagnosticState() =>
+        $"canDisplay={CanDisplay}; showMarker={showMarker}; active={isActiveAndEnabled}; " +
+        $"hasInteractionTag={HasInteractionTag}; interactionsBlocked={PlayerControlLocks.InteractionsBlocked}; " +
+        InteractionDiagnostics.TargetState(GetComponentInParent<Interactable>());
 
     private void OnValidate()
     {

@@ -46,20 +46,29 @@ public static class PlayerControlLocks
         var value = new Entry { Owner = owner, ShowCursor = showCursor };
         if (index >= 0) locks[index] = value;
         else locks.Add(value);
+        InteractionDiagnostics.Log(owner, "LOCK_ACQUIRE", $"showCursor={showCursor}; locks={locks.Count}");
         Publish();
     }
 
     public static void Release(MonoBehaviour owner)
     {
         if (locks.RemoveAll(entry => ReferenceEquals(entry.Owner, owner)) != 0)
+        {
+            InteractionDiagnostics.Log(owner, "LOCK_RELEASE", $"locks={locks.Count}; interactionsBlockedForThisFrame=true");
             Publish();
+        }
         Prune();
     }
 
     private static void Prune()
     {
-        if (locks.RemoveAll(entry => entry.Owner == null || !entry.Owner.isActiveAndEnabled) != 0)
+        int removed = locks.RemoveAll(entry => entry.Owner == null || !entry.Owner.isActiveAndEnabled);
+        if (removed != 0)
+        {
+            InteractionDiagnostics.Log(InteractionDiagnostics.Source, "LOCK_PRUNE",
+                $"removedDisabledOrDestroyedOwners={removed}; locks={locks.Count}");
             Publish();
+        }
     }
 
     private static void Publish()

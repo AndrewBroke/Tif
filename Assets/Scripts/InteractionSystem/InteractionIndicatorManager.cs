@@ -27,6 +27,10 @@ public class InteractionIndicatorManager : MonoBehaviour
         public float nextOcclusionCheck;
         public bool unobstructed = true;
         public float alpha;
+        public Collider occlusionBlocker;
+        public string lastDiagnosticReason;
+        public bool lastDiagnosticFocus;
+        public Collider lastDiagnosticBlocker;
     }
 
     private readonly Dictionary<InteractionMarker, MarkerView> views =
@@ -136,7 +140,11 @@ public class InteractionIndicatorManager : MonoBehaviour
         {
             playerCamera = Camera.main;
             if (playerCamera == null)
+            {
+                foreach (var pair in views)
+                    LogViewChange(pair.Key, pair.Value, "CameraMissing", 0f);
                 return;
+            }
         }
 
         if (Time.unscaledTime >= nextScan)
@@ -153,6 +161,8 @@ public class InteractionIndicatorManager : MonoBehaviour
     {
         if (PlayerControlLocks.InteractionsBlocked || marker == null || !marker.HasInteractionTag)
         {
+            LogViewChange(marker, view, PlayerControlLocks.InteractionsBlocked
+                ? "InteractionsBlocked" : marker == null ? "MarkerMissing" : "TagIsNotInteract", 0f);
             view.alpha = 0f;
             view.group.alpha = 0f;
             view.ui.SetFocused(false);
@@ -163,6 +173,7 @@ public class InteractionIndicatorManager : MonoBehaviour
         float targetAlpha = 0f;
         Vector3 screenPoint = Vector3.zero;
         bool onScreen = false;
+        string visibilityReason = !indicatorsVisible ? "IndicatorsHiddenByEvent" : "MarkerCannotDisplay";
 
         if (marker != null && indicatorsVisible && marker.CanDisplay)
         {
@@ -170,25 +181,31 @@ public class InteractionIndicatorManager : MonoBehaviour
             onScreen = screenPoint.z > 0f &&
                        screenPoint.x >= 0f && screenPoint.x <= Screen.width &&
                        screenPoint.y >= 0f && screenPoint.y <= Screen.height;
+            visibilityReason = "MarkerOffScreenOrBehindCamera";
 
             if (onScreen)
             {
                 targetAlpha = marker.GetTargetOpacity(playerCamera.transform.position);
+                visibilityReason = targetAlpha > 0f ? "Visible" : "BeyondMarkerVisibleDistance";
 
                 if (targetAlpha > 0f)
                 {
                     if (Time.unscaledTime >= view.nextOcclusionCheck)
                     {
-                        view.unobstructed = IsUnobstructed(marker);
+                        view.unobstructed = IsUnobstructed(marker, out view.occlusionBlocker);
                         view.nextOcclusionCheck = Time.unscaledTime + occlusionCheckInterval;
                     }
 
                     if (!view.unobstructed)
+                    {
                         targetAlpha = 0f;
+                        visibilityReason = "MarkerOccluded";
+                    }
                 }
             }
         }
 
+        LogViewChange(marker, view, visibilityReason, targetAlpha);
         float lerp = 1f - Mathf.Exp(-fadeSpeed * Time.unscaledDeltaTime);
         view.alpha = Mathf.Lerp(view.alpha, targetAlpha, lerp);
 
@@ -219,8 +236,9 @@ public class InteractionIndicatorManager : MonoBehaviour
         view.ui.SetFocused(marker != null && marker.IsFocused);
     }
 
-    private bool IsUnobstructed(InteractionMarker marker)
+    private bool IsUnobstructed(InteractionMarker marker, out Collider blocker)
     {
+        blocker = null;
         if (marker.Occlusion == OcclusionMode.AlwaysVisible)
             return true;
 
@@ -248,16 +266,44 @@ public class InteractionIndicatorManager : MonoBehaviour
 
             foreach (RaycastHit hit in allHits)
                 if (BlocksMarker(marker, hit.collider))
+                {
+                    blocker = hit.collider;
                     return false;
+                }
         }
         else
         {
             for (int i = 0; i < count; i++)
                 if (BlocksMarker(marker, raycastHits[i].collider))
+                {
+                    blocker = raycastHits[i].collider;
                     return false;
+                }
         }
 
         return true;
+    }
+
+    private void LogViewChange(InteractionMarker marker, MarkerView view, string reason, float targetAlpha)
+    {
+        if (!InteractionDiagnostics.Matches(marker)) return;
+        bool focused = marker.IsFocused;
+        Collider blocker = reason == "MarkerOccluded" ? view.occlusionBlocker : null;
+        if (view.lastDiagnosticReason == reason && view.lastDiagnosticFocus == focused &&
+            view.lastDiagnosticBlocker == blocker)
+            return;
+        view.lastDiagnosticReason = reason;
+        view.lastDiagnosticFocus = focused;
+        view.lastDiagnosticBlocker = blocker;
+        InteractionDiagnostics.Log(marker, "INDICATOR",
+            $"reason={reason}; focused={focused}; targetAlpha={targetAlpha:F3}; alpha={view.alpha:F3}; " +
+            $"camera={InteractionDiagnostics.Path(playerCamera)}; " +
+            $"cameraPosition={(playerCamera != null ? playerCamera.transform.position.ToString("F3") : "<none>")}; " +
+            $"marker={marker.MarkerPosition.ToString("F3")}; " +
+            $"distance={(playerCamera != null ? Vector3.Distance(playerCamera.transform.position, marker.MarkerPosition) : -1f):F3}; " +
+            $"blocker={InteractionDiagnostics.Path(blocker)}; occlusionMode={marker.Occlusion}; " +
+            $"occlusionOwner={InteractionDiagnostics.Path(marker.OcclusionOwner)}; " +
+            $"obstacleMask=0x{obstacleLayers.value:X}; {marker.DiagnosticState()}");
     }
 
     private bool BlocksMarker(InteractionMarker marker, Collider collider)
@@ -288,6 +334,8 @@ public class InteractionIndicatorManager : MonoBehaviour
 
     private void OnDisable()
     {
+        foreach (var pair in views)
+            LogViewChange(pair.Key, pair.Value, "IndicatorManagerDisabled", 0f);
         foreach (var view in views.Values)
             if (view.root != null)
             {

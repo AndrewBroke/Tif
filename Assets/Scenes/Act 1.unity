@@ -4896,7 +4896,7 @@ GameObject:
   - component: {fileID: 632211004}
   m_Layer: 0
   m_Name: GameApplication
-  m_TagString: Untagged
+  m_TagString: GameApplication
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13396,10 +13396,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
   interactRadius: 0.47
-  interactDistance: 1
+  interactDistance: 1.3
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 65
+  logInteractionDiagnostics: 1
+  diagnosticNameFilter: FireInteract
 --- !u!114 &1359415539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18188,7 +18190,7 @@ Transform:
   m_GameObject: {fileID: 1919516444}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.36, y: 0.163, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
