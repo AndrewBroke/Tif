@@ -94,8 +94,7 @@ public class SequenceController : MonoBehaviour
                 return;
             }
 
-            // OnConversationEnded precedes the closing UI transition. Do not start a new
-            // conversation inside that callback or let the old transition close the new UI.
+            // Start the next dialogue only after the manager has finished closing its UI.
             if ((currentStep.type == StepType.Dialogue ||
                  currentStep.type == StepType.WaitForDialogueClose) && ConversationIsActive())
                 return;

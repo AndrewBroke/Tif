@@ -12,15 +12,22 @@ public class DialogueController : MonoBehaviour
     private Interactable pendingInteraction;
     private string tagBeforeDialogue;
     private Coroutine pendingStart;
+    private bool completionRequested;
 
     private void OnDisable()
     {
-        InterruptDialogue();
+        // Existing node events disable their source after requesting normal completion.
+        // Keep the end subscription until the manager has actually closed the UI.
+        var manager = ConversationManager.Instance;
+        if (manager == null || (!manager.IsEndingConversation &&
+            !(completionRequested && manager.IsConversationActive)))
+            InterruptDialogue();
         PlayerControlLocks.Release(this);
     }
 
     private void OnDestroy()
     {
+        InterruptDialogue();
         ClearActiveDialogue();
         PlayerControlLocks.Release(this);
     }
@@ -28,6 +35,7 @@ public class DialogueController : MonoBehaviour
     private void ClearActiveDialogue()
     {
         CanCancelByPlayer = true;
+        completionRequested = false;
         ConversationManager.OnConversationEnded -= HandleConversationEnded;
         if (ActiveDialogue == this)
             ActiveDialogue = null;
@@ -126,6 +134,8 @@ public class DialogueController : MonoBehaviour
         if (ActiveDialogue != this)
             return;
 
+        // Drop ownership before cancellation calls back into the manager.
+        ClearActiveDialogue();
         if (pendingStart != null)
         {
             StopCoroutine(pendingStart);
@@ -140,7 +150,6 @@ public class DialogueController : MonoBehaviour
 
         gameObject.tag = tagBeforeDialogue;
 
-        ClearActiveDialogue();
         Finished?.Invoke(false);
     }
 
@@ -153,10 +162,18 @@ public class DialogueController : MonoBehaviour
     }
 
     /// <summary>
-    /// Resumes player input and locks & hides the cursor.
+    /// Finishes dialogue mode once the manager has closed its UI.
+    /// Existing node events can request this early without skipping the remaining speech.
     /// </summary>
     public void DisableDialogueMode()
     {
+        if (ActiveDialogue == this && ConversationManager.Instance != null &&
+            ConversationManager.Instance.IsConversationActive)
+        {
+            completionRequested = true;
+            return;
+        }
+
         bool wasActive = ActiveDialogue == this;
         CompletePendingInteraction();
         ClearActiveDialogue();

@@ -108,7 +108,7 @@ namespace DialogueEditor
 
         public void OnClick()
         {
-            if (!ConversationManager.Instance.AllowMouseInteraction) { return; }
+            if (ConversationManager.Instance == null || !ConversationManager.Instance.AllowMouseInteraction) { return; }
 
             DoClickBehaviour();
         }
@@ -205,6 +205,9 @@ namespace DialogueEditor
 
         private void DoClickBehaviour()
         {
+            if (ConversationManager.Instance == null || !ConversationManager.Instance.CanSelectOption(this))
+                return;
+
             switch (m_buttonType)
             {
                 case eButtonType.Speech:
