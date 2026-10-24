@@ -1027,7 +1027,6 @@ GameObject:
   - component: {fileID: 515254294}
   - component: {fileID: 515254293}
   - component: {fileID: 515254292}
-  - component: {fileID: 515254291}
   m_Layer: 5
   m_Name: Play Button (3)
   m_TagString: Untagged
@@ -1054,46 +1053,6 @@ RectTransform:
   m_AnchoredPosition: {x: 739.39, y: -200}
   m_SizeDelta: {x: 423.0282, y: 105.757}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &515254291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515254289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:23f8d00b7db24c440b78f594ebb5c527
-    m_TableEntryReference:
-      m_KeyId: 17979924480
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 515254293}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &515254292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2790,7 +2749,6 @@ GameObject:
   - component: {fileID: 956672273}
   - component: {fileID: 956672272}
   - component: {fileID: 956672271}
-  - component: {fileID: 956672270}
   m_Layer: 5
   m_Name: Play Button (1)
   m_TagString: Untagged
@@ -2817,46 +2775,6 @@ RectTransform:
   m_AnchoredPosition: {x: 739.39, y: 71}
   m_SizeDelta: {x: 423.0282, y: 105.757}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &956672270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956672268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:23f8d00b7db24c440b78f594ebb5c527
-    m_TableEntryReference:
-      m_KeyId: 17979924480
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 956672272}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &956672271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4399,7 +4317,6 @@ GameObject:
   - component: {fileID: 1189578158}
   - component: {fileID: 1189578157}
   - component: {fileID: 1189578156}
-  - component: {fileID: 1189578155}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -4426,46 +4343,6 @@ RectTransform:
   m_AnchoredPosition: {x: 739.39, y: -418}
   m_SizeDelta: {x: 423.0282, y: 105.757}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1189578155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189578153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:23f8d00b7db24c440b78f594ebb5c527
-    m_TableEntryReference:
-      m_KeyId: 65614635008
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1189578157}
-        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1189578156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4509,7 +4386,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1189578157}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1960320263}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1189578157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6188,6 +6077,51 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2073062303095333546, guid: 981a32cdc45e56c409e3c4f82d285e37, type: 3}
+--- !u!1 &1661154847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661154849}
+  - component: {fileID: 1661154848}
+  m_Layer: 0
+  m_Name: GameApplication
+  m_TagString: GameApplication
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1661154848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661154847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696029b937c82ac49a5e2431a3a53343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameApplication
+  editorOverrideLang: ru
+--- !u!4 &1661154849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661154847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 913.372, y: 510.2577, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677759957
 GameObject:
   m_ObjectHideFlags: 0
@@ -6200,7 +6134,6 @@ GameObject:
   - component: {fileID: 1677759962}
   - component: {fileID: 1677759961}
   - component: {fileID: 1677759960}
-  - component: {fileID: 1677759959}
   m_Layer: 5
   m_Name: Play Button (2)
   m_TagString: Untagged
@@ -6227,46 +6160,6 @@ RectTransform:
   m_AnchoredPosition: {x: 739.39, y: -72}
   m_SizeDelta: {x: 423.0282, y: 105.757}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1677759959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677759957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:23f8d00b7db24c440b78f594ebb5c527
-    m_TableEntryReference:
-      m_KeyId: 17979924480
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1677759961}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1677759960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6752,7 +6645,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Act 1
+          m_StringArgument: MenuGameTransition
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1804223228
@@ -9264,3 +9157,4 @@ SceneRoots:
   - {fileID: 1446189995}
   - {fileID: 2120221541}
   - {fileID: 1960320264}
+  - {fileID: 1661154849}

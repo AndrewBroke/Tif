@@ -48,6 +48,10 @@ public class TimeTransition : MonoBehaviour
     private void Start()
     {
         StartCoroutine(PlayTransition());
+
+        // Lock and hide cursor
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 

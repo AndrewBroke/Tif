@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.Localization.Settings;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 /// <summary>
 /// Сторона запускаемого приложения.
@@ -15,7 +18,8 @@ using UnityEngine.UI;
 /// Тест-хук (вне спецификации): поле "auto" в JSON (1 | 3 | -1) - автоматический
 /// выход с заданным Exit Code через 2 секунды после старта, для CLI-проверки.
 /// </summary>
-public class GameApplication : MonoBehaviour {
+public class GameApplication : MonoBehaviour
+{
     public const int ExitCodeEarlyExit = 1;
     public const int ExitCodeCompleted = 3;
     public const int ExitCodeSystemError = -1;
@@ -32,26 +36,48 @@ public class GameApplication : MonoBehaviour {
 
     private int desiredExitCode = -1;
     private int autoExitCode;
+    private bool isPersistent;
 
     [Serializable]
-    private sealed class LaunchConfig {
+    private sealed class LaunchConfig
+    {
         public string lang;
         public int auto;
     }
 
-    private void Awake() {
+    private void Awake()
+    {
+        foreach (GameObject candidate in
+                     GameObject.FindGameObjectsWithTag("GameApplication"))
+        {
+            GameApplication other = candidate.GetComponent<GameApplication>();
+
+            if (other != null && other != this && other.isPersistent)
+            {
+                enabled = false;
+                Destroy(gameObject);
+                return;
+            }
+        }
+
+        // dont destroy onload
+        DontDestroyOnLoad(gameObject);
+        isPersistent = true;
         Application.wantsToQuit += OnWantsToQuit;
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         Application.wantsToQuit -= OnWantsToQuit;
     }
 
-    private void Start() {
+    private void Start()
+    {
         ParseLaunchConfig();
         ApplyLocalization();
 
-        if (autoExitCode != 0) {
+        if (autoExitCode != 0)
+        {
             StartCoroutine(AutoExitRoutine(autoExitCode));
         }
     }
@@ -59,7 +85,8 @@ public class GameApplication : MonoBehaviour {
     // ------------------------------------------------------------------
     // Парсинг параметров (спецификация, раздел 2)
     // ------------------------------------------------------------------
-    private void ParseLaunchConfig() {
+    private void ParseLaunchConfig()
+    {
 #if UNITY_EDITOR
         // В редакторе CLI-аргументы принадлежат редактору, а не сцене -
         // берём тестовое значение из inspector.
@@ -97,8 +124,10 @@ public class GameApplication : MonoBehaviour {
 #endif
     }
 
-    private void ApplyConfig(LaunchConfig cfg) {
-        if (cfg == null) {
+    private void ApplyConfig(LaunchConfig cfg)
+    {
+        if (cfg == null)
+        {
             return;
         }
 
@@ -106,14 +135,17 @@ public class GameApplication : MonoBehaviour {
         AppliedLanguage = normalized;
         autoExitCode = cfg.auto;
 
-        if (normalized == "en" && !string.IsNullOrEmpty(cfg.lang) && cfg.lang.Trim().ToLowerInvariant() != "en") {
+        if (normalized == "en" && !string.IsNullOrEmpty(cfg.lang) && cfg.lang.Trim().ToLowerInvariant() != "en")
+        {
             Debug.LogWarning(
                 "[GameApplication] Неизвестный язык: " + cfg.lang + " — применяется язык по умолчанию (en.");
         }
     }
 
-    private static string NormalizeLanguage(string lang) {
-        if (string.IsNullOrEmpty(lang)) {
+    private static string NormalizeLanguage(string lang)
+    {
+        if (string.IsNullOrEmpty(lang))
+        {
             return "en";
         }
 
@@ -126,17 +158,20 @@ public class GameApplication : MonoBehaviour {
     // ------------------------------------------------------------------
 
     /// <summary>Кнопка «Покинуть игру»: Exit Code 1 - игрок досрочно вышел.</summary>
-    public void LeaveGame() {
+    public void LeaveGame()
+    {
         QuitWith(ExitCodeEarlyExit);
     }
 
     /// <summary>Кнопка «Завершить игру»: Exit Code 3 - успешное прохождение и выход.</summary>
-    public void CompleteGame() {
+    public void CompleteGame()
+    {
         QuitWith(ExitCodeCompleted);
     }
 
     /// <summary>Имитация системной ошибки (крэша): приложение завершается с нетипичным кодом (-1).</summary>
-    public void SimulateSystemError() {
+    public void SimulateSystemError()
+    {
         QuitWith(ExitCodeSystemError);
     }
 
@@ -151,7 +186,8 @@ public class GameApplication : MonoBehaviour {
     /// TerminateProcess не ждёт другие потоки и не выполняет DllMain — он всегда
     /// мгновенно завершает процесс с точным кодом.
     /// </summary>
-    private void QuitWith(int code) {
+    private void QuitWith(int code)
+    {
         desiredExitCode = code;
 #if UNITY_EDITOR
         Debug.Log("[GameApplication] Запланирован выход с кодом " + code + " (в редакторе не завершаем).");
@@ -165,8 +201,10 @@ public class GameApplication : MonoBehaviour {
     /// считаем досрочным выходом (1). Завершаем процесс сразу, не давая Unity
     /// войти в свой цикл выхода (именно он зависал ранее).
     /// </summary>
-    private bool OnWantsToQuit() {
-        if (desiredExitCode < 0) {
+    private bool OnWantsToQuit()
+    {
+        if (desiredExitCode < 0)
+        {
             desiredExitCode = ExitCodeEarlyExit; // досрочный выход по умолчанию
         }
 
@@ -176,7 +214,8 @@ public class GameApplication : MonoBehaviour {
         return true;
     }
 
-    private void OnApplicationQuit() {
+    private void OnApplicationQuit()
+    {
 #if !UNITY_EDITOR
         // Страховка на случай любого пути выхода вне кнопок/крестика.
         if (desiredExitCode < 0) {
@@ -193,7 +232,8 @@ public class GameApplication : MonoBehaviour {
     /// Мгновенное завершение текущего процесса с точным кодом через TerminateProcess.
     /// Код -1 передаётся как 0xFFFFFFFF — лаунчер прочитает Exit Code -1.
     /// </summary>
-    private static void TerminateSelf(int exitCode) {
+    private static void TerminateSelf(int exitCode)
+    {
         TerminateProcess(GetCurrentProcess(), unchecked((uint)exitCode));
     }
 
@@ -203,9 +243,11 @@ public class GameApplication : MonoBehaviour {
     [System.Runtime.InteropServices.DllImport("kernel32.dll")]
     private static extern IntPtr GetCurrentProcess();
 
-    private System.Collections.IEnumerator AutoExitRoutine(int code) {
+    private System.Collections.IEnumerator AutoExitRoutine(int code)
+    {
         yield return new WaitForSecondsRealtime(2f);
-        switch (code) {
+        switch (code)
+        {
             case ExitCodeSystemError:
                 SimulateSystemError();
                 break;
@@ -224,6 +266,35 @@ public class GameApplication : MonoBehaviour {
     // ------------------------------------------------------------------
     // Локализация интерфейса (классический UI: ссылки задаются в сцене вручную)
     // ------------------------------------------------------------------
-    protected virtual void ApplyLocalization() {
+    protected virtual void ApplyLocalization()
+    {
+        StartCoroutine(ApplyLocalizationRoutine());
     }
+
+    private IEnumerator ApplyLocalizationRoutine()
+{
+    var initialization = LocalizationSettings.InitializationOperation;
+    yield return initialization;
+
+    if (initialization.Status != AsyncOperationStatus.Succeeded)
+    {
+        Debug.LogError("[GameApplication] Ошибка инициализации локализации.");
+        yield break;
+    }
+
+    var locale = LocalizationSettings.AvailableLocales.Locales
+        .Find(x => x.Identifier.Code == AppliedLanguage);
+
+    if (locale == null)
+    {
+        Debug.LogError(
+            "[GameApplication] Локаль не найдена: " + AppliedLanguage);
+        yield break;
+    }
+
+    LocalizationSettings.SelectedLocale = locale;
+
+    Debug.Log(
+        "[GameApplication] Установлен язык: " + locale.Identifier.Code);
+}
 }
