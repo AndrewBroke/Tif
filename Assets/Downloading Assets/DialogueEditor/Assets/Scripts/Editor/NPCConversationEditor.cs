@@ -39,6 +39,8 @@ namespace DialogueEditor
             EditorGUILayout.PrefixLabel("Conversation: ", boldStyle);
             EditorGUILayout.TextField(serializedObject.targetObject.name, regularStyle);
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("localizationId"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("localizationTable"));
             serializedObject.ApplyModifiedProperties();
         }
     }

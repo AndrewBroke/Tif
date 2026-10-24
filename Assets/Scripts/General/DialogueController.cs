@@ -1,14 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using DialogueEditor;
 
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController ActiveDialogue { get; private set; }
+    public bool CanCancelByPlayer { get; private set; } = true;
     // Instance-scoped notification: true = completed, false = interrupted.
     public event System.Action<bool> Finished;
 
     private Interactable pendingInteraction;
     private string tagBeforeDialogue;
+    private Coroutine pendingStart;
 
     private void OnDisable()
     {
@@ -24,6 +27,7 @@ public class DialogueController : MonoBehaviour
 
     private void ClearActiveDialogue()
     {
+        CanCancelByPlayer = true;
         ConversationManager.OnConversationEnded -= HandleConversationEnded;
         if (ActiveDialogue == this)
             ActiveDialogue = null;
@@ -56,6 +60,7 @@ public class DialogueController : MonoBehaviour
         if (ActiveDialogue != null)
             ActiveDialogue.InterruptDialogue();
 
+        CanCancelByPlayer = true;
         if (TryGetComponent(out Interactable interactable) && interactable.DeferCompletion())
             pendingInteraction = interactable;
 
@@ -66,7 +71,7 @@ public class DialogueController : MonoBehaviour
         try
         {
             EnableDialogueMode();
-            ConversationManager.Instance.StartConversation(conversation);
+            pendingStart = StartCoroutine(PrepareAndStart(conversation));
         }
         catch
         {
@@ -79,6 +84,40 @@ public class DialogueController : MonoBehaviour
         }
     }
 
+    private IEnumerator PrepareAndStart(NPCConversation conversation)
+    {
+        // Always yield once so pendingStart is assigned before completion or cancellation.
+        yield return null;
+        if (conversation == null)
+        {
+            pendingStart = null;
+            InterruptDialogue();
+            yield break;
+        }
+        var localization = new DialogueLocalization();
+        yield return localization.Load(conversation.LocalizationTable);
+        if (ActiveDialogue != this || !isActiveAndEnabled)
+            yield break;
+        pendingStart = null;
+        try
+        {
+            ConversationManager.Instance.StartConversation(conversation, localization.Table);
+        }
+        catch (System.Exception exception)
+        {
+            InterruptDialogue();
+            Debug.LogException(exception, this);
+        }
+    }
+
+    /// <summary>
+    /// Allows or blocks player cancellation. Can be called from dialogue node events.
+    /// </summary>
+    public void SetPlayerCancellationAllowed(bool allowed)
+    {
+        CanCancelByPlayer = allowed;
+    }
+
     /// <summary>
     /// Interrupts this conversation without completion events and allows interacting again.
     /// </summary>
@@ -87,7 +126,12 @@ public class DialogueController : MonoBehaviour
         if (ActiveDialogue != this)
             return;
 
-        if (ConversationManager.Instance != null)
+        if (pendingStart != null)
+        {
+            StopCoroutine(pendingStart);
+            pendingStart = null;
+        }
+        if (ConversationManager.Instance != null && ConversationManager.Instance.IsConversationActive)
             ConversationManager.Instance.CancelConversation();
         if (pendingInteraction != null)
             pendingInteraction.CancelInteraction();

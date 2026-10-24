@@ -1,0 +1,356 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Dialogue_Act1 Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Dialogue_Act1
+  m_TableCollectionNameGuidString: 53d9c73058c85104485c8bc0ca67d485
+  m_Entries:
+  - m_Id: 1500504064
+    m_Key: act1.last_firewood.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1643110400
+    m_Key: act1.last_firewood.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1643110401
+    m_Key: act1.last_firewood.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1643110402
+    m_Key: act1.wall_inscription.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499008
+    m_Key: act1.wall_inscription.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499009
+    m_Key: act1.wall_inscription.node_2.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499010
+    m_Key: act1.wall_inscription.node_2.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499011
+    m_Key: act1.wall_inscription.node_4.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499012
+    m_Key: act1.wall_inscription.node_4.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499013
+    m_Key: act1.wall_inscription.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499014
+    m_Key: act1.wall_inscription.node_3.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499015
+    m_Key: act1.wall_inscription.node_5.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499016
+    m_Key: act1.wife_intro.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499017
+    m_Key: act1.wife_intro.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499018
+    m_Key: act1.wife_intro.node_3.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499019
+    m_Key: act1.wife_intro.node_3.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499020
+    m_Key: act1.wife_intro.node_6.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499021
+    m_Key: act1.wife_intro.node_6.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499022
+    m_Key: act1.wife_intro.node_8.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499023
+    m_Key: act1.wife_intro.node_8.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499024
+    m_Key: act1.wife_intro.node_10.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499025
+    m_Key: act1.wife_intro.node_10.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499026
+    m_Key: act1.wife_intro.node_12.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499027
+    m_Key: act1.wife_intro.node_12.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499028
+    m_Key: act1.wife_intro.node_14.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499029
+    m_Key: act1.wife_intro.node_14.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499030
+    m_Key: act1.wife_intro.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499031
+    m_Key: act1.wife_intro.node_2.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499032
+    m_Key: act1.wife_intro.node_4.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499033
+    m_Key: act1.wife_intro.node_5.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499034
+    m_Key: act1.wife_intro.node_7.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499035
+    m_Key: act1.wife_intro.node_9.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499036
+    m_Key: act1.wife_intro.node_11.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499037
+    m_Key: act1.wife_intro.node_13.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499038
+    m_Key: act1.stoke_fire.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499039
+    m_Key: act1.stoke_fire.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499040
+    m_Key: act1.stoke_fire.node_2.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499041
+    m_Key: act1.stoke_fire.node_2.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499042
+    m_Key: act1.stoke_fire.node_9.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499043
+    m_Key: act1.stoke_fire.node_9.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499044
+    m_Key: act1.stoke_fire.node_16.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499045
+    m_Key: act1.stoke_fire.node_16.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499046
+    m_Key: act1.stoke_fire.node_18.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499047
+    m_Key: act1.stoke_fire.node_18.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499048
+    m_Key: act1.stoke_fire.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499049
+    m_Key: act1.stoke_fire.node_8.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499050
+    m_Key: act1.stoke_fire.node_10.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499051
+    m_Key: act1.stoke_fire.node_15.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499052
+    m_Key: act1.stoke_fire.node_17.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499053
+    m_Key: act1.eviction_notice.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499054
+    m_Key: act1.eviction_notice.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499055
+    m_Key: act1.eviction_notice.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499056
+    m_Key: act1.leave_house.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499057
+    m_Key: act1.leave_house.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499058
+    m_Key: act1.leave_house.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499059
+    m_Key: act1.bread.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499060
+    m_Key: act1.bread.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499061
+    m_Key: act1.bread.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499062
+    m_Key: act1.bread.node_2.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499063
+    m_Key: act1.check_fire.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499064
+    m_Key: act1.check_fire.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499065
+    m_Key: act1.check_fire.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499066
+    m_Key: act1.wife_followup.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499067
+    m_Key: act1.wife_followup.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499068
+    m_Key: act1.wife_followup.node_6.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499069
+    m_Key: act1.wife_followup.node_6.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499070
+    m_Key: act1.wife_followup.node_9.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499071
+    m_Key: act1.wife_followup.node_9.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499072
+    m_Key: act1.wife_followup.node_11.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499073
+    m_Key: act1.wife_followup.node_11.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499074
+    m_Key: act1.wife_followup.node_13.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499075
+    m_Key: act1.wife_followup.node_13.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499076
+    m_Key: act1.wife_followup.node_15.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499077
+    m_Key: act1.wife_followup.node_15.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499078
+    m_Key: act1.wife_followup.node_5.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499079
+    m_Key: act1.wife_followup.node_7.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499080
+    m_Key: act1.wife_followup.node_8.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499081
+    m_Key: act1.wife_followup.node_10.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499082
+    m_Key: act1.wife_followup.node_12.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651499083
+    m_Key: act1.wife_followup.node_14.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1668276224
+    m_Key: common.continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1668276225
+    m_Key: common.end
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3897952865542734014
+  references:
+    version: 2
+    RefIds:
+    - rid: 3897952865542734014
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1792744535910

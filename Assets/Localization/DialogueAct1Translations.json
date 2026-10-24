@@ -1,0 +1,458 @@
+{
+  "conversations": [
+    {
+      "localId": "191710116",
+      "id": "act1.last_firewood",
+      "entries": [
+        {
+          "key": "act1.last_firewood.node_0.text",
+          "ru": "Это последнее.",
+          "en": "That's the last of it."
+        },
+        {
+          "key": "act1.last_firewood.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.last_firewood.node_1.text",
+          "ru": "Взять",
+          "en": "Take"
+        }
+      ]
+    },
+    {
+      "localId": "293259245",
+      "id": "act1.wall_inscription",
+      "entries": [
+        {
+          "key": "act1.wall_inscription.node_0.text",
+          "ru": "Мой друг написал. Когда еще в Еланке были.",
+          "en": "My friend wrote this. Back when we were still in Yelanka."
+        },
+        {
+          "key": "act1.wall_inscription.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.wall_inscription.node_2.text",
+          "ru": "Тогда мы были еще вместе",
+          "en": "We were all still together then."
+        },
+        {
+          "key": "act1.wall_inscription.node_2.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.wall_inscription.node_4.text",
+          "ru": "Теперь только тут все вместе. На стене.",
+          "en": "Now this is the only place we're all together. On the wall."
+        },
+        {
+          "key": "act1.wall_inscription.node_4.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.wall_inscription.node_1.text",
+          "ru": "Далее",
+          "en": "Continue"
+        },
+        {
+          "key": "act1.wall_inscription.node_3.text",
+          "ru": "Далее",
+          "en": "Continue"
+        },
+        {
+          "key": "act1.wall_inscription.node_5.text",
+          "ru": "Выйти",
+          "en": "Leave"
+        }
+      ]
+    },
+    {
+      "localId": "462812008",
+      "id": "act1.wife_intro",
+      "entries": [
+        {
+          "key": "act1.wife_intro.node_0.text",
+          "ru": "Вернулся, как работа?",
+          "en": "You're back. How was work?"
+        },
+        {
+          "key": "act1.wife_intro.node_0.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_intro.node_3.text",
+          "ru": "Тут приходили солдаты...",
+          "en": "Soldiers came by..."
+        },
+        {
+          "key": "act1.wife_intro.node_3.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_intro.node_6.text",
+          "ru": "Смотрели дом. Я их дальше порога не пустила, сказала, что у нас ребенок и не хочу, чтобы они занесли заразу.",
+          "en": "They inspected the house. I wouldn't let them past the doorstep. I told them we have a child, and I don't want them bringing the infection in."
+        },
+        {
+          "key": "act1.wife_intro.node_6.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_intro.node_8.text",
+          "ru": "Да...",
+          "en": "Yes..."
+        },
+        {
+          "key": "act1.wife_intro.node_8.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_intro.node_10.text",
+          "ru": "Сказали, что тут по бумагам только ты живешь, никаких женщин и детей быть не должно.",
+          "en": "They said the records show only you living here. No women or children are supposed to be here."
+        },
+        {
+          "key": "act1.wife_intro.node_10.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_intro.node_12.text",
+          "ru": "Дали какое-то предписание, я его на стол положила. И сказали в течении двух дней освободить дом для заселения.",
+          "en": "They gave me some kind of notice. I put it on the table. They said we have two days to vacate the house so they can move people in."
+        },
+        {
+          "key": "act1.wife_intro.node_12.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_intro.node_14.text",
+          "ru": "Проснулся, опять. Последнее время очень плохо спит. А после солдат очень долго спать не хотел. Пойду успокою. А ты глянь эту бумагу и печку посмотри, там уже, кажется, догорает.",
+          "en": "He's awake again. He hasn't been sleeping well lately. After the soldiers left, he wouldn't settle for ages. I'll go soothe him. Have a look at that paper, and check the stove. I think the fire's almost out."
+        },
+        {
+          "key": "act1.wife_intro.node_14.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_intro.node_1.text",
+          "ru": "Много мертвых",
+          "en": "Lots of dead."
+        },
+        {
+          "key": "act1.wife_intro.node_2.text",
+          "ru": "Как обычно",
+          "en": "Same as usual."
+        },
+        {
+          "key": "act1.wife_intro.node_4.text",
+          "ru": "Выйти",
+          "en": "Leave"
+        },
+        {
+          "key": "act1.wife_intro.node_5.text",
+          "ru": "Зачем?",
+          "en": "What for?"
+        },
+        {
+          "key": "act1.wife_intro.node_7.text",
+          "ru": "Они хотят заселить дом?",
+          "en": "They want to move people into the house?"
+        },
+        {
+          "key": "act1.wife_intro.node_9.text",
+          "ru": "Далее",
+          "en": "Continue"
+        },
+        {
+          "key": "act1.wife_intro.node_11.text",
+          "ru": "Далее",
+          "en": "Continue"
+        },
+        {
+          "key": "act1.wife_intro.node_13.text",
+          "ru": "Надо что-ни...",
+          "en": "We need to do some..."
+        }
+      ]
+    },
+    {
+      "localId": "748726995",
+      "id": "act1.stoke_fire",
+      "entries": [
+        {
+          "key": "act1.stoke_fire.node_0.text",
+          "ru": "\"Огонь стал еще тускнее\"",
+          "en": "\"The fire has grown even dimmer.\""
+        },
+        {
+          "key": "act1.stoke_fire.node_0.name",
+          "ru": "Печь",
+          "en": "Stove"
+        },
+        {
+          "key": "act1.stoke_fire.node_2.text",
+          "ru": "\"Огонь стал немного ярче\"",
+          "en": "\"The fire burns a little brighter.\""
+        },
+        {
+          "key": "act1.stoke_fire.node_2.name",
+          "ru": "Печь",
+          "en": "Stove"
+        },
+        {
+          "key": "act1.stoke_fire.node_9.text",
+          "ru": "Нужно найти еще дрова, пока не стемнело.",
+          "en": "I need to find more firewood before it gets dark."
+        },
+        {
+          "key": "act1.stoke_fire.node_9.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.stoke_fire.node_16.text",
+          "ru": "В больнице дожны еще выдавать, если успею.",
+          "en": "They should still be handing some out at the hospital, if I can get there in time."
+        },
+        {
+          "key": "act1.stoke_fire.node_16.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.stoke_fire.node_18.text",
+          "ru": "Не хочу опять ломать дом, уже почти ничего не осталось.",
+          "en": "I don't want to tear more of the house apart. There's barely anything left."
+        },
+        {
+          "key": "act1.stoke_fire.node_18.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.stoke_fire.node_1.text",
+          "ru": "Положить дрова ",
+          "en": "Add firewood"
+        },
+        {
+          "key": "act1.stoke_fire.node_8.text",
+          "ru": "Далее",
+          "en": "Continue"
+        },
+        {
+          "key": "act1.stoke_fire.node_10.text",
+          "ru": "Выйти",
+          "en": "Leave"
+        },
+        {
+          "key": "act1.stoke_fire.node_15.text",
+          "ru": "Далее",
+          "en": "Continue"
+        },
+        {
+          "key": "act1.stoke_fire.node_17.text",
+          "ru": "Далее",
+          "en": "Continue"
+        }
+      ]
+    },
+    {
+      "localId": "845572772",
+      "id": "act1.eviction_notice",
+      "entries": [
+        {
+          "key": "act1.eviction_notice.node_0.text",
+          "ru": "Предписание",
+          "en": "Notice"
+        },
+        {
+          "key": "act1.eviction_notice.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.eviction_notice.node_1.text",
+          "ru": "Прочитать",
+          "en": "Read"
+        }
+      ]
+    },
+    {
+      "localId": "995745780",
+      "id": "act1.leave_house",
+      "entries": [
+        {
+          "key": "act1.leave_house.node_0.text",
+          "ru": "Надо успеть вернуться, пока огонь не погас.",
+          "en": "I need to get back before the fire goes out."
+        },
+        {
+          "key": "act1.leave_house.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.leave_house.node_1.text",
+          "ru": "Выйти из дома",
+          "en": "Leave the house"
+        }
+      ]
+    },
+    {
+      "localId": "1324683313",
+      "id": "act1.bread",
+      "entries": [
+        {
+          "key": "act1.bread.node_0.text",
+          "ru": "Я очень голоден, надеюсь, это не последний кусок. Зарплата еще не скоро",
+          "en": "I'm so hungry. I hope this isn't the last piece. Payday is still a long way off."
+        },
+        {
+          "key": "act1.bread.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.bread.node_1.text",
+          "ru": "Оставить",
+          "en": "Leave it"
+        },
+        {
+          "key": "act1.bread.node_2.text",
+          "ru": "Съесть",
+          "en": "Eat"
+        }
+      ]
+    },
+    {
+      "localId": "1543365320",
+      "id": "act1.check_fire",
+      "entries": [
+        {
+          "key": "act1.check_fire.node_0.text",
+          "ru": "Уже догорает, надо подкинуть чего-нибудь.",
+          "en": "It's almost burned out. I need to put something on the fire."
+        },
+        {
+          "key": "act1.check_fire.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act1.check_fire.node_1.text",
+          "ru": "Выйти",
+          "en": "Leave"
+        }
+      ]
+    },
+    {
+      "localId": "2063983258",
+      "id": "act1.wife_followup",
+      "entries": [
+        {
+          "key": "act1.wife_followup.node_0.text",
+          "ru": "Что нам делать?",
+          "en": "What are we going to do?"
+        },
+        {
+          "key": "act1.wife_followup.node_0.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_followup.node_6.text",
+          "ru": "Может нам уехать? Я слышала, что поезда какие-то отправляются.",
+          "en": "Maybe we should leave? I heard there are still some trains running."
+        },
+        {
+          "key": "act1.wife_followup.node_6.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_followup.node_9.text",
+          "ru": "Хотя соседка сказала, что следующий будет только в следующем месяце из-за холодов.",
+          "en": "Though the woman next door said the next one won't leave until next month because of the cold."
+        },
+        {
+          "key": "act1.wife_followup.node_9.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_followup.node_11.text",
+          "ru": "Еще она сказала, что у всяких врачей и чиновников дома не забирают. Мол у них там какая-то бумага есть, с которой не имеют право заселить никого.",
+          "en": "She also said they aren't taking houses from doctors and officials. Apparently they have some kind of document that says no one can be moved in with them."
+        },
+        {
+          "key": "act1.wife_followup.node_11.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_followup.node_13.text",
+          "ru": "Ты же сейчас за дровами? Я видела солдата у часовни. Может он знает, какие дома забирают, а какие нет.",
+          "en": "You're going out for firewood, aren't you? I saw a soldier by the chapel. Maybe he knows which houses they're taking and which ones they're leaving alone."
+        },
+        {
+          "key": "act1.wife_followup.node_13.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_followup.node_15.text",
+          "ru": "Я... Я просто боюсь за сына... Если нас выгонят...",
+          "en": "I... I'm just scared for our son... If they throw us out..."
+        },
+        {
+          "key": "act1.wife_followup.node_15.name",
+          "ru": "Жена",
+          "en": "Wife"
+        },
+        {
+          "key": "act1.wife_followup.node_5.text",
+          "ru": "Я придумаю",
+          "en": "I'll think of something."
+        },
+        {
+          "key": "act1.wife_followup.node_7.text",
+          "ru": "Не выгонят",
+          "en": "They won't throw us out."
+        },
+        {
+          "key": "act1.wife_followup.node_8.text",
+          "ru": "Может быть...",
+          "en": "Maybe..."
+        },
+        {
+          "key": "act1.wife_followup.node_10.text",
+          "ru": "Далее",
+          "en": "Continue"
+        },
+        {
+          "key": "act1.wife_followup.node_12.text",
+          "ru": "Может достать эту бумагу?",
+          "en": "Could we get that document?"
+        },
+        {
+          "key": "act1.wife_followup.node_14.text",
+          "ru": "Далее",
+          "en": "Continue"
+        }
+      ]
+    }
+  ]
+}

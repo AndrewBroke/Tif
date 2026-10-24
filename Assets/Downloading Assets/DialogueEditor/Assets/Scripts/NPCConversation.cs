@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Localization.Tables;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 
@@ -33,6 +34,10 @@ namespace DialogueEditor
         // Serialized data
         [SerializeField] public int CurrentIDCounter = 1;
         [SerializeField] private string json;
+        [SerializeField] private string localizationId;
+        [SerializeField] private string localizationTable;
+        public string LocalizationId => localizationId;
+        public string LocalizationTable => localizationTable;
         [SerializeField] private int saveVersion;
         [SerializeField] public string DefaultName;
         [SerializeField] public Sprite DefaultSprite;
@@ -125,11 +130,16 @@ namespace DialogueEditor
 
         public Conversation Deserialize()
         {
+            return Deserialize(null);
+        }
+
+        public Conversation Deserialize(StringTable table)
+        {
             // Deserialize an editor-version (containing all info) that 
             // we will use to construct the user-facing Conversation data structure. 
             EditableConversation ec = this.DeserializeForEditor();
 
-            return ConstructConversationObject(ec);
+            return ConstructConversationObject(ec, table);
         }
 
         public EditableConversation DeserializeForEditor()
@@ -325,7 +335,7 @@ namespace DialogueEditor
         // Construct User-Facing Conversation Object and Nodes
         //--------------------------------------
 
-        private Conversation ConstructConversationObject(EditableConversation ec)
+        private Conversation ConstructConversationObject(EditableConversation ec, StringTable table)
         {
             // Create a conversation object
             Conversation conversation = new Conversation();
@@ -336,6 +346,8 @@ namespace DialogueEditor
             // Construct the Conversation-Based variables (not node-based)
             conversation.ContinueFont = this.ContinueFont;
             conversation.EndConversationFont = this.EndConversationFont;
+            conversation.ContinueText = DialogueLocalization.Resolve(table, "common.continue", "Continue.");
+            conversation.EndText = DialogueLocalization.Resolve(table, "common.end", "End.");
 
             // Create a dictionary to store our created nodes by UID
             Dictionary<int, SpeechNode> speechByID = new Dictionary<int, SpeechNode>();
@@ -345,13 +357,13 @@ namespace DialogueEditor
             // Put them in the dictionary
             for (int i = 0; i < ec.SpeechNodes.Count; i++)
             {
-                SpeechNode node = CreateSpeechNode(ec.SpeechNodes[i]);
+                SpeechNode node = CreateSpeechNode(ec.SpeechNodes[i], table);
                 speechByID.Add(ec.SpeechNodes[i].ID, node);
             }
 
             for (int i = 0; i < ec.Options.Count; i++)
             {
-                OptionNode node = CreateOptionNode(ec.Options[i]);
+                OptionNode node = CreateOptionNode(ec.Options[i], table);
                 optionsByID.Add(ec.Options[i].ID, node);
             }
 
@@ -381,11 +393,11 @@ namespace DialogueEditor
             }
         }
 
-        private SpeechNode CreateSpeechNode(EditableSpeechNode editableNode)
+        private SpeechNode CreateSpeechNode(EditableSpeechNode editableNode, StringTable table)
         {
             SpeechNode speech = new SpeechNode();
-            speech.Name = editableNode.Name;
-            speech.Text = editableNode.Text;
+            speech.Name = Localize(table, editableNode.ID, "name", editableNode.Name);
+            speech.Text = Localize(table, editableNode.ID, "text", editableNode.Text);
             speech.AutomaticallyAdvance = editableNode.AdvanceDialogueAutomatically;
             speech.AutoAdvanceShouldDisplayOption = editableNode.AutoAdvanceShouldDisplayOption;
             speech.TimeUntilAdvance = editableNode.TimeUntilAdvance;
@@ -405,10 +417,10 @@ namespace DialogueEditor
             return speech;
         }
 
-        private OptionNode CreateOptionNode(EditableOptionNode editableNode)
+        private OptionNode CreateOptionNode(EditableOptionNode editableNode, StringTable table)
         {
             OptionNode option = new OptionNode();
-            option.Text = editableNode.Text;
+            option.Text = Localize(table, editableNode.ID, "text", editableNode.Text);
             option.TMPFont = editableNode.TMPFont;
 
             CopyParamActions(editableNode, option);
@@ -420,6 +432,13 @@ namespace DialogueEditor
             }
 
             return option;
+        }
+
+        private string Localize(StringTable table, int nodeId, string field, string original)
+        {
+            if (string.IsNullOrWhiteSpace(localizationId))
+                return original;
+            return DialogueLocalization.Resolve(table, $"{localizationId}.node_{nodeId}.{field}", original);
         }
 
         public void CopyParamActions(EditableConversationNode editable, ConversationNode node)

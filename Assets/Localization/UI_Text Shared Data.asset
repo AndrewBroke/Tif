@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Key: quality_low
     m_Metadata:
       m_Items: []
+  - m_Id: 16813941102469120
+    m_Key: menu_restart_game
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

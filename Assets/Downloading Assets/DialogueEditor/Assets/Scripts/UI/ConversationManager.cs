@@ -161,9 +161,14 @@ namespace DialogueEditor
 
         public void StartConversation(NPCConversation conversation)
         {
+            StartConversation(conversation, null);
+        }
+
+        public void StartConversation(NPCConversation conversation, UnityEngine.Localization.Tables.StringTable table)
+        {
             if (!isActiveAndEnabled)
                 throw new System.InvalidOperationException("ConversationManager is disabled.");
-            m_conversation = conversation.Deserialize();
+            m_conversation = conversation.Deserialize(table);
             PlayerControlLocks.Acquire(this, showCursor: true);
             try
             {
@@ -725,19 +730,19 @@ namespace DialogueEditor
                         // If there was no valid speech node (due to no conditions being met) this becomes a None button type
                         if (next == null)
                         {
-                            uiOption.SetupButton(UIConversationButton.eButtonType.End, null, endFont: m_conversation.EndConversationFont);
+                            uiOption.SetupButton(UIConversationButton.eButtonType.End, null, endFont: m_conversation.EndConversationFont, endText: m_conversation.EndText);
                         }
                         // Else, valid speech node found
                         else
                         {
-                            uiOption.SetupButton(UIConversationButton.eButtonType.Speech, next, continueFont: m_conversation.ContinueFont);
+                            uiOption.SetupButton(UIConversationButton.eButtonType.Speech, next, continueFont: m_conversation.ContinueFont, continueText: m_conversation.ContinueText);
                         }
                         
                     }
                     else if (m_currentSpeech.ConnectionType == Connection.eConnectionType.None)
                     {
                         UIConversationButton uiOption = CreateButton();
-                        uiOption.SetupButton(UIConversationButton.eButtonType.End, null, endFont: m_conversation.EndConversationFont);
+                        uiOption.SetupButton(UIConversationButton.eButtonType.End, null, endFont: m_conversation.EndConversationFont, endText: m_conversation.EndText);
                     }
                 }
 

@@ -166,7 +166,7 @@ namespace DialogueEditor
             TextMesh.color = c_text;
         }
 
-        public void SetupButton(eButtonType buttonType, ConversationNode node, TMPro.TMP_FontAsset continueFont = null, TMPro.TMP_FontAsset endFont = null)
+        public void SetupButton(eButtonType buttonType, ConversationNode node, TMPro.TMP_FontAsset continueFont = null, TMPro.TMP_FontAsset endFont = null, string continueText = "Continue.", string endText = "End.")
         {
             m_buttonType = buttonType;
             m_node = node;
@@ -183,14 +183,14 @@ namespace DialogueEditor
                 case eButtonType.Speech:
                     {
                         TextMesh.font = continueFont != null ? continueFont : m_defaultFont;
-                        TextMesh.text = "Continue.";
+                        TextMesh.text = continueText;
                     }
                     break;
 
                 case eButtonType.End:
                     {
                         TextMesh.font = endFont != null ? endFont : m_defaultFont;
-                        TextMesh.text = "End.";
+                        TextMesh.text = endText;
                     }
                     break;
             }

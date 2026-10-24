@@ -23,6 +23,8 @@ namespace DialogueEditor
 
         /// <summary> The start of the conversation </summary>
         public SpeechNode Root;
+        public string ContinueText = "Continue.";
+        public string EndText = "End.";
 
         /// <summary> The parameters of this conversation, and their values </summary>
         public List<Parameter> Parameters;

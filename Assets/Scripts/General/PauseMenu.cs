@@ -78,6 +78,10 @@ public class PauseMenu : MonoBehaviour
                 return;
             }
 
+            DialogueController currentDialogue = DialogueController.ActiveDialogue;
+            if (currentDialogue != null && !currentDialogue.CanCancelByPlayer)
+                return;
+
             bool closedObject = false;
             foreach (GameObject uiObject in closeOnEscape)
             {
@@ -183,6 +187,11 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.Save();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     public void ExitGame()

@@ -1,8 +1,21 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
 public class MenuLanguageController : MonoBehaviour
 {
+    public void ToggleLanguage()
+    {
+        StartCoroutine(ToggleLanguageWhenReady());
+    }
+
+    private IEnumerator ToggleLanguageWhenReady()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        SetLanguage(currentLocale != null && currentLocale.Identifier.Code == "ru" ? "en" : "ru");
+    }
 
     public void SetLanguage(string lang)
     {
