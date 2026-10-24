@@ -1,0 +1,15 @@
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.AssemblyInfo.cs
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.sourcelink.json
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\bin\Debug\net10.0\DialogueChecks.exe
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\bin\Debug\net10.0\DialogueChecks.deps.json
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\bin\Debug\net10.0\DialogueChecks.runtimeconfig.json
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\bin\Debug\net10.0\DialogueChecks.dll
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\bin\Debug\net10.0\DialogueChecks.pdb
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.dll
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\refint\DialogueChecks.dll
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.pdb
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\DialogueChecks.genruntimeconfig.cache
+C:\Users\Admin\Documents\Github Projects\Tif\Tests\Dialogue\obj\Debug\net10.0\ref\DialogueChecks.dll
