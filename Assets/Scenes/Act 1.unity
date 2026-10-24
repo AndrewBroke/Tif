@@ -4936,7 +4936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fcba3490f1498d41a8eefc2824a2bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FadeImageController
-  nextSceneName: Act 2 Recover
+  nextSceneName: Act 2 Main
 --- !u!95 &642135292
 Animator:
   serializedVersion: 7
