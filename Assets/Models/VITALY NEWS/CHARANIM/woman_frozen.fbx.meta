@@ -3,7 +3,12 @@ guid: 017ce0a97e00fb24aa72c761c0ec81c4
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrozenWoman
+    second: {fileID: 2100000, guid: 56c9293107b1621448eeaad6df325f11, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
