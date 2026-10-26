@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Act 2.unity
     guid: 733814c89ad7a9748a4c766cc3cc9e43
+  - enabled: 1
+    path: Assets/Scenes/Act 2 Main.unity
+    guid: 4dcd93245478c8440bebbbaca7604e87
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 40bba349e05664248938cd397885279e, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

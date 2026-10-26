@@ -35,9 +35,22 @@ public class PauseMenu : MonoBehaviour
 
     private const string VolumeKey = "MasterVolume";
     private const string SensitivityKey = "MouseSensitivity";
+    private GameApplication gameApplication;
 
     private void Start()
     {
+        GameObject applicationObject =
+    GameObject.FindGameObjectWithTag("GameApplication");
+
+        if (applicationObject != null)
+        {
+            gameApplication = applicationObject.GetComponent<GameApplication>();
+        }
+        else
+        {
+            Debug.LogWarning("PauseMenu: GameApplication не найден.", this);
+        }
+
         // Загружаем сохранённые настройки
         float volume = PlayerPrefs.GetFloat(VolumeKey, 1f);
         float sensitivity = PlayerPrefs.GetFloat(
@@ -197,13 +210,44 @@ public class PauseMenu : MonoBehaviour
     public void ExitGame()
     {
         Time.timeScale = 1f;
-
         PlayerPrefs.Save();
+
+        if (gameApplication != null)
+        {
+            gameApplication.LeaveGame();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "PauseMenu: выход через GameApplication недоступен — объект не найден.",
+                this);
+            Application.Quit(GameApplication.ExitCodeEarlyExit);
+        }
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
+#endif
+    }
+
+    public void CompleteGame()
+    {
+        Time.timeScale = 1f;
+        PlayerPrefs.Save();
+
+        if (gameApplication != null)
+        {
+            gameApplication.CompleteGame();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "PauseMenu: GameApplication не найден.",
+                this);
+            Application.Quit(GameApplication.ExitCodeCompleted);
+        }
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
 }

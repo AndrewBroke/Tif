@@ -17,6 +17,7 @@ namespace DialogueEditor
             TransitioningDialogueOff,
             Off,
             NONE,
+            ProcessingNode,
         }
 
         private const float TRANSITION_TIME = 0.2f; // Transition time for fades
@@ -66,12 +67,19 @@ namespace DialogueEditor
             }
         }
 
+        public bool IsEndingConversation => m_completeOnClose && m_state == eState.TransitioningDialogueOff;
+
+        private bool CanAcceptInput => isActiveAndEnabled && Instance == this &&
+            m_state == eState.Idle && Time.timeScale > 0f;
+
         // Private
         private float m_elapsedScrollTime;
         private int m_scrollIndex;
         public int m_targetScrollTextCount;
-        private eState m_state;
+        private eState m_state = eState.Off;
         private float m_stateTime;
+        private int m_stateVersion;
+        private bool m_completeOnClose;
         
         private Conversation m_conversation;
         private SpeechNode m_currentSpeech;
@@ -169,36 +177,57 @@ namespace DialogueEditor
             if (!isActiveAndEnabled)
                 throw new System.InvalidOperationException("ConversationManager is disabled.");
             m_conversation = conversation.Deserialize(table);
+            m_stateVersion++;
+            m_completeOnClose = false;
+            SetState(eState.ProcessingNode);
+            int version = m_stateVersion;
             PlayerControlLocks.Acquire(this, showCursor: true);
+            if (!IsCurrentState(version))
+                return;
             try
             {
                 ClearOptions();
                 m_selectedOption = null;
-                if (OnConversationStarted != null)
-                    OnConversationStarted.Invoke();
-
                 TurnOnUI();
                 m_currentSpeech = m_conversation.Root;
                 SetState(eState.TransitioningDialogueBoxOn);
+                version = m_stateVersion;
+
+                OnConversationStarted?.Invoke();
             }
             catch
             {
-                PlayerControlLocks.Release(this);
+                if (IsCurrentState(version))
+                    CancelConversation();
                 throw;
             }
         }
 
         public void EndConversation()
         {
-            SetState(eState.TransitioningDialogueOff);
+            if (!IsConversationActive || m_state == eState.TransitioningDialogueOff)
+                return;
 
-            if (OnConversationEnded != null)
-                OnConversationEnded.Invoke();
+            m_completeOnClose = true;
+            ClearOptions();
+            m_selectedOption = null;
+            SetState(eState.TransitioningDialogueOff);
         }
 
         // An interruption must not invoke events intended for normal completion.
         public void CancelConversation()
         {
+            if (Instance == this && DialogueController.ActiveDialogue != null)
+            {
+                DialogueController.ActiveDialogue.InterruptDialogue();
+                return;
+            }
+
+            m_completeOnClose = false;
+            m_stateVersion++;
+            if (!IsConversationActive)
+                return;
+
             ClearOptions();
             m_selectedOption = null;
             SetState(eState.TransitioningDialogueOff);
@@ -227,13 +256,19 @@ namespace DialogueEditor
 
         public void PressSelectedOption()
         {
-            if (m_state != eState.Idle) { return; }
+            if (!CanAcceptInput) { return; }
             if (m_currentSelectedIndex < 0) { return; }
             if (m_currentSelectedIndex >= m_uiOptions.Count) { return; }
             if (m_uiOptions.Count == 0) { return; }
 
             UIConversationButton button = m_uiOptions[m_currentSelectedIndex];
             button.OnButtonPressed();
+        }
+
+        internal bool CanSelectOption(UIConversationButton button)
+        {
+            return CanAcceptInput && button != null && button.isActiveAndEnabled &&
+                m_uiOptions.Contains(button);
         }
 
         public void AlertHover(UIConversationButton button)
@@ -306,12 +341,12 @@ namespace DialogueEditor
 
         private void SetState(eState newState)
         {
+            if (m_state == newState)
+                return;
+
             // Exit
             switch (m_state)
             {
-                case eState.TransitioningOptionsOff:
-                    m_selectedOption = null;
-                    break;
                 case eState.TransitioningDialogueBoxOn:
                     SetColorAlpha(DialogueBackground, 1);
                     SetColorAlpha(NpcIcon, 1);
@@ -320,6 +355,7 @@ namespace DialogueEditor
             }
 
             m_state = newState;
+            m_stateVersion++;
             m_stateTime = 0f;
 
             // Enter 
@@ -456,7 +492,9 @@ namespace DialogueEditor
                     return;
                 }
 
-                SpeechNode nextSpeech = GetValidSpeechOfNode(m_selectedOption);
+                OptionNode selectedOption = m_selectedOption;
+                m_selectedOption = null;
+                SpeechNode nextSpeech = GetValidSpeechOfNode(selectedOption);
                 if (nextSpeech == null)
                 {
                     EndConversation();
@@ -482,13 +520,23 @@ namespace DialogueEditor
 
             if (t > 1)
             {
+                bool completed = m_completeOnClose;
+                m_completeOnClose = false;
+                ClearOptions();
+                m_selectedOption = null;
+                m_currentSpeech = null;
+                m_conversation = null;
                 TurnOffUI();
+                // Subscribers may start another conversation; all old cleanup is finished.
+                if (completed)
+                    OnConversationEnded?.Invoke();
                 return;
             }
 
             SetColorAlpha(DialogueBackground, 1 - t);
             SetColorAlpha(NpcIcon, 1 - t);
             SetColorAlpha(NameText, 1 - t);
+            SetColorAlpha(DialogueText, 1 - t);
         }
 
 
@@ -507,6 +555,8 @@ namespace DialogueEditor
             }
 
             m_currentSpeech = speech;
+            // Node events may re-enter the manager. Stop accepting input before invoking them.
+            SetState(eState.ProcessingNode);
 
             // Clear current options
             ClearOptions();
@@ -572,8 +622,8 @@ namespace DialogueEditor
             }
 
             // Call the event
-            if (speech.Event != null)
-                speech.Event.Invoke();
+            if (!InvokeNodeEvent(speech.Event))
+                return;
 
             DoParamAction(speech);
 
@@ -604,22 +654,58 @@ namespace DialogueEditor
 
         public void SpeechSelected(SpeechNode speech)
         {
+            if (!CanAcceptInput)
+                return;
+
             SetupSpeech(speech);
         }
 
         public void OptionSelected(OptionNode option)
         {
+            if (!CanAcceptInput || option == null)
+                return;
+
+            SetState(eState.TransitioningOptionsOff);
             m_selectedOption = option;
             DoParamAction(option);
-            if (option.Event != null)
-                option.Event.Invoke();
-            SetState(eState.TransitioningOptionsOff);
+            InvokeNodeEvent(option.Event);
         }
 
         public void EndButtonSelected()
         {
+            if (!CanAcceptInput)
+                return;
+
             m_selectedOption = null;
             SetState(eState.TransitioningOptionsOff);
+        }
+
+        private bool InvokeNodeEvent(UnityEvent nodeEvent)
+        {
+            int version = m_stateVersion;
+            try
+            {
+                nodeEvent?.Invoke();
+            }
+            catch (System.Exception exception)
+            {
+                if (IsCurrentState(version))
+                {
+                    if (DialogueController.ActiveDialogue != null)
+                        DialogueController.ActiveDialogue.InterruptDialogue();
+                    else
+                        CancelConversation();
+                }
+                Debug.LogException(exception, this);
+                return false;
+            }
+
+            return IsCurrentState(version);
+        }
+
+        private bool IsCurrentState(int version)
+        {
+            return this != null && isActiveAndEnabled && Instance == this && m_stateVersion == version;
         }
 
 
@@ -690,10 +776,10 @@ namespace DialogueEditor
 
         private void TurnOffUI()
         {
-            PlayerControlLocks.Release(this);
+            SetState(eState.Off);
             DialoguePanel.gameObject.SetActive(false);
             OptionsPanel.gameObject.SetActive(false);
-            SetState(eState.Off);
+            PlayerControlLocks.Release(this);
 #if UNITY_EDITOR
             // Debug.Log("[ConversationManager]: Conversation UI off.");
 #endif

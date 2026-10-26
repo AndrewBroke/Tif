@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2025586
 RectTransform:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fcba3490f1498d41a8eefc2824a2bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FadeImageController
-  nextSceneName: Act 1
+  nextSceneName: MenuGameTransition
 --- !u!95 &2025588
 Animator:
   serializedVersion: 7
@@ -1543,7 +1543,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1960900269}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ExitGame
+        m_MethodName: CompleteGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2184,6 +2184,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611107544}
   m_CullTransparentMesh: 1
+--- !u!1 &615799987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615799989}
+  - component: {fileID: 615799988}
+  m_Layer: 0
+  m_Name: GameApplication
+  m_TagString: GameApplication
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &615799988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615799987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696029b937c82ac49a5e2431a3a53343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameApplication
+  editorOverrideLang: ru
+--- !u!4 &615799989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615799987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -118.6528, y: -0, z: -416.1823}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &649620414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,6 +3236,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1960900269}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2025587}
         m_TargetAssemblyTypeName: FadeImageController, Assembly-CSharp
         m_MethodName: StartFading
@@ -6531,3 +6588,4 @@ SceneRoots:
   - {fileID: 1773570327}
   - {fileID: 1960900270}
   - {fileID: 1348635663}
+  - {fileID: 615799989}
