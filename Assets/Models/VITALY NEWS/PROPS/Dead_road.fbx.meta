@@ -3,7 +3,47 @@ guid: 7072ab9d0d858ad488ddb76c06560181
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrozenMan
+    second: {fileID: 2100000, guid: eacb88aaad4786642a7b7d24ed0be631, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrozenMan.002
+    second: {fileID: 2100000, guid: f0632ee948779b84d943b984f117d61d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrozenMan.003
+    second: {fileID: 2100000, guid: e17dcaa994a97bf47a4d63780780eeb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrozenMan.004
+    second: {fileID: 2100000, guid: c25afd771beeaa44191bed59d5d53f60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrozenWoman
+    second: {fileID: 2100000, guid: 36894fe3aa81ea9439d988e147e4d658, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrozenWoman.001
+    second: {fileID: 2100000, guid: 0eeec6dbe5424e24b9f66fefabb73598, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Props
+    second: {fileID: 2100000, guid: e269b23282eb1884c9087bf9813303cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Zabor
+    second: {fileID: 2100000, guid: 9faa1b7ba28ad17498fbe68fd4cfc223, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
