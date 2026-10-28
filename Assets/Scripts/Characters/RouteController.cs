@@ -11,6 +11,13 @@ public class RouteController : MonoBehaviour
         PingPong
     }
 
+    [System.Serializable]
+    private class RouteEndEvent
+    {
+        public Transform route;
+        public UnityEvent onEnd = new UnityEvent();
+    }
+
     [SerializeField] private NavMeshAgent agent;
     [SerializeField, Min(0f)] private float pointSwitchDistance = 0.5f;
     [Tooltip("Repeat the route without invoking On End Events.")]
@@ -21,12 +28,15 @@ public class RouteController : MonoBehaviour
     // Runs on component Start, not on each StartRoute call (scene compatibility).
     [SerializeField] private UnityEvent onStartEvents;
     [SerializeField] private UnityEvent onEndEvents;
+    [Tooltip("Additional completion events for a specific route. Not invoked when the route is stopped or replaced.")]
+    [SerializeField] private List<RouteEndEvent> routeEndEvents = new List<RouteEndEvent>();
 
 
     private readonly List<Transform> routePoints = new List<Transform>();
     private int currentPointIndex;
     private int routeDirection = 1;
     private bool routeInProgress;
+    private Transform activeRoute;
     private bool waitingAtPatrolEnd;
     private float remainingStopTime;
     Animator animator;
@@ -49,6 +59,7 @@ public class RouteController : MonoBehaviour
         if (routeParent == null || routeParent.childCount == 0 || !CanMove())
             return;
 
+        activeRoute = routeParent;
         routePoints.Clear();
         foreach (Transform child in routeParent)
         {
@@ -107,7 +118,13 @@ public class RouteController : MonoBehaviour
                 {
                     routeInProgress = false;
                     agent.isStopped = true;
+                    Transform completedRoute = activeRoute;
                     onEndEvents.Invoke();
+                    foreach (RouteEndEvent routeEvent in routeEndEvents)
+                    {
+                        if (routeEvent != null && routeEvent.route == completedRoute)
+                            routeEvent.onEnd?.Invoke();
+                    }
                     return;
                 }
 
