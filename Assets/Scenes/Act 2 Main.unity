@@ -92464,6 +92464,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 813447491293130040, guid: bb6532edba6717842995490fa2ce0fc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.23571777
+      objectReference: {fileID: 0}
+    - target: {fileID: 813447491293130040, guid: bb6532edba6717842995490fa2ce0fc3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.9541016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293354467355682407, guid: bb6532edba6717842995490fa2ce0fc3, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5095672696935752350, guid: bb6532edba6717842995490fa2ce0fc3, type: 3}
       propertyPath: m_Name
       value: Medic Chaser
@@ -92507,6 +92519,10 @@ PrefabInstance:
     - target: {fileID: 5397516555177992468, guid: bb6532edba6717842995490fa2ce0fc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177314669593000135, guid: bb6532edba6717842995490fa2ce0fc3, type: 3}
+      propertyPath: grabDistance
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

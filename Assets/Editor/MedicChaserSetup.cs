@@ -11,8 +11,32 @@ public static class MedicChaserSetup
     private const string Folder = "Assets/Animations/Medic Chaser";
     private const string ControllerPath = Folder + "/Medic Chaser.controller";
     private const string PrefabPath = "Assets/Prefabs/Medic Chaser.prefab";
-    private static readonly string[] StateNames = { "Run", "Walk", "Crawl", "Idle" };
-    private static readonly string[] ClipNames = { "Run_solider_01", "Walk_01.001", "Crawl", "Idle_01" };
+    private static readonly string[] StateNames = { "Run", "Walk", "Crawl", "Idle", "BiteNeck" };
+    private static readonly string[] ClipNames = { "Run_solider_01", "Walk_01.001", "Crawl", "Idle_01", "Neck_attack" };
+
+    [InitializeOnLoadMethod]
+    private static void UpgradeExistingController()
+    {
+        EditorApplication.delayCall += () =>
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling)
+                return;
+
+            AnimatorController controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(ControllerPath);
+            if (controller == null)
+                return;
+
+            if (controller.layers[0].stateMachine.states.Any(s => s.state.name == "BiteNeck"))
+            {
+                EnsureRetreatPointInPrefab();
+                return;
+            }
+
+            UnityEngine.Object previousSelection = Selection.activeObject;
+            try { CreateAssets(); }
+            finally { Selection.activeObject = previousSelection; }
+        };
+    }
 
     [MenuItem("Tools/TIF/Medic/Create Chaser Assets")]
     public static void CreateAssets()
@@ -41,8 +65,8 @@ public static class MedicChaserSetup
             clips[i] = UnityEngine.Object.Instantiate(sources[i]);
             clips[i].name = StateNames[i];
             var settings = AnimationUtility.GetAnimationClipSettings(clips[i]);
-            settings.loopTime = true;
-            settings.loopBlend = true;
+            settings.loopTime = StateNames[i] != "BiteNeck";
+            settings.loopBlend = settings.loopTime;
             settings.keepOriginalPositionXZ = true;
             settings.loopBlendPositionXZ = true;
             AnimationUtility.SetAnimationClipSettings(clips[i], settings);
@@ -53,14 +77,18 @@ public static class MedicChaserSetup
         if (controller == null)
         {
             controller = AnimatorController.CreateAnimatorControllerAtPath(ControllerPath);
-            AnimatorStateMachine states = controller.layers[0].stateMachine;
-            for (int i = 0; i < StateNames.Length; i++)
-            {
-                AnimatorState state = states.AddState(StateNames[i], new Vector3(300f, i * 80f, 0f));
-                state.motion = clips[i];
-                if (i == 0)
-                    states.defaultState = state;
-            }
+        }
+
+        AnimatorStateMachine states = controller.layers[0].stateMachine;
+        for (int i = 0; i < StateNames.Length; i++)
+        {
+            if (states.states.Any(s => s.state.name == StateNames[i]))
+                continue;
+
+            AnimatorState state = states.AddState(StateNames[i], new Vector3(300f, i * 80f, 0f));
+            state.motion = clips[i];
+            if (states.defaultState == null)
+                states.defaultState = state;
             EditorUtility.SetDirty(controller);
         }
 
@@ -109,8 +137,43 @@ public static class MedicChaserSetup
             }
         }
 
+        EnsureRetreatPointInPrefab();
         AssetDatabase.SaveAssets();
         Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>(PrefabPath);
         Debug.Log("Medic Chaser ready: place the prefab on the baked NavMesh. PlayerHealth is found automatically, or assign it explicitly. Choose Initial Animation in ProximityChaser.");
+    }
+
+    private static void EnsureRetreatPointInPrefab()
+    {
+        if (AssetDatabase.LoadAssetAtPath<GameObject>(PrefabPath) == null)
+            return;
+
+        GameObject root = PrefabUtility.LoadPrefabContents(PrefabPath);
+        try
+        {
+            ProximityChaser chaser = root.GetComponent<ProximityChaser>();
+            if (chaser == null)
+                return;
+
+            var serialized = new SerializedObject(chaser);
+            SerializedProperty pointProperty = serialized.FindProperty("retreatPoint");
+            if (pointProperty.objectReferenceValue != null)
+                return;
+
+            Transform point = root.transform.Find("Retreat Point");
+            if (point == null)
+            {
+                point = new GameObject("Retreat Point").transform;
+                point.SetParent(root.transform, false);
+                point.localPosition = new Vector3(0f, 0f, -8f);
+            }
+            pointProperty.objectReferenceValue = point;
+            serialized.ApplyModifiedPropertiesWithoutUndo();
+            PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(root);
+        }
     }
 }

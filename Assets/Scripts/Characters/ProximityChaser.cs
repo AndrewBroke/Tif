@@ -12,7 +12,7 @@ public enum ChaseAnimation
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(NavMeshAgent))]
-public class ProximityChaser : MonoBehaviour
+public partial class ProximityChaser : MonoBehaviour
 {
     [Header("References")]
     [Tooltip("If empty, checks all active objects tagged Player for a PlayerHealth component on the same object.")]
@@ -41,12 +41,14 @@ public class ProximityChaser : MonoBehaviour
     private float nextRepathTime;
     private float nextPlayerSearchTime;
     private float originalAnimatorSpeed;
+    private int chaseStateHash;
 
     public bool IsChasing => chasing;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        CacheRetreatPosition();
         if (characterAnimator == null)
             characterAnimator = GetComponentInChildren<Animator>();
         FindPlayer();
@@ -61,6 +63,7 @@ public class ProximityChaser : MonoBehaviour
         string state = string.IsNullOrWhiteSpace(animationStateOverride)
             ? "Base Layer." + initialAnimation : animationStateOverride;
         int stateHash = Animator.StringToHash(state);
+        chaseStateHash = stateHash;
         if (!characterAnimator.HasState(0, stateHash))
         {
             Debug.LogError("ProximityChaser: animation state not found: " + state, this);
@@ -91,11 +94,24 @@ public class ProximityChaser : MonoBehaviour
     private void OnEnable()
     {
         if (initialized && characterAnimator != null)
-            characterAnimator.speed = chasing && player != null && !player.IsDead ? animationSpeed : 0f;
+            characterAnimator.speed = IsRetreating ? retreatAnimationSpeed
+                : chasing && player != null && !player.IsDead ? animationSpeed : 0f;
     }
 
     private void Update()
     {
+        if (IsGrabbing)
+        {
+            UpdateGrab();
+            return;
+        }
+
+        if (IsRetreating)
+        {
+            UpdateRetreat();
+            return;
+        }
+
         if (!initialized || !agent.isActiveAndEnabled || !agent.isOnNavMesh)
             return;
 
@@ -122,6 +138,9 @@ public class ProximityChaser : MonoBehaviour
             characterAnimator.speed = animationSpeed;
         }
 
+        if (TryBeginGrab())
+            return;
+
         if (Time.time < nextRepathTime)
             return;
 
@@ -142,13 +161,18 @@ public class ProximityChaser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isActiveAndEnabled || !initialized || !chasing || player == null || player.IsDead
+        if (!isActiveAndEnabled || !initialized || IsRetreating || !chasing || player == null || player.IsDead
             || other.GetComponentInParent<PlayerHealth>() != player)
             return;
 
         // A player can have several colliders: damage once until all leave the trigger.
         if (playerContacts.Add(other) && playerContacts.Count == 1)
-            player.TakeDamage(contactDamage);
+        {
+            if (enableGrab)
+                TryBeginGrab();
+            else
+                player.TakeDamage(contactDamage);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -164,6 +188,7 @@ public class ProximityChaser : MonoBehaviour
 
     private void OnDisable()
     {
+        EndGrab(false);
         playerContacts.Clear();
         StopMoving();
         if (initialized && characterAnimator != null)
@@ -175,6 +200,18 @@ public class ProximityChaser : MonoBehaviour
         Color previousColor = Gizmos.color;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, activationDistance);
+        if (enableGrab)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, grabDistance);
+        }
+        if (retreatPoint != null || hasRetreatPosition)
+        {
+            Vector3 destination = hasRetreatPosition ? retreatPosition : retreatPoint.position;
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(destination, retreatArrivalDistance);
+            Gizmos.DrawLine(transform.position, destination);
+        }
         Gizmos.color = previousColor;
     }
 

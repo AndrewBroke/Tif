@@ -8,6 +8,7 @@ TagManager:
   - Interact
   - Sanitar
   - GameApplication
+  - MedicHead
   layers:
   - Default
   - TransparentFX
