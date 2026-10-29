@@ -554,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anim_master_medic_V0.001_APPLIED TRANSFORM
       objectReference: {fileID: 0}
+    - target: {fileID: 2544638187622445034, guid: 13f252d6bc494b14e9d6aa11095a5767, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 47dcec3d636a0514890e880ab174905f, type: 2}
     - target: {fileID: 5866666021909216657, guid: 13f252d6bc494b14e9d6aa11095a5767, type: 3}
       propertyPath: m_Controller
       value: 
