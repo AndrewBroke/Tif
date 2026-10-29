@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-/// <summary>A fixed-destination scare. The assigned scene character is exclusively owned by this trigger.</summary>
+/// <summary>Owns a dedicated scare character, following a fixed route or a chase/fall hallucination.</summary>
 [DefaultExecutionOrder(-1000)]
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider), typeof(Rigidbody))]
-public sealed class ScreamerTrigger : MonoBehaviour
+public sealed partial class ScreamerTrigger : MonoBehaviour
 {
     [Header("Character and route")]
     [SerializeField] private GameObject medicPrefabOrCharacter;
@@ -60,6 +60,7 @@ public sealed class ScreamerTrigger : MonoBehaviour
     private void Awake()
     {
         Reset();
+        PrepareCivilianSource();
         if (IsSceneCharacter())
         {
             if (!IsSeparateCharacter())
@@ -89,6 +90,8 @@ public sealed class ScreamerTrigger : MonoBehaviour
         {
             if (current.tag != playerTag)
                 continue;
+            if (mode == ScareMode.ChaseAndFall && playerTransform == null)
+                playerTransform = current;
             Activate();
             break;
         }
@@ -97,12 +100,15 @@ public sealed class ScreamerTrigger : MonoBehaviour
     /// <summary>Also usable from an existing UnityEvent interaction.</summary>
     public void Activate()
     {
-        if (!isActiveAndEnabled || running || (triggerOnce && hasTriggered))
+        if (!isActiveAndEnabled || running || ((triggerOnce || mode == ScareMode.ChaseAndFall) && hasTriggered))
             return;
-        if (medicPrefabOrCharacter == null || spawnPoint == null || destinationPoint == null
+        if (mode == ScareMode.ChaseAndFall && !ResolveChasePlayer())
+            return;
+        if (medicPrefabOrCharacter == null || spawnPoint == null
+            || (mode == ScareMode.FixedDestination && destinationPoint == null)
             || !IsSeparateCharacter())
         {
-            Debug.LogWarning("ScreamerTrigger: assign a separate character, Spawn Point and Destination Point.", this);
+            Debug.LogWarning("ScreamerTrigger: assign a separate medic and Spawn Point (also Destination Point in route mode).", this);
             return;
         }
 
@@ -126,9 +132,11 @@ public sealed class ScreamerTrigger : MonoBehaviour
             }
         }
 
+        PrepareCorpseInteraction();
         if (disableCharacterScripts)
             foreach (MonoBehaviour behaviour in character.GetComponentsInChildren<MonoBehaviour>(true))
-                behaviour.enabled = false;
+                if (!IsCorpseInteractionBehaviour(behaviour))
+                    behaviour.enabled = false;
 
         foreach (Rigidbody body in character.GetComponentsInChildren<Rigidbody>(true))
         {
@@ -153,8 +161,10 @@ public sealed class ScreamerTrigger : MonoBehaviour
         agent.enabled = false;
 
         var filter = new NavMeshQueryFilter { agentTypeID = agent.agentTypeID, areaMask = agent.areaMask };
+        NavMeshHit destination = default;
         if (!NavMesh.SamplePosition(spawnPoint.position, out NavMeshHit spawn, navMeshSampleRadius, filter)
-            || !NavMesh.SamplePosition(destinationPoint.position, out NavMeshHit destination, navMeshSampleRadius, filter))
+            || (mode == ScareMode.FixedDestination && !NavMesh.SamplePosition(destinationPoint.position,
+                out destination, navMeshSampleRadius, filter)))
         {
             Fail("Spawn or destination is outside the character's NavMesh. Check agent type, area mask and markers.");
             return;
@@ -163,7 +173,7 @@ public sealed class ScreamerTrigger : MonoBehaviour
         Animator animator = character.GetComponentInChildren<Animator>(true);
         if (animator == null || (animatorController == null && animator.runtimeAnimatorController == null))
         {
-            Fail("Assign a character with an Animator and a crawl controller.");
+            Fail("Assign a character with an Animator and a compatible controller.");
             return;
         }
         if (animatorController != null)
@@ -190,17 +200,19 @@ public sealed class ScreamerTrigger : MonoBehaviour
         }
         animator.Play(stateHash, 0, 0f);
         animator.Update(0f);
+        if (mode == ScareMode.ChaseAndFall && !ValidateFallAnimator(animator))
+            return;
 
         agent.speed = movementSpeed;
         agent.acceleration = acceleration;
         agent.angularSpeed = angularSpeed;
-        agent.stoppingDistance = stoppingDistance;
+        agent.stoppingDistance = mode == ScareMode.ChaseAndFall ? 0f : stoppingDistance;
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.autoBraking = true;
         agent.isStopped = false;
         targetPosition = destination.position;
-        if (!agent.SetDestination(targetPosition))
+        if (mode == ScareMode.FixedDestination && !agent.SetDestination(targetPosition))
         {
             Fail("NavMeshAgent rejected the destination.");
             return;
@@ -209,13 +221,21 @@ public sealed class ScreamerTrigger : MonoBehaviour
         startedAt = Time.time;
         running = true;
         hasTriggered = true;
-        PlaySound(spawn.position);
+        if (mode == ScareMode.ChaseAndFall)
+            StartChase(animator);
+        else
+            PlaySound(spawn.position);
     }
 
     private void Update()
     {
         if (!running)
             return;
+        if (mode == ScareMode.ChaseAndFall)
+        {
+            UpdateHallucination();
+            return;
+        }
         if (Time.time - startedAt >= movementTimeout)
         {
             Fail("Movement timed out; check the route for obstructions.");
@@ -242,7 +262,12 @@ public sealed class ScreamerTrigger : MonoBehaviour
 
     private void PlaySound(Vector3 position)
     {
-        if (screamerSound == null)
+        PlayOneShot(screamerSound, position);
+    }
+
+    private void PlayOneShot(AudioClip clip, Vector3 position)
+    {
+        if (clip == null)
             return;
         // Independent lifetime: finishing/disabling the scare cannot truncate the sound.
         GameObject sound = new GameObject("Screamer sound");
@@ -252,10 +277,10 @@ public sealed class ScreamerTrigger : MonoBehaviour
         source.spatialBlend = 1f;
         source.minDistance = soundMinDistance;
         source.maxDistance = Mathf.Max(soundMinDistance, soundMaxDistance);
-        source.clip = screamerSound;
+        source.clip = clip;
         source.volume = soundVolume;
         source.Play();
-        Destroy(sound, screamerSound.length + 0.1f);
+        Destroy(sound, clip.length + 0.1f);
     }
 
     private void Fail(string reason)
@@ -267,12 +292,15 @@ public sealed class ScreamerTrigger : MonoBehaviour
     private void Finish()
     {
         running = false;
+        StopHallucination();
         if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
         {
             agent.isStopped = true;
             agent.ResetPath();
         }
         if (character == null)
+            return;
+        if (corpseVisualSwap != null && corpseVisualSwap.HasSwapped)
             return;
         character.SetActive(false);
         if (ownsInstance && destroyOnFinish)
@@ -287,12 +315,14 @@ public sealed class ScreamerTrigger : MonoBehaviour
 
     private void OnDestroy()
     {
+        ReleaseVisualSwap();
         if (ownsInstance && character != null)
             Destroy(character);
     }
 
     private void OnDrawGizmosSelected()
     {
+        DrawHallucinationGizmos();
         if (spawnPoint != null)
         {
             Gizmos.color = Color.green;

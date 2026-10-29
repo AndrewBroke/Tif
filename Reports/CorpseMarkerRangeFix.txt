@@ -1,0 +1,8 @@
+Cause: the screamer set Interactable.available=false outside 2 m, hiding the marker despite its 6 m visibility radius.
+Fix: after falling, story availability remains true independently of distance.
+Interactable.CanInteractNow applies an optional runtime range limit to focus/input; marker visibility still uses CanInteract.
+PlayerInteraction uses CanInteractNow for candidate selection, focus and input revalidation.
+Only the screamer configures this range override. Existing objects without an override behave as before.
+InteractionMarker, InteractionIndicatorManager and InteractionIndicatorView were not modified.
+The existing dot-to-E switch on focus is preserved.
+Updated code compiled in Unity; no Play Mode test suite was run and no scene settings were changed by the fix.

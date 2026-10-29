@@ -1,0 +1,10 @@
+Updated Assets/Prefabs/Hallucination Medic.prefab through Unity Editor API.
+Added inactive Civilian Model child and prefab-local MedicVisualSwap component.
+Preserved the existing dialogue text: Герой / Это не может быть он / Закрыть.
+Final node ID 1 (Закрыть) now calls MedicVisualSwap.SwapToCivilian on the same prefab.
+Connected the existing Interactable to its existing DialogueController/NPCConversation where the link was absent.
+ScreamerTrigger marks the local component ready after falling and completes when models are switched.
+The medic model is hidden, the civilian receives its fallen pose and hips position, and the dialogue/root remain alive.
+The temporary -1.5 Y correction and its requested comment are preserved.
+Unity compilation and a read-back of the saved model references/final-node event succeeded.
+No Play Mode, Test Runner or scene save was performed for this change.

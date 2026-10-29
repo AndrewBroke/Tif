@@ -27,10 +27,23 @@ public class Interactable : MonoBehaviour
     private bool isCompleted;
     private bool completionPending;
     private bool availableBeforeInteraction;
+    private Transform interactionRangeOrigin;
+    private float interactionRangeSquared = float.PositiveInfinity;
 
     public bool IsExecuting => isExecuting || completionPending;
     public bool IsCompleted => isCompleted;
     public bool CanInteract => isActiveAndEnabled && available && !IsExecuting && !isCompleted;
+    // Range gates input/focus, while story availability still controls the distant marker.
+    // Existing objects have no range override and retain their previous behavior.
+    public bool CanInteractNow => CanInteract && (interactionRangeOrigin == null ||
+        (transform.position - interactionRangeOrigin.position).sqrMagnitude <= interactionRangeSquared);
+
+    public void SetInteractionRange(Transform origin, float distance)
+    {
+        interactionRangeOrigin = origin;
+        float radius = Mathf.Max(0f, distance);
+        interactionRangeSquared = radius * radius;
+    }
 
     public void SetAvailable(bool value)
     {
@@ -69,7 +82,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (PlayerControlLocks.InteractionsBlocked || !CanInteract)
+        if (PlayerControlLocks.InteractionsBlocked || !CanInteractNow)
             return;
 
         availableBeforeInteraction = available;

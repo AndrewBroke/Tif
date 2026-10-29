@@ -7,6 +7,7 @@ public class InvokeOnTrigger : MonoBehaviour
 {
     [SerializeField] private UnityEvent onTriggerEnter;
     [SerializeField] private string tagToCompare = "Player";
+    [SerializeField] private bool oneShot = true;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class InvokeOnTrigger : MonoBehaviour
         if (other.CompareTag(tagToCompare))
         {
             onTriggerEnter?.Invoke();
+            if(oneShot) Destroy(gameObject);
         }
     }
 

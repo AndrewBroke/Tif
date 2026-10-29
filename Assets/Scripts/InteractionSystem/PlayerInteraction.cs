@@ -58,7 +58,7 @@ public class PlayerInteraction : MonoBehaviour
             TryInteract();
 
         if (PlayerControlLocks.InteractionsBlocked ||
-            (currentInteractable != null && !currentInteractable.CanInteract))
+            (currentInteractable != null && !currentInteractable.CanInteractNow))
             ClearCurrentInteractable();
 
         UpdateMarkerFocus();
@@ -150,7 +150,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         score = float.PositiveInfinity;
         if (candidate == null || collider == null) return false;
-        if (!candidate.CanInteract) return false;
+        if (!candidate.CanInteractNow) return false;
         if (!collider.enabled || !collider.gameObject.activeInHierarchy) return false;
         if (!collider.CompareTag("Interact")) return false;
         if (IsPlayerCollider(collider)) return false;
@@ -298,7 +298,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void UpdateMarkerFocus()
     {
-        InteractionMarker next = currentInteractable != null && currentInteractable.CanInteract
+        InteractionMarker next = currentInteractable != null && currentInteractable.CanInteractNow
             ? currentInteractable.GetComponentInChildren<InteractionMarker>()
             : null;
         if (focusedMarker != next && focusedMarker != null)

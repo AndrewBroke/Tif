@@ -1,0 +1,9 @@
+Restored after Git rollback, 2026-10-28.
+Unity 6000.5.9f1 imported the runtime component and Editor setup menu.
+Unity Console query after script refresh: errorCount=0.
+Tools/TIF/Screamer/Create Medic Hallucination Assets executed successfully.
+Created controller and three prefabs; their .meta files exist.
+Asset creation validated Humanoid Avatars and Run_solider_01/Fall_flat clips.
+Play Mode and Test Runner were not started during this restoration.
+Scene files, project settings and existing tests are unchanged in Git.
+The pre-existing Tif.slnx change was preserved.

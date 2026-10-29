@@ -1,0 +1,9 @@
+Live diagnosis in the user's existing Play Mode; no restart, tests or script refresh.
+Player tagged Capsule: position Y=16.020; CharacterController feet Y=14.119.
+Medic NavMeshAgent: enabled, on NavMesh, agentTypeID=0, areaMask=-1.
+NavMesh.SamplePosition from Capsule with radius 1.5: false.
+Radius 3: true at Y=14.127; calculated path is PathComplete with 3 corners.
+Set Nav Mesh Sample Radius to 3 on the active screamer and saved only the trigger prefab.
+Confirmed live serialized radius=3.
+The game currently has Time.timeScale=0; actual pursuit cannot advance until the user leaves pause.
+No changes to pause state, scripts, NavMesh bake or scene files were made for this fix.
