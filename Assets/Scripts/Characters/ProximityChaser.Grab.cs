@@ -111,6 +111,11 @@ public partial class ProximityChaser
 
     private void UpdateGrab()
     {
+        if (player != null && player.IsDead)
+        {
+            EndGrab(true);
+            return;
+        }
         if (activeGrabCamera == null || characterAnimator == null || player == null)
         {
             EndGrab(true);
@@ -151,7 +156,7 @@ public partial class ProximityChaser
 
     private void LateUpdate()
     {
-        if (!IsGrabbing || activeGrabCamera == null)
+        if (!IsGrabbing || activeGrabCamera == null || (player != null && player.IsDead))
             return;
 
         if (returningCamera)
@@ -176,11 +181,12 @@ public partial class ProximityChaser
             return;
 
         IsGrabbing = false;
-        if (activeGrabCamera != null)
+        bool playerDied = player != null && player.IsDead;
+        if (activeGrabCamera != null && !playerDied)
             activeGrabCamera.transform.localRotation = initialCameraLocalRotation;
-        if (suspendedBrain != null)
+        if (suspendedBrain != null && !playerDied)
             suspendedBrain.enabled = brainWasEnabled;
-        if (suspendedController != null)
+        if (suspendedController != null && !playerDied)
             suspendedController.enabled = controllerWasEnabled;
         PlayerControlLocks.Release(this);
 

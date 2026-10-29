@@ -96,6 +96,7 @@ public class PlayerPushReaction : MonoBehaviour
     // Call from UnityEvent or another script.
     public void Push()
     {
+        if (TryGetComponent(out PlayerHealth health) && health.IsDead) return;
         if (!isActiveAndEnabled) return;
         if (characterController == null || cameraEffectPivot == null)
         {

@@ -1,7 +1,6 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
 public class PlayerStumble : MonoBehaviour
@@ -55,16 +54,9 @@ public class PlayerStumble : MonoBehaviour
         StartFall();
     }
 
-    void Update()
-    {
-        if(Keyboard.current.pKey.wasPressedThisFrame)
-        {
-            StartFall();
-        }
-    }
-
     public void StartFall()
     {
+        if (player != null && player.TryGetComponent(out PlayerHealth health) && health.IsDead) return;
         if (!isActiveAndEnabled || isFalling) return;
         if (onlyOnce && wasActivated) return;
         if (playerCameraRoot == null) return;
@@ -210,11 +202,13 @@ public class PlayerStumble : MonoBehaviour
         playerCameraRoot.localRotation =
             originalRotation * rotation;
     }
-    private void OnDisable()
+    public void CancelFall()
     {
         StopAllCoroutines();
         isFalling = false;
         PlayerControlLocks.Release(this);
     }
+
+    private void OnDisable() => CancelFall();
 
 }
