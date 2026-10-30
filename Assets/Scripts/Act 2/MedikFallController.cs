@@ -9,6 +9,11 @@ public class MedikFallController : MonoBehaviour
     [SerializeField] private GameObject logsInArms;
     [SerializeField] private GameObject helpDialogue;
     [SerializeField] private QuestDisplayController questDisplayController;
+    [SerializeField] private Interactable giveLogInteraction;
+
+    private static readonly int GatherWoodState = Animator.StringToHash("Base Layer.Собирает дрова");
+    private static readonly int AlternateGatherWoodState = Animator.StringToHash("Base Layer.Собирает дрова 0");
+    private bool giveLogUnlocked;
     bool hasFallen = false;
     Animator animator;
 
@@ -16,12 +21,25 @@ public class MedikFallController : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        if (giveLogInteraction != null)
+            giveLogInteraction.SetAvailable(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (giveLogUnlocked || !hasFallen || giveLogInteraction == null || animator == null)
+            return;
+
+        if (animator.IsInTransition(0))
+            return;
+
+        int state = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
+        if (state != GatherWoodState && state != AlternateGatherWoodState)
+            return;
+
+        // The pickup still controls whether this interaction's GameObject is active.
+        giveLogUnlocked = true;
+        giveLogInteraction.SetAvailable(true);
     }
 
     IEnumerator FallTimer()
