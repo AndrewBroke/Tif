@@ -79,6 +79,10 @@ MonoBehaviour:
     m_Key: menu_restart_game
     m_Metadata:
       m_Items: []
+  - m_Id: 19214724037074944
+    m_Key: close_button
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

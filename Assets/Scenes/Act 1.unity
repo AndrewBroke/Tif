@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 43828787}
   - component: {fileID: 43828789}
   - component: {fileID: 43828788}
+  - component: {fileID: 43828790}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -578,6 +579,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43828786}
   m_CullTransparentMesh: 1
+--- !u!114 &43828790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43828786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:23f8d00b7db24c440b78f594ebb5c527
+    m_TableEntryReference:
+      m_KeyId: 19214724037074944
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 43828788}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &78584126
 GameObject:
   m_ObjectHideFlags: 0
@@ -10720,7 +10761,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224049525}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 3170003a93fbc7a4fbec770381d06406, type: 3}
   m_Controller: {fileID: 9100000, guid: bd3bae2d3bfe6574391086cf9b72bac7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -21328,6 +21369,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  routeEndEvents: []
 --- !u!114 &6401860812439171471
 MonoBehaviour:
   m_ObjectHideFlags: 0
