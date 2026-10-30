@@ -34,6 +34,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb11285672d8512469f19b9bb6f0996b
+    m_Address: Quests_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 7d2ef59f0da1fc64a87694e0c9f4b22d, type: 2}
   m_SchemaSet:

@@ -32,7 +32,7 @@ public class MedikFallController : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         helpDialogue.SetActive(true);
-        questDisplayController.SetQuestDescription("Подойти к санитару");
+        questDisplayController.SetQuestDescriptionKey("act2.orderly.approach");
     }
 
     public void StartTimerFall()

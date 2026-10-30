@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Quests_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: cc3baac3a1db99f45b8da88a20458fed, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1722802176
+    m_Localized: Current objective
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768939520
+    m_Localized: No objectives
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133824
+    m_Localized: Home, sweet home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133825
+    m_Localized: Talk to your wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133826
+    m_Localized: The stove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133827
+    m_Localized: Inspect the stove.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133828
+    m_Localized: Find firewood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133829
+    m_Localized: Put the firewood in the stove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133830
+    m_Localized: Before nightfall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133831
+    m_Localized: Talk to your wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133832
+    m_Localized: Leave the house
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133833
+    m_Localized: Defending your home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133834
+    m_Localized: Find the soldier by the chapel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133835
+    m_Localized: Help gather firewood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133836
+    m_Localized: An important document
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133837
+    m_Localized: Enter the hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133838
+    m_Localized: Ask about the document at the hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133839
+    m_Localized: Follow the orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133840
+    m_Localized: Catch up with the orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133841
+    m_Localized: Return home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133842
+    m_Localized: The orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133843
+    m_Localized: Approach the orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133844
+    m_Localized: Examine the orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133845
+    m_Localized: The way home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133846
+    m_Localized: Make your way home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133847
+    m_Localized: Home, sweet home?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133848
+    m_Localized: Talk to your wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133849
+    m_Localized: Find your wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133850
+    m_Localized: Inspect the cot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133851
+    m_Localized: The stove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133852
+    m_Localized: Find firewood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133853
+    m_Localized: Before nightfall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133854
+    m_Localized: Talk to your wife
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Quests Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Quests
+  m_TableCollectionNameGuidString: cc3baac3a1db99f45b8da88a20458fed
+  m_Entries:
+  - m_Id: 1722802176
+    m_Key: common.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768939520
+    m_Key: common.none
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133824
+    m_Key: act1.home.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133825
+    m_Key: act1.home.talk_wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133826
+    m_Key: act1.stove.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133827
+    m_Key: act1.stove.inspect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133828
+    m_Key: act1.stove.find_wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133829
+    m_Key: act1.stove.add_wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133830
+    m_Key: act1.before_dark.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133831
+    m_Key: act1.before_dark.talk_wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133832
+    m_Key: act1.before_dark.leave_home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133833
+    m_Key: act2.defense.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133834
+    m_Key: act2.defense.find_soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133835
+    m_Key: act2.defense.collect_wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133836
+    m_Key: act2.paper.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133837
+    m_Key: act2.paper.enter_hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133838
+    m_Key: act2.paper.ask_hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133839
+    m_Key: act2.paper.follow_orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133840
+    m_Key: act2.paper.catch_orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133841
+    m_Key: act2.paper.return_home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133842
+    m_Key: act2.orderly.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133843
+    m_Key: act2.orderly.approach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133844
+    m_Key: act2.orderly.inspect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133845
+    m_Key: act2.journey_home.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133846
+    m_Key: act2.journey_home.reach_home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133847
+    m_Key: act3.home.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133848
+    m_Key: act3.home.talk_wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133849
+    m_Key: act3.home.find_wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133850
+    m_Key: act3.home.inspect_cot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133851
+    m_Key: act3.stove.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133852
+    m_Key: act3.stove.find_wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133853
+    m_Key: act3.before_dark.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1773133854
+    m_Key: act3.before_dark.talk_wife
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3897953021471752349
+  references:
+    version: 2
+    RefIds:
+    - rid: 3897953021471752349
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1793330552615

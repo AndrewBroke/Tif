@@ -1116,15 +1116,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u044C \u0432
-            \u043F\u0435\u0447\u044C"
+          m_StringArgument: act1.stove.add_wood
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2490194677057539934}
@@ -1654,26 +1653,26 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041D\u0430\u0439\u0442\u0438 \u0434\u0440\u043E\u0432\u0430"
+          m_StringArgument: act1.stove.find_wood
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestTitle
+        m_MethodName: SetQuestTitleKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041F\u0435\u0447\u044C"
+          m_StringArgument: act1.stove.title
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1731428417}
@@ -3363,15 +3362,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
-            \u043F\u0435\u0447\u044C."
+          m_StringArgument: act1.stove.inspect
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 179422486}
@@ -3460,6 +3458,8 @@ MonoBehaviour:
   defaultTitle: "\u0414\u043E\u043C, \u043C\u0438\u043B\u044B\u0439 \u0434\u043E\u043C"
   defaultDescription: "\u041F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C
     \u0441 \u0436\u0435\u043D\u043E\u0439"
+  defaultTitleKey: act1.home.title
+  defaultDescriptionKey: act1.home.talk_wife
 --- !u!4 &482583294
 Transform:
   m_ObjectHideFlags: 0
@@ -4782,15 +4782,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
-            \u043F\u0435\u0447\u044C."
+          m_StringArgument: act1.stove.inspect
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 179422486}
@@ -8015,27 +8014,26 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestTitle
+        m_MethodName: SetQuestTitleKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041F\u043E\u043A\u0430 \u043D\u0435 \u0441\u0442\u0435\u043C\u043D\u0435\u043B\u043E"
+          m_StringArgument: act1.before_dark.title
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C
-            \u0441 \u0436\u0435\u043D\u043E\u0439"
+          m_StringArgument: act1.before_dark.talk_wife
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 7
@@ -8291,15 +8289,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C
-            \u0441 \u0436\u0435\u043D\u043E\u0439"
+          m_StringArgument: act1.before_dark.talk_wife
           m_BoolArgument: 1
         m_CallState: 2
   NodeID: 10
@@ -11052,14 +11049,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u0412\u044B\u0439\u0442\u0438 \u0438\u0437 \u0434\u043E\u043C\u0430"
+          m_StringArgument: act1.before_dark.leave_home
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1120225129}
@@ -13177,26 +13174,26 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041D\u0430\u0439\u0442\u0438 \u0434\u0440\u043E\u0432\u0430"
+          m_StringArgument: act1.stove.find_wood
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestTitle
+        m_MethodName: SetQuestTitleKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041F\u0435\u0447\u044C"
+          m_StringArgument: act1.stove.title
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1731428417}
@@ -15147,15 +15144,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u044C \u0432
-            \u043F\u0435\u0447\u044C"
+          m_StringArgument: act1.stove.add_wood
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2490194677057539934}
@@ -17080,14 +17076,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 482583293}
         m_TargetAssemblyTypeName: QuestDisplayController, Assembly-CSharp
-        m_MethodName: SetQuestDescription
+        m_MethodName: SetQuestDescriptionKey
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u0412\u044B\u0439\u0442\u0438 \u0438\u0437 \u0434\u043E\u043C\u0430"
+          m_StringArgument: act1.before_dark.leave_home
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1120225129}

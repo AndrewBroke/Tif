@@ -1,0 +1,670 @@
+{
+  "bindings": [
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "462812008",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Осмотреть печь.",
+      "key": "act1.stove.inspect",
+      "context": "Dialogue 1 / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "701665539",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Осмотреть печь.",
+      "key": "act1.stove.inspect",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "2063983258",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Выйти из дома",
+      "key": "act1.before_dark.leave_home",
+      "context": "Dialogue 1 / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "1257083869",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Выйти из дома",
+      "key": "act1.before_dark.leave_home",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "191710116",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Положить в печь",
+      "key": "act1.stove.add_wood",
+      "context": "Dialogue / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "1782567424",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Положить в печь",
+      "key": "act1.stove.add_wood",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "1543365320",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Найти дрова",
+      "key": "act1.stove.find_wood",
+      "context": "Fire Check Dialogue / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "1543365320",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Печь",
+      "key": "act1.stove.title",
+      "context": "Fire Check Dialogue / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "242624230",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Найти дрова",
+      "key": "act1.stove.find_wood",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "242624230",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Печь",
+      "key": "act1.stove.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "1013178454",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestTitle",
+      "ru": "Пока не стемнело",
+      "key": "act1.before_dark.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "1013178454",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Поговорить с женой",
+      "key": "act1.before_dark.talk_wife",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "1013178463",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Поговорить с женой",
+      "key": "act1.before_dark.talk_wife",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "482583293",
+      "property": "defaultTitle",
+      "method": "",
+      "ru": "Дом, милый дом",
+      "key": "act1.home.title",
+      "context": "QuestDisplayController / QuestDisplayController"
+    },
+    {
+      "scene": "Assets/Scenes/Act 1.unity",
+      "componentId": "482583293",
+      "property": "defaultDescription",
+      "method": "",
+      "ru": "Поговорить с женой",
+      "key": "act1.home.talk_wife",
+      "context": "QuestDisplayController / QuestDisplayController"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1217218407",
+      "property": "onImpact.m_PersistentCalls.m_Calls.Array.data[7]",
+      "method": "SetQuestTitle",
+      "ru": "Санитар",
+      "key": "act2.orderly.title",
+      "context": "Player / MedicFinishCutscene"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1217218407",
+      "property": "onImpact.m_PersistentCalls.m_Calls.Array.data[8]",
+      "method": "SetQuestDescription",
+      "ru": "Осмотреть санитара",
+      "key": "act2.orderly.inspect",
+      "context": "Player / MedicFinishCutscene"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1217218407",
+      "property": "onImpact.m_PersistentCalls.m_Calls.Array.data[9]",
+      "method": "SetQuestDescription",
+      "ru": "Осмотреть санитара",
+      "key": "act2.orderly.inspect",
+      "context": "Player / MedicFinishCutscene"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1848548709",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Зайти в больницу",
+      "key": "act2.paper.enter_hospital",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "2076241882",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Добраться до дома",
+      "key": "act2.journey_home.reach_home",
+      "context": "Теперь домой / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "2076241882",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Дорога домой",
+      "key": "act2.journey_home.title",
+      "context": "Теперь домой / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1938463048",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Добраться до дома",
+      "key": "act2.journey_home.reach_home",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1938463048",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Дорога домой",
+      "key": "act2.journey_home.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "506341730",
+      "property": "m_OnClick.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "Close Btn / Button"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "506341730",
+      "property": "m_OnClick.m_PersistentCalls.m_Calls.Array.data[4]",
+      "method": "SetQuestDescription",
+      "ru": "Вернуться домой",
+      "key": "act2.paper.return_home",
+      "context": "Close Btn / Button"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "132333194",
+      "property": "defaultTitle",
+      "method": "",
+      "ru": "Защита дома",
+      "key": "act2.defense.title",
+      "context": "QuestDisplayController / QuestDisplayController"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "132333194",
+      "property": "defaultDescription",
+      "method": "",
+      "ru": "Найти солдата у часовни",
+      "key": "act2.defense.find_soldier",
+      "context": "QuestDisplayController / QuestDisplayController"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "743591164",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Проследить за санитаром",
+      "key": "act2.paper.follow_orderly",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "113382877",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Проследить за санитаром",
+      "key": "act2.paper.follow_orderly",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "670338584",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Помочь собрать дрова",
+      "key": "act2.defense.collect_wood",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "720733475",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Помочь собрать дрова",
+      "key": "act2.defense.collect_wood",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "385697366",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "385697366",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Догнать санитара",
+      "key": "act2.paper.catch_orderly",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1868685715",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1868685715",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Догнать санитара",
+      "key": "act2.paper.catch_orderly",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1469210250",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "1469210250",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Спросить в больнице про бумагу",
+      "key": "act2.paper.ask_hospital",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "542711709",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Main.unity",
+      "componentId": "542711709",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Спросить в больнице про бумагу",
+      "key": "act2.paper.ask_hospital",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1217218407",
+      "property": "onImpact.m_PersistentCalls.m_Calls.Array.data[9]",
+      "method": "SetQuestTitle",
+      "ru": "Санитар",
+      "key": "act2.orderly.title",
+      "context": "Player / MedicFinishCutscene"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1217218407",
+      "property": "onImpact.m_PersistentCalls.m_Calls.Array.data[10]",
+      "method": "SetQuestDescription",
+      "ru": "Осмотреть санитара",
+      "key": "act2.orderly.inspect",
+      "context": "Player / MedicFinishCutscene"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1848548709",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Зайти в больницу",
+      "key": "act2.paper.enter_hospital",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "2076241882",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Добраться до дома",
+      "key": "act2.journey_home.reach_home",
+      "context": "Теперь домой / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "2076241882",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Дорога домой",
+      "key": "act2.journey_home.title",
+      "context": "Теперь домой / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1938463048",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Добраться до дома",
+      "key": "act2.journey_home.reach_home",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1938463048",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Дорога домой",
+      "key": "act2.journey_home.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "506341730",
+      "property": "m_OnClick.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "Close Btn / Button"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "506341730",
+      "property": "m_OnClick.m_PersistentCalls.m_Calls.Array.data[4]",
+      "method": "SetQuestDescription",
+      "ru": "Вернуться домой",
+      "key": "act2.paper.return_home",
+      "context": "Close Btn / Button"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "132333194",
+      "property": "defaultTitle",
+      "method": "",
+      "ru": "Защита дома",
+      "key": "act2.defense.title",
+      "context": "QuestDisplayController / QuestDisplayController"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "132333194",
+      "property": "defaultDescription",
+      "method": "",
+      "ru": "Найти солдата у часовни",
+      "key": "act2.defense.find_soldier",
+      "context": "QuestDisplayController / QuestDisplayController"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "743591164",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Проследить за санитаром",
+      "key": "act2.paper.follow_orderly",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "113382877",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Проследить за санитаром",
+      "key": "act2.paper.follow_orderly",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "670338584",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Помочь собрать дрова",
+      "key": "act2.defense.collect_wood",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "720733475",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Помочь собрать дрова",
+      "key": "act2.defense.collect_wood",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "385697366",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "385697366",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Догнать санитара",
+      "key": "act2.paper.catch_orderly",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1868685715",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1868685715",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Догнать санитара",
+      "key": "act2.paper.catch_orderly",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1469210250",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "1469210250",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Спросить в больнице про бумагу",
+      "key": "act2.paper.ask_hospital",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "542711709",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestTitle",
+      "ru": "Важная бумага",
+      "key": "act2.paper.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 2 Recover.unity",
+      "componentId": "542711709",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Спросить в больнице про бумагу",
+      "key": "act2.paper.ask_hospital",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "1543365320",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Найти дрова",
+      "key": "act3.stove.find_wood",
+      "context": "Fire Check Dialogue / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "1543365320",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Печь",
+      "key": "act3.stove.title",
+      "context": "Fire Check Dialogue / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "242624230",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Найти дрова",
+      "key": "act3.stove.find_wood",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "242624230",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestTitle",
+      "ru": "Печь",
+      "key": "act3.stove.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "1013178454",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestTitle",
+      "ru": "Пока не стемнело",
+      "key": "act3.before_dark.title",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "1013178454",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[2]",
+      "method": "SetQuestDescription",
+      "ru": "Поговорить с женой",
+      "key": "act3.before_dark.talk_wife",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "1013178463",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[3]",
+      "method": "SetQuestDescription",
+      "ru": "Поговорить с женой",
+      "key": "act3.before_dark.talk_wife",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "447085587",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Найти жену",
+      "key": "act3.home.find_wife",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "1410121522",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Осмотреть кроватку",
+      "key": "act3.home.inspect_cot",
+      "context": "Диалог / NPCConversation"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "273677073",
+      "property": "Event.m_PersistentCalls.m_Calls.Array.data[1]",
+      "method": "SetQuestDescription",
+      "ru": "Осмотреть кроватку",
+      "key": "act3.home.inspect_cot",
+      "context": "ConversationEventInfo / NodeEventHolder"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "482583293",
+      "property": "defaultTitle",
+      "method": "",
+      "ru": "Дом, милый дом?",
+      "key": "act3.home.title",
+      "context": "QuestDisplayController / QuestDisplayController"
+    },
+    {
+      "scene": "Assets/Scenes/Act 3.unity",
+      "componentId": "482583293",
+      "property": "defaultDescription",
+      "method": "",
+      "ru": "Поговорить с женой",
+      "key": "act3.home.talk_wife",
+      "context": "QuestDisplayController / QuestDisplayController"
+    }
+  ]
+}
