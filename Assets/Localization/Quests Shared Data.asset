@@ -147,6 +147,10 @@ MonoBehaviour:
     m_Key: act3.before_dark.talk_wife
     m_Metadata:
       m_Items: []
+  - m_Id: 519889755299840
+    m_Key: act3.stove.ignite
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

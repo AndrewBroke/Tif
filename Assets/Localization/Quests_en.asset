@@ -150,6 +150,10 @@ MonoBehaviour:
     m_Localized: Talk to your wife
     m_Metadata:
       m_Items: []
+  - m_Id: 519889755299840
+    m_Localized: Light the stove
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

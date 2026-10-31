@@ -14,7 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: Dialogue_Act3
   m_TableCollectionNameGuidString: ada709a341202e547bbe6949723084f1
-  m_Entries: []
+  m_Entries:
+  - m_Id: 2857957002829824
+    m_Key: act3_stove_ignite.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957019607040
+    m_Key: act3_stove_ignite.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957019607041
+    m_Key: act3_stove_ignite.node_1.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957019607042
+    m_Key: common.continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801344
+    m_Key: common.end
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801345
+    m_Key: act3_stove_opening.node_0.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801346
+    m_Key: act3_stove_opening.node_0.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801347
+    m_Key: act3_stove_opening.node_1.text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

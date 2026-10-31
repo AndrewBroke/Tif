@@ -30,6 +30,7 @@
     { "key": "act3.home.find_wife", "ru": "Найти жену", "en": "Find your wife", "context": "Act 3 searching the home" },
     { "key": "act3.home.inspect_cot", "ru": "Осмотреть кроватку", "en": "Inspect the cot", "context": "Act 3 child's cot" },
     { "key": "act3.stove.title", "ru": "Печь", "en": "The stove", "context": "Act 3 stove events, including inactive objects" },
+    { "key": "act3.stove.ignite", "ru": "Зажечь печь", "en": "Light the stove", "context": "Act 3 initial objective before searching the home" },
     { "key": "act3.stove.find_wood", "ru": "Найти дрова", "en": "Find firewood", "context": "Act 3 stove objective" },
     { "key": "act3.before_dark.title", "ru": "Пока не стемнело", "en": "Before nightfall", "context": "Act 3 authored before-dark quest event" },
     { "key": "act3.before_dark.talk_wife", "ru": "Поговорить с женой", "en": "Talk to your wife", "context": "Act 3 authored before-dark conversation event" }

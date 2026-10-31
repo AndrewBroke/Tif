@@ -17,7 +17,41 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: ada709a341202e547bbe6949723084f1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 2857957019607042
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801344
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957002829824
+    m_Localized: "The stove has gone out completely. There is still some firewood
+      \u2014 I need to light it."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957019607040
+    m_Localized: Hero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957019607041
+    m_Localized: Light the stove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801345
+    m_Localized: The stove has gone out... I can't see a thing. I need to light the
+      fire.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801346
+    m_Localized: Hero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2857957023801347
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
