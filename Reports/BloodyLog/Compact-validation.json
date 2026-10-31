@@ -1,0 +1,71 @@
+﻿{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script run",
+    "parameters": {
+      "file": "tmp/imagegen/VerifyCompactLog.cs"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 84,
+      "executeMs": 518,
+      "assemblyName": "PipelineRunScript_VerifyCompactLog_55a97ee077fb4ec7b33d645291389f9d",
+      "success": true,
+      "result": {
+        "success": true,
+        "variants": [
+          {
+            "variant": "BloodyLog_01_Splashes",
+            "width": 512,
+            "height": 256,
+            "bytes": 160199
+          },
+          {
+            "variant": "BloodyLog_02_Smears",
+            "width": 512,
+            "height": 256,
+            "bytes": 170756
+          },
+          {
+            "variant": "BloodyLog_03_Drips",
+            "width": 512,
+            "height": 256,
+            "bytes": 163256
+          },
+          {
+            "variant": "BloodyLog_04_Dried",
+            "width": 512,
+            "height": 256,
+            "bytes": 179022
+          },
+          {
+            "variant": "BloodyLog_05_Soaked",
+            "width": 512,
+            "height": 256,
+            "bytes": 184094
+          }
+        ],
+        "comparedPixels": 455680,
+        "sourcePixelMismatches": 0,
+        "maxUvErrorPixels": 0.00000762939453,
+        "originalFilesUnchanged": 8,
+        "prefabDependencies": [
+          "Assets/Sprites/Textures/Окровавленное полено/BloodyLog_01_Splashes.mat",
+          "Assets/Sprites/Textures/Окровавленное полено/Meshes/BloodyLog_Compact.asset",
+          "Packages/com.unity.render-pipelines.universal/Editor/AssetVersion.cs",
+          "Assets/Sprites/Textures/Окровавленное полено/Полено_Окровавленное.prefab",
+          "Assets/Sprites/Textures/Окровавленное полено/Textures/BloodyLog_01_Splashes.png",
+          "Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader"
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\Admin\\Documents\\Github Projects\\Tif"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,27 @@
+Triggered via real CharacterController crossing. Frame=202
+START frame=202 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(0.00, 70.00, 0.00) noise=0,00 frequency=0,75 active=CinemachineCamera input=False
+t=0,04 frame=203 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(0.00, 70.00, 0.00) noise=0,00 frequency=0,75 active=ChurchCutsceneCamera input=False
+t=1,00 frame=436 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(0.00, 70.00, 359.70) noise=0,20 frequency=0,83 active=ChurchCutsceneCamera input=False
+t=2,00 frame=693 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(359.79, 79.49, 0.00) noise=0,47 frequency=0,97 active=ChurchCutsceneCamera input=False
+t=3,00 frame=954 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(359.04, 113.31, 1.43) noise=0,70 frequency=1,12 active=ChurchCutsceneCamera input=False
+t=4,00 frame=1197 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(0.95, 113.94, 359.24) noise=1,03 frequency=1,28 active=ChurchCutsceneCamera input=False
+t=5,00 frame=1452 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(357.70, 48.90, 358.12) noise=1,36 frequency=1,44 active=ChurchCutsceneCamera input=False
+t=6,00 frame=1685 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(357.79, 35.00, 0.68) noise=1,80 frequency=1,60 active=ChurchCutsceneCamera input=False
+t=7,00 frame=1939 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(1.72, 89.84, 1.98) noise=2,25 frequency=1,76 active=ChurchCutsceneCamera input=False
+t=8,00 frame=2189 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(359.66, 82.14, 359.14) noise=2,95 frequency=2,01 active=ChurchCutsceneCamera input=False
+t=9,00 frame=2449 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=3,60 frequency=2,20 active=ChurchCutsceneCamera input=False
+t=10,00 frame=2704 blocked=True intact=True ruined=False camLocal=(0.03, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=3,60 frequency=2,20 active=ChurchCutsceneCamera input=False
+t=11,00 frame=2969 blocked=True intact=True ruined=False camLocal=(0.26, -1.63, 0.13) euler=(336.84, 352.58, 55.26) noise=1,99 frequency=1,80 active=ChurchCutsceneCamera input=False
+t=12,00 frame=3249 blocked=True intact=True ruined=False camLocal=(0.25, -2.25, 0.18) euler=(272.00, 354.00, 78.00) noise=0,00 frequency=1,00 active=ChurchCutsceneCamera input=False
+t=13,00 frame=3526 blocked=True intact=False ruined=True camLocal=(0.25, -2.25, 0.18) euler=(272.00, 354.00, 78.00) noise=0,00 frequency=1,00 active=ChurchCutsceneCamera input=False
+t=14,00 frame=3808 blocked=True intact=False ruined=True camLocal=(0.15, -1.31, 0.12) euler=(313.15, 359.95, 31.87) noise=0,12 frequency=1,00 active=ChurchCutsceneCamera input=False
+t=15,00 frame=4080 blocked=True intact=False ruined=True camLocal=(0.03, -0.26, 0.02) euler=(353.69, 1.00, 357.00) noise=0,03 frequency=1,00 active=ChurchCutsceneCamera input=False
+t=16,00 frame=4332 blocked=True intact=False ruined=True camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=0,00 frequency=1,00 active=CinemachineCamera input=False
+STOPPED frame=4589 blocked=False intact=False ruined=True camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=0,00 frequency=1,00 active=CinemachineCamera input=True
+First mouse pitch delta=0,1046 degrees
+Frames advanced=4387; player displacement=0,0073
+Max camera step=0,0344; max angular step=2,224
+Trigger remaining=False
+Ruined solid colliders=6
+Movement after unlock=1,092 m; intact=False ruined=True
+RESULT=PASS

@@ -1,9 +1,17 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using StarterAssets;
 
 public class CutSceneController : MonoBehaviour
 {
     [SerializeField] private PlayableDirector director;
+
+    // Optional Timeline rig. Existing cutscenes leave these references empty.
+    [SerializeField] private Transform cutsceneOrigin;
+    [SerializeField] private Transform cutsceneCamera;
+    [SerializeField] private Transform cutsceneLookTarget;
+    [SerializeField] private FirstPersonController player;
+    private bool gameplayCameraAligned;
 
     private void OnEnable()
     {
@@ -16,8 +24,30 @@ public class CutSceneController : MonoBehaviour
     public void LockControls() => PlayerControlLocks.Acquire(this);
     public void UnlockControls() => PlayerControlLocks.Release(this);
 
-    private void HandlePlayed(PlayableDirector source) => LockControls();
-    private void HandleStopped(PlayableDirector source) => UnlockControls();
+    private void HandlePlayed(PlayableDirector source)
+    {
+        LockControls();
+        gameplayCameraAligned = false;
+        if (cutsceneOrigin == null || cutsceneLookTarget == null || Camera.main == null) return;
+        Vector3 position = Camera.main.transform.position;
+        Vector3 direction = Vector3.ProjectOnPlane(cutsceneLookTarget.position - position, Vector3.up);
+        cutsceneOrigin.SetPositionAndRotation(position,
+            direction.sqrMagnitude > 0.001f ? Quaternion.LookRotation(direction) : Quaternion.identity);
+    }
+
+    // Called by a Timeline signal before the Cinemachine shot blends out.
+    public void AlignGameplayCamera()
+    {
+        if (gameplayCameraAligned || player == null || cutsceneCamera == null) return;
+        player.SetLookRotation(cutsceneCamera.rotation);
+        gameplayCameraAligned = true;
+    }
+
+    private void HandleStopped(PlayableDirector source)
+    {
+        AlignGameplayCamera();
+        UnlockControls();
+    }
 
     private void Update()
     {
@@ -49,6 +79,7 @@ public class CutSceneController : MonoBehaviour
     {
         if (director != null)
         {
+            if (director.state == PlayState.Playing) AlignGameplayCamera();
             director.played -= HandlePlayed;
             director.stopped -= HandleStopped;
             director.Stop();

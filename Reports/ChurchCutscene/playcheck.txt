@@ -1,0 +1,22 @@
+Triggered via real CharacterController crossing. Frame=170
+START frame=170 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=0,00 active=CinemachineCamera input=False
+t=0,05 frame=171 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=0,00 active=ChurchCutsceneCamera input=False
+t=1,00 frame=370 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 359.80) noise=0,15 active=ChurchCutsceneCamera input=False
+t=2,00 frame=582 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 359.60) noise=0,30 active=ChurchCutsceneCamera input=False
+t=3,00 frame=785 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(353.65, 0.60, 1.01) noise=0,59 active=ChurchCutsceneCamera input=False
+t=4,00 frame=978 blocked=True intact=True ruined=False camLocal=(0.00, 0.00, 0.00) euler=(353.10, 1.20, 359.75) noise=1,12 active=ChurchCutsceneCamera input=False
+t=5,00 frame=1190 blocked=True intact=True ruined=False camLocal=(0.03, 0.00, 0.00) euler=(355.03, 358.49, 3.06) noise=1,80 active=ChurchCutsceneCamera input=False
+t=6,00 frame=1406 blocked=True intact=True ruined=False camLocal=(0.26, -1.63, 0.13) euler=(336.86, 352.36, 55.04) noise=2,10 active=ChurchCutsceneCamera input=False
+t=7,00 frame=1638 blocked=True intact=True ruined=False camLocal=(0.25, -2.25, 0.18) euler=(272.00, 354.00, 78.00) noise=0,00 active=ChurchCutsceneCamera input=False
+t=8,01 frame=1863 blocked=True intact=False ruined=True camLocal=(0.25, -2.25, 0.18) euler=(272.00, 354.00, 78.00) noise=0,00 active=ChurchCutsceneCamera input=False
+t=9,00 frame=2095 blocked=True intact=False ruined=True camLocal=(0.15, -1.31, 0.12) euler=(313.17, 359.95, 31.86) noise=0,10 active=ChurchCutsceneCamera input=False
+t=10,00 frame=2320 blocked=True intact=False ruined=True camLocal=(0.03, -0.25, 0.02) euler=(353.76, 0.99, 357.00) noise=0,03 active=ChurchCutsceneCamera input=False
+t=11,00 frame=2529 blocked=True intact=False ruined=True camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=0,00 active=CinemachineCamera input=False
+STOPPED frame=2740 blocked=False intact=False ruined=True camLocal=(0.00, 0.00, 0.00) euler=(354.00, 0.00, 0.00) noise=0,00 active=CinemachineCamera input=True
+First mouse pitch delta=0,1046 degrees
+Frames advanced=2570; player displacement=0,0079
+Max camera step=0,0384; max angular step=1,143
+Trigger remaining=False
+Ruined solid colliders=6
+Movement after unlock=1,123 m; intact=False ruined=True
+RESULT=PASS

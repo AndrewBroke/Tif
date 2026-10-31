@@ -129,6 +129,18 @@ namespace StarterAssets
 			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 		}
 
+		// Keep the mouse accumulator in sync when Timeline hands the view back.
+		public void SetLookRotation(Quaternion worldRotation)
+		{
+			if (CinemachineCameraTarget == null) return;
+			Vector3 angles = worldRotation.eulerAngles;
+			transform.rotation = Quaternion.Euler(0f, angles.y, 0f);
+			_cinemachineTargetPitch = Mathf.Clamp(Mathf.DeltaAngle(0f, angles.x), BottomClamp, TopClamp);
+			CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0f, 0f);
+			_rotationVelocity = 0f;
+			if (_input != null) _input.look = Vector2.zero;
+		}
+
 		private void CameraRotation()
 		{
 			// if there is an input
