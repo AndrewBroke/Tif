@@ -5,6 +5,13 @@ using UnityEngine.Rendering.Universal;
 [DisallowMultipleComponent]
 public class GraphicsController : MonoBehaviour
 {
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void InitializeFrameRate()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 100;
+    }
+
     [Tooltip("Renderer Data asset containing the Full Screen Pass feature (for example, PC_Renderer).")]
     [SerializeField] private ScriptableRendererData rendererData;
 
