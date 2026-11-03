@@ -65,6 +65,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (damage <= 0 || IsDead)
             return;
+        if (TryGetComponent(out PlayerWakeUp wakeUp) && wakeUp.IsPlaying)
+            return;
 
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
@@ -91,11 +93,18 @@ public class PlayerHealth : MonoBehaviour
         deathAnimationStarted = true;
         PlayerControlLocks.Acquire(this);
 
+        // A lethal bite arrives while the grab has disabled movement and Cinemachine.
+        // Restore their pre-grab states before recording what death must later restore.
+        foreach (var chaser in FindObjectsByType<ProximityChaser>())
+            chaser.ReleaseGrabForDeath(this);
+
         // Stop reactions before capturing the starting pose. They use the same camera target.
         if (TryGetComponent(out PlayerPushReaction push))
             push.StopReaction();
         if (TryGetComponent(out PlayerStumble stumble))
             stumble.CancelFall();
+        if (TryGetComponent(out PlayerWakeUp wakeUp))
+            wakeUp.CancelWakeUp();
 
         if (movement != null)
         {
@@ -211,8 +220,25 @@ public class PlayerHealth : MonoBehaviour
 
     private void FinishDeathAnimation()
     {
+        if (TryGetComponent(out PlayerWakeUp wakeUp) && wakeUp.PlayAfterDeath(this))
+            return;
         PlayerControlLocks.Acquire(this, showCursor: true);
         onDeathAnimationFinished.Invoke();
+    }
+
+    // Called only while PlayerWakeUp owns the control lock and the screen is black.
+    public void ReviveForRespawn()
+    {
+        if (!deathAnimationStarted) return;
+        deathPoseActive = false;
+        if (view != null) view.SetPositionAndRotation(startPosition, startRotation);
+        if (deathCameraRoot != null && view != null)
+            deathCameraRoot.SetPositionAndRotation(rootStartPosition, rootStartRotation);
+        if (movement != null) movement.enabled = movementWasEnabled;
+        if (brain != null) brain.enabled = brainWasEnabled;
+        currentHealth = MaxHealth;
+        deathAnimationStarted = false;
+        PlayerControlLocks.Release(this);
     }
 
     private void OnDisable()

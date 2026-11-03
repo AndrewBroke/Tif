@@ -175,7 +175,14 @@ public partial class ProximityChaser
         }
     }
 
-    private void EndGrab(bool resumeChase, bool retreatAfterGrab = false)
+    // Hand the original component states to PlayerHealth before it captures its death snapshot.
+    public void ReleaseGrabForDeath(PlayerHealth target)
+    {
+        if (IsGrabbing && player == target)
+            EndGrab(true, restoreForDeath: true);
+    }
+
+    private void EndGrab(bool resumeChase, bool retreatAfterGrab = false, bool restoreForDeath = false)
     {
         if (!IsGrabbing)
             return;
@@ -184,9 +191,9 @@ public partial class ProximityChaser
         bool playerDied = player != null && player.IsDead;
         if (activeGrabCamera != null && !playerDied)
             activeGrabCamera.transform.localRotation = initialCameraLocalRotation;
-        if (suspendedBrain != null && !playerDied)
+        if (suspendedBrain != null && (!playerDied || restoreForDeath))
             suspendedBrain.enabled = brainWasEnabled;
-        if (suspendedController != null && !playerDied)
+        if (suspendedController != null && (!playerDied || restoreForDeath))
             suspendedController.enabled = controllerWasEnabled;
         PlayerControlLocks.Release(this);
 
