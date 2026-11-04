@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c87e7bff18f0c8b4ea7bab914586b77c
+    m_Address: Assets/Localization/Dialogue_Act2 Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc3baac3a1db99f45b8da88a20458fed
     m_Address: Assets/Localization/Quests Shared Data.asset
     m_ReadOnly: 1

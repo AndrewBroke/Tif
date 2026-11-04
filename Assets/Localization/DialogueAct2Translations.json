@@ -1,0 +1,1123 @@
+{
+  "conversations":  [
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "169215712",
+      "id":  "act2.fence_posters",
+      "entries":  [
+        {
+          "key":  "act2.fence_posters.node_0.text",
+          "ru":  "Вошь. Смерть. Зараза. Будто вокруг мало напоминаний.",
+          "en":  "Lice. Death. Infection. As if there weren't enough reminders."
+        },
+        {
+          "key":  "act2.fence_posters.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.fence_posters.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "172023999",
+      "id":  "act2.church_blocked",
+      "entries":  [
+        {
+          "key":  "act2.church_blocked.node_0.text",
+          "ru":  "Тут я уже не пройду",
+          "en":  "I can't get through here anymore."
+        },
+        {
+          "key":  "act2.church_blocked.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.church_blocked.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "230991123",
+      "id":  "act2.detour",
+      "entries":  [
+        {
+          "key":  "act2.detour.node_0.text",
+          "ru":  "Это не самый короткий путь",
+          "en":  "This isn't the shortest way."
+        },
+        {
+          "key":  "act2.detour.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.detour.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "251410804",
+      "id":  "act2.hospital_posters",
+      "entries":  [
+        {
+          "key":  "act2.hospital_posters.node_0.text",
+          "ru":  "Каждый день новый лист. А мёртвых меньше не становится.",
+          "en":  "A new sheet every day. But no fewer dead."
+        },
+        {
+          "key":  "act2.hospital_posters.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.hospital_posters.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "312663980",
+      "id":  "act2.military_checkpoint",
+      "entries":  [
+        {
+          "key":  "act2.military_checkpoint.node_0.text",
+          "ru":  "Военный городок, вход только по пропуску.",
+          "en":  "Military compound. Entry by permit only."
+        },
+        {
+          "key":  "act2.military_checkpoint.node_0.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.military_checkpoint.node_17.text",
+          "ru":  "Выйти",
+          "en":  "Leave"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "385697366",
+      "id":  "act2.hospital_reception",
+      "entries":  [
+        {
+          "key":  "act2.hospital_reception.node_0.text",
+          "ru":  "Больница закрыта",
+          "en":  "The hospital is closed."
+        },
+        {
+          "key":  "act2.hospital_reception.node_0.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_7.text",
+          "ru":  "Да, это была последняя выдача на сегодня. Что вам нужно?",
+          "en":  "Yes, that was the last handout today. What do you need?"
+        },
+        {
+          "key":  "act2.hospital_reception.node_7.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_9.text",
+          "ru":  "Я же сказала, последняя выдача, дрова закончились. Всё, до сви...",
+          "en":  "I told you, that was the last handout. We're out of firewood. Now, goodb..."
+        },
+        {
+          "key":  "act2.hospital_reception.node_9.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_11.text",
+          "ru":  "Что еще, я же всё уже сказала.",
+          "en":  "What else? I've already told you everything."
+        },
+        {
+          "key":  "act2.hospital_reception.node_11.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_13.text",
+          "ru":  "Ну поздравляю, будут новые соседи, поютитесь немного...",
+          "en":  "Well, congratulations. You'll have new neighbours. You'll just have to squeeze in..."
+        },
+        {
+          "key":  "act2.hospital_reception.node_13.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_15.text",
+          "ru":  "Как жена, как ребенок? Такие не должны заселять.",
+          "en":  "What wife? What child? They shouldn't be moving anyone in if you have a family."
+        },
+        {
+          "key":  "act2.hospital_reception.node_15.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_17.text",
+          "ru":  "А, ну тогда понятно. Вы что от меня хотите? Чтобы я вашу жену и ребенка записала в дом? Так я не могу такого, вам к чиновникам надо.",
+          "en":  "Ah, I see. What do you want from me? To register your wife and child at your house? I can't do that. You need to see the officials."
+        },
+        {
+          "key":  "act2.hospital_reception.node_17.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_19.text",
+          "ru":  "Есть такие, чиновникам, мед персоналу выдают.",
+          "en":  "There are documents like that. They're issued to officials and medical staff."
+        },
+        {
+          "key":  "act2.hospital_reception.node_19.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_21.text",
+          "ru":  "Это которые мертвых возят? Нелегко, наверное...",
+          "en":  "The ones who transport the dead? That must be hard..."
+        },
+        {
+          "key":  "act2.hospital_reception.node_21.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_23.text",
+          "ru":  "Я бы хотела помочь, но бумаги такой выдать больше не могу. Последнюю отдала. А новые будут только на следующей неделе.",
+          "en":  "I'd like to help, but I can't issue you one. I gave out the last one. We won't get any more until next week."
+        },
+        {
+          "key":  "act2.hospital_reception.node_23.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_25.text",
+          "ru":  "Увы, ничем не могу помочь. Последнюю бумагу выдали санитару, что перед вами вышел. Он и дрова последние забрал.",
+          "en":  "I'm afraid I can't help. The last document went to the orderly who left just before you arrived. He took the last of the firewood, too."
+        },
+        {
+          "key":  "act2.hospital_reception.node_25.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_27.text",
+          "ru":  "Да прям только что, может вы даже его видели, когда подходили.",
+          "en":  "Just now. You might even have seen him as you came up."
+        },
+        {
+          "key":  "act2.hospital_reception.node_27.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_29.text",
+          "ru":  "Всё, мне некогда с вами разговаривать, надо обход делать.",
+          "en":  "That's enough. I don't have time to talk. I have rounds to do."
+        },
+        {
+          "key":  "act2.hospital_reception.node_29.name",
+          "ru":  "Больница",
+          "en":  "Hospital"
+        },
+        {
+          "key":  "act2.hospital_reception.node_4.text",
+          "ru":  "Но вы же только что выдали дрова",
+          "en":  "But you just gave someone firewood."
+        },
+        {
+          "key":  "act2.hospital_reception.node_6.text",
+          "ru":  "Выйти",
+          "en":  "Leave"
+        },
+        {
+          "key":  "act2.hospital_reception.node_8.text",
+          "ru":  "Дров бы...",
+          "en":  "Some firewood..."
+        },
+        {
+          "key":  "act2.hospital_reception.node_10.text",
+          "ru":  "Постойте",
+          "en":  "Wait."
+        },
+        {
+          "key":  "act2.hospital_reception.node_12.text",
+          "ru":  "Мой дом будут заселять",
+          "en":  "They're going to move people into my house."
+        },
+        {
+          "key":  "act2.hospital_reception.node_14.text",
+          "ru":  "Но мне нельзя, у меня жена, ребенок...",
+          "en":  "But they can't. I have a wife and child..."
+        },
+        {
+          "key":  "act2.hospital_reception.node_16.text",
+          "ru":  "Они... Их нет по бумагам в доме.",
+          "en":  "They... They aren't registered as living there."
+        },
+        {
+          "key":  "act2.hospital_reception.node_18.text",
+          "ru":  "Я слышал, что можно получить бумагу, чтобы дом не заселяли.",
+          "en":  "I heard there's a document you can get to stop them moving people in."
+        },
+        {
+          "key":  "act2.hospital_reception.node_20.text",
+          "ru":  "Я возчик из санитарного отряда.",
+          "en":  "I'm a cart driver with the sanitary unit."
+        },
+        {
+          "key":  "act2.hospital_reception.node_22.text",
+          "ru":  "Я бы хотел получить такую бумагу, чтобы дом не заселили.",
+          "en":  "I'd like one of those documents, so they won't move anyone into my house."
+        },
+        {
+          "key":  "act2.hospital_reception.node_24.text",
+          "ru":  "Но мне сказали заселение через 2 дня будет.",
+          "en":  "But they told me they're moving people in two days from now."
+        },
+        {
+          "key":  "act2.hospital_reception.node_26.text",
+          "ru":  "Когда вышел?",
+          "en":  "When did he leave?"
+        },
+        {
+          "key":  "act2.hospital_reception.node_28.text",
+          "ru":  "Далее",
+          "en":  "Continue"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "553709524",
+      "id":  "act2.house_vision",
+      "entries":  [
+        {
+          "key":  "act2.house_vision.node_0.text",
+          "ru":  "Что это.. Кто это... надо быстрее домой!",
+          "en":  "What is that... Who is that... I need to get home, quickly!"
+        },
+        {
+          "key":  "act2.house_vision.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.house_vision.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "670338584",
+      "id":  "act2.help_orderly",
+      "entries":  [
+        {
+          "key":  "act2.help_orderly.node_0.text",
+          "ru":  "Помоги, мужик.",
+          "en":  "Give me a hand, will you?"
+        },
+        {
+          "key":  "act2.help_orderly.node_0.name",
+          "ru":  "Медик",
+          "en":  "Medic"
+        },
+        {
+          "key":  "act2.help_orderly.node_3.text",
+          "ru":  "Помочь",
+          "en":  "Help"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "742094923",
+      "id":  "act2.unfamiliar_orderly",
+      "entries":  [
+        {
+          "key":  "act2.unfamiliar_orderly.node_0.text",
+          "ru":  "Впервые вижу этого санитара...",
+          "en":  "I've never seen that orderly before..."
+        },
+        {
+          "key":  "act2.unfamiliar_orderly.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.unfamiliar_orderly.node_1.text",
+          "ru":  "Выйти",
+          "en":  "Leave"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "743591164",
+      "id":  "act2.orderly_conversation",
+      "entries":  [
+        {
+          "key":  "act2.orderly_conversation.node_0.text",
+          "ru":  "Добрый вечер",
+          "en":  "Good evening."
+        },
+        {
+          "key":  "act2.orderly_conversation.node_0.name",
+          "ru":  "Санитар",
+          "en":  "Orderly"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_2.text",
+          "ru":  "Простите, я тороплюсь",
+          "en":  "I'm sorry, I'm in a hurry."
+        },
+        {
+          "key":  "act2.orderly_conversation.node_2.name",
+          "ru":  "Санитар",
+          "en":  "Orderly"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_5.text",
+          "ru":  "Что мой дом?",
+          "en":  "What about my house?"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_5.name",
+          "ru":  "Санитар",
+          "en":  "Orderly"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_7.text",
+          "ru":  "Ну... Должны... Но я получил бумагу.",
+          "en":  "Well... They were going to... But I got a document."
+        },
+        {
+          "key":  "act2.orderly_conversation.node_7.name",
+          "ru":  "Санитар",
+          "en":  "Orderly"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_9.text",
+          "ru":  "Что вы ко мне пристали, я тороплюсь, до свидания.",
+          "en":  "Why won't you leave me alone? I'm in a hurry. Goodbye."
+        },
+        {
+          "key":  "act2.orderly_conversation.node_9.name",
+          "ru":  "Санитар",
+          "en":  "Orderly"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_1.text",
+          "ru":  "Добрый",
+          "en":  "Evening."
+        },
+        {
+          "key":  "act2.orderly_conversation.node_3.text",
+          "ru":  "Уйти",
+          "en":  "Leave"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_4.text",
+          "ru":  "Ваш дом...",
+          "en":  "Your house..."
+        },
+        {
+          "key":  "act2.orderly_conversation.node_6.text",
+          "ru":  "Его заселяют?",
+          "en":  "Are they moving people in?"
+        },
+        {
+          "key":  "act2.orderly_conversation.node_8.text",
+          "ru":  "Какую бумагу?",
+          "en":  "What document?"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "924109344",
+      "id":  "act2.chase_orderly",
+      "entries":  [
+        {
+          "key":  "act2.chase_orderly.node_0.text",
+          "ru":  "Черт, надо его догнать",
+          "en":  "Damn it, I need to catch him."
+        },
+        {
+          "key":  "act2.chase_orderly.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.chase_orderly.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1154827064",
+      "id":  "act2.cannot_leave",
+      "entries":  [
+        {
+          "key":  "act2.cannot_leave.node_0.text",
+          "ru":  "Я не могу уйти из Новониколаевска. У меня тут жена, ребенок, работа, жизнь.",
+          "en":  "I can't leave Novonikolayevsk. My wife, my child, my work, my life are all here."
+        },
+        {
+          "key":  "act2.cannot_leave.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.cannot_leave.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1253587267",
+      "id":  "act2.hand_over_log",
+      "entries":  [
+        {
+          "key":  "act2.hand_over_log.node_0.text",
+          "ru":  "О, спасибо, можете отдать?",
+          "en":  "Oh, thank you. Could you hand it over?"
+        },
+        {
+          "key":  "act2.hand_over_log.node_0.name",
+          "ru":  "Медик",
+          "en":  "Medic"
+        },
+        {
+          "key":  "act2.hand_over_log.node_5.text",
+          "ru":  "Ударить",
+          "en":  "Strike"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1287565619",
+      "id":  "act2.enter_house",
+      "entries":  [
+        {
+          "key":  "act2.enter_house.node_0.text",
+          "ru":  "У меня плохое предчувствие",
+          "en":  "I have a bad feeling about this."
+        },
+        {
+          "key":  "act2.enter_house.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.enter_house.node_1.text",
+          "ru":  "Войти",
+          "en":  "Enter"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1300822082",
+      "id":  "act2.fallen_log",
+      "entries":  [
+        {
+          "key":  "act2.fallen_log.node_0.text",
+          "ru":  "Полено укатилось",
+          "en":  "The log rolled away."
+        },
+        {
+          "key":  "act2.fallen_log.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.fallen_log.node_1.text",
+          "ru":  "Взять",
+          "en":  "Take"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1331566193",
+      "id":  "act2.grieving_woman_dead",
+      "entries":  [
+        {
+          "key":  "act2.grieving_woman_dead.node_0.text",
+          "ru":  "Теперь она навсегда с семьёй",
+          "en":  "Now she's with her family forever."
+        },
+        {
+          "key":  "act2.grieving_woman_dead.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.grieving_woman_dead.node_4.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1469210250",
+      "id":  "act2.chapel_soldier",
+      "entries":  [
+        {
+          "key":  "act2.chapel_soldier.node_0.text",
+          "ru":  "Часовня закрыта",
+          "en":  "The chapel is closed."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_0.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_2.text",
+          "ru":  "Я же сказал, часовня закрыта",
+          "en":  "I said, the chapel is closed."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_2.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_4.text",
+          "ru":  "А что с ними?",
+          "en":  "What about them?"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_4.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_6.text",
+          "ru":  "Ну да, есть такие, хозяевам специальную бумагу выдают и в дом не заселяют никого.",
+          "en":  "Yes, there are houses like that. The owners get a special document, and no one is moved in."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_6.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_8.text",
+          "ru":  "Не знаю, вроде надо быть чиновником или санитаром, или еще кем-то из больницы.",
+          "en":  "I don't know. I think you have to be an official, or an orderly, or someone else from the hospital."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_8.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_10.text",
+          "ru":  "Это вы трупы возите?",
+          "en":  "You transport the bodies?"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_10.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_12.text",
+          "ru":  "Нелегко, наверное, столько мертвых видеть?",
+          "en":  "Must be hard, seeing so many dead people?"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_12.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_14.text",
+          "ru":  "\"молчит\"",
+          "en":  "\"He says nothing.\""
+        },
+        {
+          "key":  "act2.chapel_soldier.node_14.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_16.text",
+          "ru":  "Если ты из санитаров, то сходи в больницу, может тебе положена такая бумага.",
+          "en":  "If you're with the sanitary unit, go to the hospital. You might be entitled to one of those documents."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_16.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_1.text",
+          "ru":  "Я хотел спросить",
+          "en":  "I wanted to ask you something."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_3.text",
+          "ru":  "Я не об этом, я о домах, которые заселяют",
+          "en":  "That's not what I mean. I mean the houses they're moving people into."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_5.text",
+          "ru":  "Слышал, что какие-то не заселяют",
+          "en":  "I heard some houses are exempt."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_7.text",
+          "ru":  "А как ее получить?",
+          "en":  "How do you get it?"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_9.text",
+          "ru":  "Я работаю возчиком в санитарном отряде.",
+          "en":  "I work as a cart driver with the sanitary unit."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_11.text",
+          "ru":  "Да...",
+          "en":  "Yes..."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_13.text",
+          "ru":  "По-разному... Иногда, лучше видеть мертвых, чем живых, котоыре уже почти неживые",
+          "en":  "It depends... Sometimes it's better to see the dead than the living who are barely alive."
+        },
+        {
+          "key":  "act2.chapel_soldier.node_15.text",
+          "ru":  "Далее",
+          "en":  "Continue"
+        },
+        {
+          "key":  "act2.chapel_soldier.node_17.text",
+          "ru":  "Спасибо",
+          "en":  "Thank you."
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1697640302",
+      "id":  "act2.frozen_body",
+      "entries":  [
+        {
+          "key":  "act2.frozen_body.node_0.text",
+          "ru":  "Умер несколько дней назад",
+          "en":  "He died a few days ago."
+        },
+        {
+          "key":  "act2.frozen_body.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.frozen_body.node_2.text",
+          "ru":  "Была ночь, на утро только увидел",
+          "en":  "It was night. I only saw him in the morning."
+        },
+        {
+          "key":  "act2.frozen_body.node_2.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.frozen_body.node_4.text",
+          "ru":  "На утро уже примерз...",
+          "en":  "By morning he was already frozen to the ground..."
+        },
+        {
+          "key":  "act2.frozen_body.node_4.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.frozen_body.node_6.text",
+          "ru":  "Теперь только ждать оттепели",
+          "en":  "Now all we can do is wait for the thaw."
+        },
+        {
+          "key":  "act2.frozen_body.node_6.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.frozen_body.node_1.text",
+          "ru":  "Далее",
+          "en":  "Continue"
+        },
+        {
+          "key":  "act2.frozen_body.node_3.text",
+          "ru":  "Далее",
+          "en":  "Continue"
+        },
+        {
+          "key":  "act2.frozen_body.node_5.text",
+          "ru":  "Далее",
+          "en":  "Continue"
+        },
+        {
+          "key":  "act2.frozen_body.node_7.text",
+          "ru":  "Выйти",
+          "en":  "Leave"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1707785062",
+      "id":  "act2.after_mass_grave",
+      "entries":  [
+        {
+          "key":  "act2.after_mass_grave.node_0.text",
+          "ru":  "Что это было?",
+          "en":  "What was that?"
+        },
+        {
+          "key":  "act2.after_mass_grave.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.after_mass_grave.node_2.text",
+          "ru":  "Они были живые?...",
+          "en":  "Were they alive?..."
+        },
+        {
+          "key":  "act2.after_mass_grave.node_2.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.after_mass_grave.node_1.text",
+          "ru":  "Я не знаю",
+          "en":  "I don't know."
+        },
+        {
+          "key":  "act2.after_mass_grave.node_3.text",
+          "ru":  "Когда то...",
+          "en":  "Once..."
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1898685120",
+      "id":  "act2.strike_orderly",
+      "entries":  [
+        {
+          "key":  "act2.strike_orderly.node_0.text",
+          "ru":  "\"что-то бессвязно бормочет\"",
+          "en":  "\"He mumbles incoherently.\""
+        },
+        {
+          "key":  "act2.strike_orderly.node_0.name",
+          "ru":  "Санитар",
+          "en":  "Orderly"
+        },
+        {
+          "key":  "act2.strike_orderly.node_1.text",
+          "ru":  "Ударить",
+          "en":  "Strike"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "1938489501",
+      "id":  "act2.chapel_soldier_repeat",
+      "entries":  [
+        {
+          "key":  "act2.chapel_soldier_repeat.node_0.text",
+          "ru":  "Больше ничем не могу помочь...",
+          "en":  "I can't help you any further..."
+        },
+        {
+          "key":  "act2.chapel_soldier_repeat.node_0.name",
+          "ru":  "Солдат",
+          "en":  "Soldier"
+        },
+        {
+          "key":  "act2.chapel_soldier_repeat.node_1.text",
+          "ru":  "Уйти",
+          "en":  "Leave"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "2038354942",
+      "id":  "act2.take_document",
+      "entries":  [
+        {
+          "key":  "act2.take_document.node_0.text",
+          "ru":  "...",
+          "en":  "..."
+        },
+        {
+          "key":  "act2.take_document.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.take_document.node_2.text",
+          "ru":  "Я...",
+          "en":  "I..."
+        },
+        {
+          "key":  "act2.take_document.node_2.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.take_document.node_4.text",
+          "ru":  "Убил...",
+          "en":  "Killed..."
+        },
+        {
+          "key":  "act2.take_document.node_4.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.take_document.node_6.text",
+          "ru":  "Его...",
+          "en":  "Him..."
+        },
+        {
+          "key":  "act2.take_document.node_6.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.take_document.node_8.text",
+          "ru":  "Ты не мог по другому?",
+          "en":  "Was there no other way?"
+        },
+        {
+          "key":  "act2.take_document.node_8.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.take_document.node_10.text",
+          "ru":  "Теперь нужно...",
+          "en":  "Now I need to..."
+        },
+        {
+          "key":  "act2.take_document.node_10.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.take_document.node_12.text",
+          "ru":  "Да... Нужно забрать документ",
+          "en":  "Yes... I need to take the document."
+        },
+        {
+          "key":  "act2.take_document.node_12.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.take_document.node_1.text",
+          "ru":  "Я...",
+          "en":  "I..."
+        },
+        {
+          "key":  "act2.take_document.node_3.text",
+          "ru":  "Убил...",
+          "en":  "Killed..."
+        },
+        {
+          "key":  "act2.take_document.node_5.text",
+          "ru":  "Его...",
+          "en":  "Him..."
+        },
+        {
+          "key":  "act2.take_document.node_7.text",
+          "ru":  "Я должен был",
+          "en":  "I had to."
+        },
+        {
+          "key":  "act2.take_document.node_9.text",
+          "ru":  "Я не мог по другому",
+          "en":  "There was no other way."
+        },
+        {
+          "key":  "act2.take_document.node_11.text",
+          "ru":  "Забрать документ",
+          "en":  "Take the document"
+        },
+        {
+          "key":  "act2.take_document.node_13.text",
+          "ru":  "Обыскать",
+          "en":  "Search"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "2065162734",
+      "id":  "act2.no_reason_to_go",
+      "entries":  [
+        {
+          "key":  "act2.no_reason_to_go.node_0.text",
+          "ru":  "Мне туда сейчас не нужно.",
+          "en":  "I don't need to go there right now."
+        },
+        {
+          "key":  "act2.no_reason_to_go.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.no_reason_to_go.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "2076241882",
+      "id":  "act2.return_home",
+      "entries":  [
+        {
+          "key":  "act2.return_home.node_0.text",
+          "ru":  "Теперь нужно домой",
+          "en":  "I need to go home now."
+        },
+        {
+          "key":  "act2.return_home.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.return_home.node_1.text",
+          "ru":  "Выйти",
+          "en":  "Leave"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Scenes/Act 2 Main.unity",
+      "localId":  "2094373040",
+      "id":  "act2.grieving_woman",
+      "entries":  [
+        {
+          "key":  "act2.grieving_woman.node_0.text",
+          "ru":  "Лучше ее не трогать...",
+          "en":  "I'd better leave her alone..."
+        },
+        {
+          "key":  "act2.grieving_woman.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.grieving_woman.node_5.text",
+          "ru":  "Она потеряла всех...",
+          "en":  "She's lost everyone..."
+        },
+        {
+          "key":  "act2.grieving_woman.node_5.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.grieving_woman.node_4.text",
+          "ru":  "Далее",
+          "en":  "Continue"
+        },
+        {
+          "key":  "act2.grieving_woman.node_6.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Prefabs/Братская могила.prefab",
+      "localId":  "6567861194289080711",
+      "id":  "act2.mass_grave",
+      "entries":  [
+        {
+          "key":  "act2.mass_grave.node_0.text",
+          "ru":  "Полено... На нём замёрзшая кровь...",
+          "en":  "A log... There's frozen blood on it..."
+        },
+        {
+          "key":  "act2.mass_grave.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.mass_grave.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    },
+    {
+      "asset":  "Assets/Prefabs/Hallucination Medic.prefab",
+      "localId":  "5581066856958491325",
+      "id":  "act2.hallucination_medic",
+      "entries":  [
+        {
+          "key":  "act2.hallucination_medic.node_0.text",
+          "ru":  "Это не может быть он",
+          "en":  "It can't be him."
+        },
+        {
+          "key":  "act2.hallucination_medic.node_0.name",
+          "ru":  "Герой",
+          "en":  "Protagonist"
+        },
+        {
+          "key":  "act2.hallucination_medic.node_1.text",
+          "ru":  "Закрыть",
+          "en":  "Close"
+        }
+      ]
+    }
+  ]
+}

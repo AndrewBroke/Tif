@@ -1,0 +1,790 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Dialogue_Act2_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: c87e7bff18f0c8b4ea7bab914586b77c, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1169154048
+    m_Localized: Lice. Death. Infection. As if there weren't enough reminders.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097088
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097089
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097090
+    m_Localized: I can't get through here anymore.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097091
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097092
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097093
+    m_Localized: This isn't the shortest way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097094
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097095
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097096
+    m_Localized: A new sheet every day. But no fewer dead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097097
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097098
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097099
+    m_Localized: Military compound. Entry by permit only.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097100
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097101
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097102
+    m_Localized: The hospital is closed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097103
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097104
+    m_Localized: Yes, that was the last handout today. What do you need?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097105
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097106
+    m_Localized: I told you, that was the last handout. We're out of firewood. Now,
+      goodb...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097107
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097108
+    m_Localized: What else? I've already told you everything.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097109
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097110
+    m_Localized: Well, congratulations. You'll have new neighbours. You'll just have
+      to squeeze in...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097111
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097112
+    m_Localized: What wife? What child? They shouldn't be moving anyone in if you
+      have a family.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097113
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097114
+    m_Localized: Ah, I see. What do you want from me? To register your wife and child
+      at your house? I can't do that. You need to see the officials.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097115
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097116
+    m_Localized: There are documents like that. They're issued to officials and medical
+      staff.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097117
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097118
+    m_Localized: The ones who transport the dead? That must be hard...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097119
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097120
+    m_Localized: I'd like to help, but I can't issue you one. I gave out the last
+      one. We won't get any more until next week.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097121
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097122
+    m_Localized: I'm afraid I can't help. The last document went to the orderly who
+      left just before you arrived. He took the last of the firewood, too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097123
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097124
+    m_Localized: Just now. You might even have seen him as you came up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097125
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097126
+    m_Localized: That's enough. I don't have time to talk. I have rounds to do.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097127
+    m_Localized: Hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097128
+    m_Localized: But you just gave someone firewood.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097129
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097130
+    m_Localized: Some firewood...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097131
+    m_Localized: Wait.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097132
+    m_Localized: They're going to move people into my house.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097133
+    m_Localized: But they can't. I have a wife and child...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097134
+    m_Localized: They... They aren't registered as living there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097135
+    m_Localized: I heard there's a document you can get to stop them moving people
+      in.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097136
+    m_Localized: I'm a cart driver with the sanitary unit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097137
+    m_Localized: I'd like one of those documents, so they won't move anyone into
+      my house.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097138
+    m_Localized: But they told me they're moving people in two days from now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097139
+    m_Localized: When did he leave?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097140
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097141
+    m_Localized: What is that... Who is that... I need to get home, quickly!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097142
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097143
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097144
+    m_Localized: Give me a hand, will you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097145
+    m_Localized: Medic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097146
+    m_Localized: Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097147
+    m_Localized: I've never seen that orderly before...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097148
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097149
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097150
+    m_Localized: Good evening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097151
+    m_Localized: Orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097152
+    m_Localized: I'm sorry, I'm in a hurry.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097153
+    m_Localized: Orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097154
+    m_Localized: What about my house?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097155
+    m_Localized: Orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097156
+    m_Localized: Well... They were going to... But I got a document.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097157
+    m_Localized: Orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097158
+    m_Localized: Why won't you leave me alone? I'm in a hurry. Goodbye.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097159
+    m_Localized: Orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097160
+    m_Localized: Evening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211097161
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291392
+    m_Localized: Your house...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291393
+    m_Localized: Are they moving people in?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291394
+    m_Localized: What document?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291395
+    m_Localized: Damn it, I need to catch him.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291396
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291397
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291398
+    m_Localized: I can't leave Novonikolayevsk. My wife, my child, my work, my life
+      are all here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291399
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291400
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291401
+    m_Localized: Oh, thank you. Could you hand it over?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291402
+    m_Localized: Medic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291403
+    m_Localized: Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291404
+    m_Localized: I have a bad feeling about this.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291405
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291406
+    m_Localized: Enter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291407
+    m_Localized: The log rolled away.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291408
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291409
+    m_Localized: Take
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291410
+    m_Localized: Now she's with her family forever.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291411
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291412
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291413
+    m_Localized: The chapel is closed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291414
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291415
+    m_Localized: I said, the chapel is closed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291416
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291417
+    m_Localized: What about them?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291418
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291419
+    m_Localized: Yes, there are houses like that. The owners get a special document,
+      and no one is moved in.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291420
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291421
+    m_Localized: I don't know. I think you have to be an official, or an orderly,
+      or someone else from the hospital.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291422
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291423
+    m_Localized: You transport the bodies?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291424
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291425
+    m_Localized: Must be hard, seeing so many dead people?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291426
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291427
+    m_Localized: '"He says nothing."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291428
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291429
+    m_Localized: If you're with the sanitary unit, go to the hospital. You might
+      be entitled to one of those documents.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291430
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291431
+    m_Localized: I wanted to ask you something.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291432
+    m_Localized: That's not what I mean. I mean the houses they're moving people
+      into.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291433
+    m_Localized: I heard some houses are exempt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291434
+    m_Localized: How do you get it?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291435
+    m_Localized: I work as a cart driver with the sanitary unit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291436
+    m_Localized: Yes...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291437
+    m_Localized: It depends... Sometimes it's better to see the dead than the living
+      who are barely alive.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291438
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291439
+    m_Localized: Thank you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291440
+    m_Localized: He died a few days ago.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291441
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291442
+    m_Localized: It was night. I only saw him in the morning.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291443
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291444
+    m_Localized: By morning he was already frozen to the ground...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291445
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291446
+    m_Localized: Now all we can do is wait for the thaw.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291447
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291448
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291449
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291450
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291451
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291452
+    m_Localized: What was that?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291453
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291454
+    m_Localized: Were they alive?...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291455
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291456
+    m_Localized: I don't know.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291457
+    m_Localized: Once...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291458
+    m_Localized: '"He mumbles incoherently."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291459
+    m_Localized: Orderly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291460
+    m_Localized: Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291461
+    m_Localized: I can't help you any further...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291462
+    m_Localized: Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291463
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291464
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291465
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291466
+    m_Localized: I...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291467
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291468
+    m_Localized: Killed...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291469
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291470
+    m_Localized: Him...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291471
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291472
+    m_Localized: Was there no other way?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291473
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291474
+    m_Localized: Now I need to...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291475
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291476
+    m_Localized: Yes... I need to take the document.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291477
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291478
+    m_Localized: I...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291479
+    m_Localized: Killed...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291480
+    m_Localized: Him...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291481
+    m_Localized: I had to.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291482
+    m_Localized: There was no other way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291483
+    m_Localized: Take the document
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291484
+    m_Localized: Search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291485
+    m_Localized: I don't need to go there right now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291486
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291487
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291488
+    m_Localized: I need to go home now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291489
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291490
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291491
+    m_Localized: I'd better leave her alone...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291492
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291493
+    m_Localized: She's lost everyone...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291494
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291495
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291496
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291497
+    m_Localized: A log... There's frozen blood on it...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291498
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291499
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291500
+    m_Localized: It can't be him.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291501
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215291502
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6797910016
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6797910017
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

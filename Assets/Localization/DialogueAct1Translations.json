@@ -27,8 +27,8 @@
       "entries": [
         {
           "key": "act1.wall_inscription.node_0.text",
-          "ru": "Мой друг написал. Когда еще в Еланке были.",
-          "en": "My friend wrote this. Back when we were still in Yelanka."
+          "ru": "В Еланку тогда приезжал фотограф. Мы сделали семуйную фотографию.",
+          "en": "A photographer came to Yelanka back then. We had a family photograph taken."
         },
         {
           "key": "act1.wall_inscription.node_0.name",
@@ -37,7 +37,7 @@
         },
         {
           "key": "act1.wall_inscription.node_2.text",
-          "ru": "Тогда мы были еще вместе",
+          "ru": "В тот момент мы были еще вместе",
           "en": "We were all still together then."
         },
         {
