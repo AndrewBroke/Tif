@@ -82,6 +82,7 @@ public partial class ProximityChaser : MonoBehaviour
         characterAnimator.speed = 0f;
         characterAnimator.Play(stateHash, 0, Random.value);
         characterAnimator.Update(0f);
+        transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.World);
         initialized = true;
 
         // Pose sampling must also work before the player or NavMesh is ready.

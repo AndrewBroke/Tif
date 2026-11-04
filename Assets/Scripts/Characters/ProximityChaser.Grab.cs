@@ -13,6 +13,11 @@ public partial class ProximityChaser
     [SerializeField, Range(0f, 1f)] private float biteDamageTime = 0.5f;
     [SerializeField, Min(0f)] private float grabCooldown = 2f;
 
+    [Header("Bite effect")]
+    [Tooltip("X: bite animation progress (0–1). Y: Medic Bite Volume weight (0–1).")]
+    [SerializeField] private AnimationCurve biteVolumeWeight = new AnimationCurve(
+        new Keyframe(0f, 0f), new Keyframe(0.5f, 1f), new Keyframe(1f, 0f));
+
     [Header("Grab camera")]
     [Tooltip("Rendered camera. If empty, uses Camera.main. Cinemachine is temporarily suspended on this camera.")]
     [SerializeField] private Camera grabCamera = null;
@@ -34,7 +39,7 @@ public partial class ProximityChaser
     private Quaternion returnStartRotation;
     private float previousChaseTime;
     private float grabElapsed;
-    private float biteDuration;
+    private PlayerVolumeEffects activeVolumeEffects;
     private float returnElapsed;
     private float nextGrabTime;
     private bool returningCamera;
@@ -103,9 +108,8 @@ public partial class ProximityChaser
         characterAnimator.speed = biteAnimationSpeed;
         characterAnimator.Play(biteStateHash, 0, 0f);
         characterAnimator.Update(0f);
-        AnimatorStateInfo bite = characterAnimator.GetCurrentAnimatorStateInfo(0);
-        biteDuration = Mathf.Max(0.01f, bite.length / Mathf.Max(0.01f,
-            biteAnimationSpeed * Mathf.Abs(bite.speed * bite.speedMultiplier)));
+        activeVolumeEffects = player.GetComponent<PlayerVolumeEffects>();
+        UpdateBiteVolume(0f);
         return true;
     }
 
@@ -131,7 +135,8 @@ public partial class ProximityChaser
         }
 
         grabElapsed += Time.deltaTime;
-        if (!biteDamageApplied && !player.IsDead && grabElapsed >= biteDuration * biteDamageTime)
+        float biteProgress = Mathf.Clamp01(characterAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        if (!biteDamageApplied && !player.IsDead && biteProgress >= biteDamageTime)
         {
             biteDamageApplied = true;
             player.TakeDamage(contactDamage);
@@ -145,8 +150,10 @@ public partial class ProximityChaser
             }
         }
 
-        if (player.IsDead || grabElapsed >= biteDuration)
+        if (player.IsDead || biteProgress >= 1f)
         {
+            if (activeVolumeEffects != null)
+                activeVolumeEffects.ResetMedicBite();
             returningCamera = true;
             returnElapsed = 0f;
             returnStartRotation = activeGrabCamera.transform.rotation;
@@ -166,6 +173,9 @@ public partial class ProximityChaser
             return;
         }
 
+        if (characterAnimator != null)
+            UpdateBiteVolume(characterAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
         Vector3 focus = grabFocusTarget != null ? grabFocusTarget.position : transform.position + Vector3.up * focusHeight;
         Vector3 direction = focus - activeGrabCamera.transform.position;
         if (direction.sqrMagnitude > 0.0001f)
@@ -173,6 +183,13 @@ public partial class ProximityChaser
             float t = Mathf.SmoothStep(0f, 1f, grabElapsed / Mathf.Max(0.01f, cameraFocusTime));
             activeGrabCamera.transform.rotation = Quaternion.Slerp(initialCameraRotation, Quaternion.LookRotation(direction), t);
         }
+    }
+
+    private void UpdateBiteVolume(float progress)
+    {
+        if (activeVolumeEffects != null)
+            activeVolumeEffects.SetMedicBiteWeight(biteVolumeWeight == null ? 0f
+                : biteVolumeWeight.Evaluate(Mathf.Clamp01(progress)));
     }
 
     // Hand the original component states to PlayerHealth before it captures its death snapshot.
@@ -188,6 +205,9 @@ public partial class ProximityChaser
             return;
 
         IsGrabbing = false;
+        if (activeVolumeEffects != null)
+            activeVolumeEffects.ResetMedicBite();
+        activeVolumeEffects = null;
         bool playerDied = player != null && player.IsDead;
         if (activeGrabCamera != null && !playerDied)
             activeGrabCamera.transform.localRotation = initialCameraLocalRotation;

@@ -3,14 +3,28 @@ using UnityEngine;
 public class ChurchGraveSpawner : MonoBehaviour
 {
     [SerializeField] GameObject gravePrefab;
+
+    GameObject currentGrave;
     public void Spawn()
     {
-        Instantiate(gravePrefab, Vector3.zero, Quaternion.identity, transform);
+        currentGrave = Instantiate(gravePrefab, Vector3.zero, Quaternion.identity, transform);
+    }
+
+    public void Respawn()
+    {
+        Destroy(currentGrave);
+        Spawn();
+    }
+
+    public void Hide()
+    {
+        if (currentGrave != null)
+            currentGrave.SetActive(false);
     }
 
     void Awake()
     {
-        Spawn();
+        //Spawn();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
