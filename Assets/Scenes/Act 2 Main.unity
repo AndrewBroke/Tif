@@ -18939,6 +18939,92 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376605399}
   m_Mesh: {fileID: -466912063016490776, guid: 962d46b144cc6874f85c32d88f5c91e4, type: 3}
+--- !u!1001 &379963923
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 543450652407311946}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 99.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 99.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 99.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 228.36531
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -149.15813
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -49.88768
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7072302
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7406454305347646722, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_Mesh
+      value:
+      objectReference: {fileID: -8127647187087983280, guid: 43045ac8a418446479625fcfc4434891, type: 3}
+    - target: {fileID: -2281577151603442427, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_Mesh
+      value:
+      objectReference: {fileID: 6739092368207202365, guid: 43045ac8a418446479625fcfc4434891, type: 3}
+    - target: {fileID: 919132149155446097, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_Name
+      value: 2ALL_LANDSCAPE
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+--- !u!4 &379963924 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+  m_PrefabInstance: {fileID: 379963923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &381251890
 GameObject:
   m_ObjectHideFlags: 0
@@ -45858,7 +45944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a25158808bb15747a3e54ae52b36cda, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70842,6 +70928,7 @@ GameObject:
   - component: {fileID: 1342150728}
   - component: {fileID: 1342150730}
   - component: {fileID: 1342150729}
+  - component: {fileID: 1342150731}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -71003,6 +71090,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342150727}
   m_CullTransparentMesh: 1
+--- !u!114 &1342150731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342150727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: Dialogue_Act2
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: act2.housing_exemption.document.text
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1342150729}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName:
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1342642175
 GameObject:
   m_ObjectHideFlags: 0
@@ -120866,6 +120993,7 @@ Transform:
   - {fileID: 1190703268717687335}
   - {fileID: 1934146999}
   - {fileID: 1806223673}
+  - {fileID: 379963924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450652497179922

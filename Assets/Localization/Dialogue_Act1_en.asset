@@ -360,6 +360,54 @@ MonoBehaviour:
     m_Localized: Leave
     m_Metadata:
       m_Items: []
+  - m_Id: 4829302431408128
+    m_Localized: 'TOMSK PROVINCIAL
+
+      EXTRAORDINARY COMMISSION
+
+      FOR COMBATING
+      TYPHUS
+
+      NOTICE
+
+      8 January 1920
+
+      No. 47
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4829302460768256
+    m_Localized: 'Authorized Representative of Chekatif
+
+      A. P. Vedeneyev
+
+      Signature
+
+      Seal'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4829302460768257
+    m_Localized: 'To the owner of this house
+
+      An inspection has established
+      that these premises are occupied by one person and contain vacant living space.
+
+      Pursuant
+      to a resolution of the Extraordinary Commission for Combating Typhus, you are
+      hereby ordered to make the vacant space available to accommodate persons referred
+      by the Commission.
+
+      The premises must be ready for occupancy no later
+      than 10 January of this year.
+
+      The date and time of occupancy will be
+      communicated separately.
+
+      Failure to comply with this notice shall be
+      referred to the Extraordinary Commission for review.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

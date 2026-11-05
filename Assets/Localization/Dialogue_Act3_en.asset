@@ -32,7 +32,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2857957019607040
-    m_Localized: Hero
+    m_Localized: Protagonist
     m_Metadata:
       m_Items: []
   - m_Id: 2857957019607041
@@ -45,11 +45,278 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2857957023801346
-    m_Localized: Hero
+    m_Localized: Protagonist
     m_Metadata:
       m_Items: []
   - m_Id: 2857957023801347
     m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707478993362944
+    m_Localized: Notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723072
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723073
+    m_Localized: Read
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723074
+    m_Localized: He's gone!...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723075
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723076
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723077
+    m_Localized: A log?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723078
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723079
+    m_Localized: I don't know...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723080
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723081
+    m_Localized: No, it can't be the same one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723082
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723083
+    m_Localized: How did it get here?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723084
+    m_Localized: Is it the same one?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723085
+    m_Localized: Maybe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723086
+    m_Localized: '"The fire has grown even dimmer."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723087
+    m_Localized: Stove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723088
+    m_Localized: '"The fire has grown a little brighter."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723089
+    m_Localized: Stove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723090
+    m_Localized: I need to find more firewood before it gets dark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723091
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723092
+    m_Localized: They should still be handing out firewood at the hospital, if I
+      can get there in time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723093
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723094
+    m_Localized: I don't want to tear apart the house again. There's almost nothing
+      left.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723095
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723096
+    m_Localized: Add firewood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723097
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723098
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723099
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723100
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723101
+    m_Localized: I need to get back before the fire goes out.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723102
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723103
+    m_Localized: Leave the house
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723104
+    m_Localized: Our son... Is he with you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723105
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723106
+    m_Localized: Who else would he be with? How did it go with the document?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723107
+    m_Localized: Wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723108
+    m_Localized: So they won't move anyone in with us?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723109
+    m_Localized: Wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723110
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723111
+    m_Localized: I got it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723112
+    m_Localized: No, now...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723113
+    m_Localized: My son!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723114
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723115
+    m_Localized: Step away from the cot!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723116
+    m_Localized: A photographer came to Yelanka back then. We had a family photograph
+      taken.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723117
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723118
+    m_Localized: We were all still together then.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723119
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723120
+    m_Localized: Now this is the only place we're all together. On the wall.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723121
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723122
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723123
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4707479022723124
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711410436136960
+    m_Localized: 'TOMSK PROVINCIAL
+
+      EXTRAORDINARY COMMISSION
+
+      FOR COMBATING
+      TYPHUS
+
+      NOTICE
+
+      8 January 1920
+
+      No. 47
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711410436136961
+    m_Localized: 'Authorized Representative of Chekatif
+
+      A. P. Vedeneyev
+
+      Signature
+
+      Seal'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711410436136962
+    m_Localized: 'To the owner of this house
+
+      An inspection has established
+      that these premises are occupied by one person and contain vacant living space.
+
+      Pursuant
+      to a resolution of the Extraordinary Commission for Combating Typhus, you are
+      hereby ordered to make the vacant space available to accommodate persons referred
+      by the Commission.
+
+      The premises must be ready for occupancy no later
+      than 10 January of this year.
+
+      The date and time of occupancy will be
+      communicated separately.
+
+      Failure to comply with this notice shall be
+      referred to the Extraordinary Commission for review.'
     m_Metadata:
       m_Items: []
   references:

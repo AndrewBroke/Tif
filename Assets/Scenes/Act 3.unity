@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 43828787}
   - component: {fileID: 43828789}
   - component: {fileID: 43828788}
+  - component: {fileID: 43828790}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -630,6 +631,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43828786}
   m_CullTransparentMesh: 1
+--- !u!114 &43828790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43828786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: UI_Text
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: close_button
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 43828788}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName:
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &44239523
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,8 +793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 2
   json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":197,\"yPos\":147.5},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u041F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044C\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":196,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u041F\u0440\u0435\u0434\u043F\u0438\u0441\u0430\u043D\u0438\u0435\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  localizationId: act1.eviction_notice
-  localizationTable: Dialogue_Act1
+  localizationId: act3.eviction_notice
+  localizationTable: Dialogue_Act3
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -2288,6 +2329,7 @@ GameObject:
   - component: {fileID: 281827920}
   - component: {fileID: 281827922}
   - component: {fileID: 281827921}
+  - component: {fileID: 281827923}
   m_Layer: 5
   m_Name: header
   m_TagString: Untagged
@@ -2417,6 +2459,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281827919}
   m_CullTransparentMesh: 1
+--- !u!114 &281827923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281827919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: Dialogue_Act3
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: act3.eviction_notice.document.header
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 281827921}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName:
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &298922234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4223,8 +4305,8 @@ MonoBehaviour:
     \u0437\u043D\u0430\u044E...\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":553,\"yPos\":175},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u041D\u0435\u0442,
     \u044D\u0442\u043E \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C
     \u043E\u043D\u043E\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  localizationId: 
-  localizationTable: 
+  localizationId: act3.log
+  localizationTable: Dialogue_Act3
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -6028,8 +6110,8 @@ MonoBehaviour:
     \u0445\u043E\u0447\u0443 \u043E\u043F\u044F\u0442\u044C \u043B\u043E\u043C\u0430\u0442\u044C
     \u0434\u043E\u043C, \u0443\u0436\u0435 \u043F\u043E\u0447\u0442\u0438 \u043D\u0438\u0447\u0435\u0433\u043E
     \u043D\u0435 \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C.\",\"parentUIDs\":[17],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  localizationId: 
-  localizationTable: 
+  localizationId: act3.stove_add_wood
+  localizationTable: Dialogue_Act3
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -8121,8 +8203,8 @@ MonoBehaviour:
     \u0438\u0437 \u0434\u043E\u043C\u0430\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":192.25,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u041D\u0430\u0434\u043E
     \u0443\u0441\u043F\u0435\u0442\u044C \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F,
     \u043F\u043E\u043A\u0430 \u043E\u0433\u043E\u043D\u044C \u043D\u0435 \u043F\u043E\u0433\u0430\u0441.\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  localizationId: 
-  localizationTable: 
+  localizationId: act3.leave_home
+  localizationTable: Dialogue_Act3
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -10774,6 +10856,7 @@ GameObject:
   - component: {fileID: 1284983077}
   - component: {fileID: 1284983079}
   - component: {fileID: 1284983078}
+  - component: {fileID: 1284983080}
   m_Layer: 5
   m_Name: footer
   m_TagString: Untagged
@@ -10902,6 +10985,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284983076}
   m_CullTransparentMesh: 1
+--- !u!114 &1284983080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284983076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: Dialogue_Act3
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: act3.eviction_notice.document.signature
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1284983078}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName:
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1298315965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8551654070373378105, guid: 981a32cdc45e56c409e3c4f82d285e37, type: 3}
@@ -15466,6 +15589,7 @@ GameObject:
   - component: {fileID: 1607393096}
   - component: {fileID: 1607393098}
   - component: {fileID: 1607393097}
+  - component: {fileID: 1607393099}
   m_Layer: 5
   m_Name: main
   m_TagString: Untagged
@@ -15616,6 +15740,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607393095}
   m_CullTransparentMesh: 1
+--- !u!114 &1607393099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607393095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: Dialogue_Act3
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: act3.eviction_notice.document.body
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1607393097}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName:
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1617276002
 GameObject:
   m_ObjectHideFlags: 0
@@ -19757,8 +19921,8 @@ MonoBehaviour:
     \u0435\u0449\u0435 \u0432\u043C\u0435\u0441\u0442\u0435\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":252.75,\"yPos\":127},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u0422\u0435\u043F\u0435\u0440\u044C
     \u0442\u043E\u043B\u044C\u043A\u043E \u0442\u0443\u0442 \u0432\u0441\u0435 \u0432\u043C\u0435\u0441\u0442\u0435.
     \u041D\u0430 \u0441\u0442\u0435\u043D\u0435.\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  localizationId: act1.wall_inscription
-  localizationTable: Dialogue_Act1
+  localizationId: act3.wall_inscription
+  localizationTable: Dialogue_Act3
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
