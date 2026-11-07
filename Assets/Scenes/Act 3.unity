@@ -7023,7 +7023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2fc71dd4b7a4fd394bdf72e1842ce38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionPanel
-  source: {fileID: 0}
+  source: {fileID: 2027282145}
 --- !u!1 &834279079
 GameObject:
   m_ObjectHideFlags: 0
@@ -20116,7 +20116,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 830891844}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

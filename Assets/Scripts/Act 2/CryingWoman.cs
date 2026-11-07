@@ -6,12 +6,14 @@ public class CryingWoman : MonoBehaviour
 
     [SerializeField] GameObject dialogueCry;
     [SerializeField] GameObject dialogueDied;
+    [SerializeField] AudioSource crySFX;
     Animator animator;
     public void Die()
     {
         animator.SetTrigger("Die");
         dialogueCry.SetActive(false);
         dialogueDied.SetActive(true);
+        crySFX.Stop();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

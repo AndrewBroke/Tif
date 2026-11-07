@@ -152,8 +152,6 @@ public sealed partial class ScreamerTrigger
             if (!medicAnimator.IsInTransition(0) && info.normalizedTime >= 1f)
             {
                 HoldFallenPose(medicAnimator);
-                // Удалить после фикса анимаций
-                medicAnimator.transform.position += Vector3.down * 1.5f;
                 State = HallucinationState.Fallen;
                 if (corpseVisualSwap != null) corpseVisualSwap.MarkFallen();
                 if (examination != null)

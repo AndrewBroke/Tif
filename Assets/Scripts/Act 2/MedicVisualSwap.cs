@@ -57,7 +57,7 @@ public sealed class MedicVisualSwap : MonoBehaviour
             if (sourceHips != null && targetHips != null)
                 civilianModel.transform.position += sourceHips.position - targetHips.position;
         }
-        // Matching the medic's current pose also retains its temporary vertical animation correction.
+        // Keep the civilian aligned with the medic's sampled fallen pose.
         medicModel.SetActive(false);
         if (corpseInteraction != null) corpseInteraction.SetAvailable(false);
         HasSwapped = true;

@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8965925234339191770, guid: 13f252d6bc494b14e9d6aa11095a5767, type: 3}
+  m_Motion: {fileID: 8965925234339191770, guid: 0ce14cb8ff6596a4ea52865ea00323dc, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -129,7 +129,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8905068881809413962, guid: 13f252d6bc494b14e9d6aa11095a5767, type: 3}
+  m_Motion: {fileID: 1282926575706227090, guid: 0ce14cb8ff6596a4ea52865ea00323dc, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -215,7 +215,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "\u0422\u043E\u043B\u043A\u0430\u0435\u0442"
-  m_Speed: 3
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2355860576628976429}
@@ -228,7 +228,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4751529353781604641, guid: 13f252d6bc494b14e9d6aa11095a5767, type: 3}
+  m_Motion: {fileID: 7998665639636511456, guid: 0ce14cb8ff6596a4ea52865ea00323dc, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -469,7 +469,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 435379285588980326, guid: 13f252d6bc494b14e9d6aa11095a5767, type: 3}
+  m_Motion: {fileID: 5727087143856958012, guid: 0ce14cb8ff6596a4ea52865ea00323dc, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -937,7 +937,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "\u041F\u0430\u0434\u0430\u0435\u0442"
-  m_Speed: 1
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3697462125661489333}
@@ -950,7 +950,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2161360554804756603, guid: 13f252d6bc494b14e9d6aa11095a5767, type: 3}
+  m_Motion: {fileID: 564226653912472074, guid: 0ce14cb8ff6596a4ea52865ea00323dc, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
