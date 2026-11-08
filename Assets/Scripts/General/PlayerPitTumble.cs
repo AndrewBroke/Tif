@@ -2,9 +2,10 @@ using StarterAssets;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
-/// <summary>First-person pit fall preview. Animates the view; never moves the player.</summary>
+/// <summary>First-person pit fall with an optional teleport halfway through the tumble.</summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(FirstPersonController))]
 [DefaultExecutionOrder(9999)]
@@ -33,6 +34,21 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
     [SerializeField, Range(0f, 85f)] private float forwardTilt = 55f;
     [SerializeField, Min(0f)] private float cameraDrop = 0.75f;
 
+    [Header("Tumble randomness")]
+    [SerializeField, Range(0f, 45f)] private float rotationRandomness = 12f;
+    [SerializeField, Min(0f)] private float randomnessFrequency = 2.5f;
+
+    [Header("Post-processing")]
+    [SerializeField] private Volume fallRollVolume;
+
+    [Header("Teleport")]
+    [Tooltip("Teleport once, halfway through the tumble stage.")]
+    [SerializeField] private bool teleportDuringTumble;
+    [Tooltip("Destination of the player transform in world coordinates, not the camera position.")]
+    [SerializeField] private Vector3 teleportPosition;
+    [Tooltip("Player rotation around the world Y axis after teleporting, in degrees.")]
+    [SerializeField] private float teleportYaw;
+
     private FirstPersonController movement;
     private Camera view;
     private CinemachineBrain brain;
@@ -41,6 +57,8 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
     private Vector3 startingPosition;
     private Quaternion startingRotation;
     private float elapsed;
+    private Vector3 rotationNoiseSeed;
+    private bool hasTeleported;
 
     public bool IsTumbling { get; private set; }
     public float TotalDuration => Mathf.Max(0f, fallDuration) + Mathf.Max(0f, tumbleDuration)
@@ -83,6 +101,9 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
         }
 
         elapsed += Time.deltaTime;
+        float teleportTime = Mathf.Max(0f, fallDuration) + Mathf.Max(0f, tumbleDuration) * 0.5f;
+        if (teleportDuringTumble && !hasTeleported && view != null && elapsed >= teleportTime)
+            TeleportPlayer();
         if (elapsed >= TotalDuration)
             CancelTumble();
     }
@@ -104,7 +125,11 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
         brainWasEnabled = brain != null && brain.enabled;
         movementWasEnabled = movement.enabled;
         elapsed = 0f;
+        hasTeleported = false;
+        rotationNoiseSeed = new Vector3(Random.Range(0f, 1000f),
+            Random.Range(0f, 1000f), Random.Range(0f, 1000f));
         IsTumbling = true;
+        if (fallRollVolume != null) fallRollVolume.weight = 1f;
         PlayerControlLocks.Acquire(this);
         movement.enabled = false;
         if (brain != null) brain.enabled = false;
@@ -128,6 +153,7 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
             fullTurns / Mathf.Max(0.001f, tumbleDuration));
         float pitch;
         float roll;
+        float yaw = 0f;
         float drop;
 
         if (elapsed < fallEnd)
@@ -147,6 +173,14 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
             float rollProgress = Mathf.InverseLerp(fallEnd, tumbleEnd, elapsed);
             roll = 90f + fullTurns * RotationProgress(rollProgress,
                 joinSpeed * Mathf.Max(0f, tumbleDuration) / fullTurns, 0f);
+            // Fade both the offsets and their velocity at the stage boundaries.
+            float noiseEnvelope = Mathf.Sin(rollProgress * Mathf.PI);
+            noiseEnvelope *= noiseEnvelope;
+            float noiseTime = (elapsed - fallEnd) * Mathf.Max(0f, randomnessFrequency);
+            float noiseStrength = rotationRandomness * noiseEnvelope;
+            pitch += RotationNoise(rotationNoiseSeed.x, noiseTime) * noiseStrength;
+            yaw = RotationNoise(rotationNoiseSeed.y, noiseTime) * noiseStrength;
+            roll += RotationNoise(rotationNoiseSeed.z, noiseTime) * noiseStrength;
             drop = cameraDrop;
         }
         else if (elapsed < faceForwardEnd)
@@ -166,7 +200,41 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
         }
 
         view.transform.SetPositionAndRotation(startingPosition + Vector3.down * drop,
-            startingRotation * Quaternion.Euler(pitch, 0f, reverseRotation ? -roll : roll));
+            startingRotation * Quaternion.Euler(pitch, yaw, reverseRotation ? -roll : roll));
+    }
+
+    private static float RotationNoise(float seed, float time)
+    {
+        return (Mathf.PerlinNoise(seed, time) - 0.5f) * 2f;
+    }
+
+    private void TeleportPlayer()
+    {
+        Vector3 playerPosition = transform.position;
+        Vector3 cameraPosition = view.transform.position;
+        Quaternion cameraRotation = view.transform.rotation;
+        Quaternion destinationPlayerRotation = Quaternion.Euler(0f, teleportYaw, 0f);
+        Quaternion rotationDelta = destinationPlayerRotation
+            * Quaternion.Inverse(transform.rotation);
+        CharacterController controller = GetComponent<CharacterController>();
+        bool controllerWasEnabled = controller != null && controller.enabled;
+        if (controllerWasEnabled) controller.enabled = false;
+        try
+        {
+            transform.SetPositionAndRotation(teleportPosition, destinationPlayerRotation);
+            // Keep the current animation pose and its final camera position at the destination.
+            startingPosition = teleportPosition + rotationDelta * (startingPosition - playerPosition);
+            startingRotation = rotationDelta * startingRotation;
+            view.transform.SetPositionAndRotation(
+                teleportPosition + rotationDelta * (cameraPosition - playerPosition),
+                rotationDelta * cameraRotation);
+            Physics.SyncTransforms();
+            hasTeleported = true;
+        }
+        finally
+        {
+            if (controllerWasEnabled && controller != null) controller.enabled = true;
+        }
     }
 
     private static float Phase(float time, float start, float end)
@@ -189,8 +257,16 @@ public class PlayerPitTumble : MonoBehaviour, ISerializationCallbackReceiver
         if (!IsTumbling) return;
 
         IsTumbling = false;
+        if (fallRollVolume != null) fallRollVolume.weight = 0f;
         if (view != null)
             view.transform.SetPositionAndRotation(startingPosition, startingRotation);
+        if (hasTeleported)
+        {
+            // Resume Cinemachine at the destination without damping from the old location.
+            foreach (var camera in FindObjectsByType<CinemachineCamera>(FindObjectsSortMode.None))
+                if (camera.Follow != null && (camera.Follow == transform || camera.Follow.IsChildOf(transform)))
+                    camera.PreviousStateIsValid = false;
+        }
         if (brain != null) brain.enabled = brainWasEnabled;
         if (movement != null) movement.enabled = movementWasEnabled;
         PlayerControlLocks.Release(this);
