@@ -223,6 +223,8 @@ public class PlayerHealth : MonoBehaviour
             chaser.ReleaseGrabForDeath(this);
 
         // Stop reactions before capturing the starting pose. They use the same camera target.
+        if (TryGetComponent(out PlayerPitTumble tumble))
+            tumble.CancelTumble();
         if (TryGetComponent(out PlayerPushReaction push))
             push.StopReaction();
         if (TryGetComponent(out PlayerStumble stumble))
