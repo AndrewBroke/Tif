@@ -111,6 +111,7 @@ public sealed partial class ScreamerTrigger
         if (chaseSound != null)
         {
             chaseSource = character.AddComponent<AudioSource>();
+            chaseSource.outputAudioMixerGroup = soundMixerGroup;
             chaseSource.playOnAwake = false;
             chaseSource.spatialBlend = 1f;
             chaseSource.minDistance = soundMinDistance;

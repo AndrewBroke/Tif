@@ -910,6 +910,31 @@ MonoBehaviour:
       ____________\n\n\u041C. \u041F."
     m_Metadata:
       m_Items: []
+  - m_Id: 1665692444123136
+    m_Localized: "\u041F\u043E\u043B\u0435\u043D\u043E... \u041D\u0430 \u043D\u0451\u043C
+      \u0437\u0430\u043C\u0451\u0440\u0437\u0448\u0430\u044F \u043A\u0440\u043E\u0432\u044C..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066176
+    m_Localized: "\u0413\u0435\u0440\u043E\u0439"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066177
+    m_Localized: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066178
+    m_Localized: "\u041D\u0435\u0447\u0438\u0441\u0442\u043E\u0435 \u043C\u0435\u0441\u0442\u043E..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066179
+    m_Localized: "\u0413\u0435\u0440\u043E\u0439"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066180
+    m_Localized: "\u0412\u044B\u0431\u0440\u0430\u0442\u044C\u0441\u044F"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

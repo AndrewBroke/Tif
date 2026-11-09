@@ -1118,6 +1118,50 @@
           "en":  "Close"
         }
       ]
+    },
+    {
+      "asset": "Assets/Scenes/Act 2 Main.unity",
+      "localId": "120406066",
+      "id": "act2.bloody_log",
+      "entries": [
+        {
+          "key": "act2.bloody_log.node_0.text",
+          "ru": "Полено... На нём замёрзшая кровь...",
+          "en": "A log... There's frozen blood on it..."
+        },
+        {
+          "key": "act2.bloody_log.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act2.bloody_log.node_1.text",
+          "ru": "Закрыть",
+          "en": "Close"
+        }
+      ]
+    },
+    {
+      "asset": "Assets/Scenes/Act 2 Main.unity",
+      "localId": "1240915268",
+      "id": "act2.unholy_place",
+      "entries": [
+        {
+          "key": "act2.unholy_place.node_0.text",
+          "ru": "Нечистое место...",
+          "en": "An unholy place..."
+        },
+        {
+          "key": "act2.unholy_place.node_0.name",
+          "ru": "Герой",
+          "en": "Protagonist"
+        },
+        {
+          "key": "act2.unholy_place.node_1.text",
+          "ru": "Выбраться",
+          "en": "Get out"
+        }
+      ]
     }
   ]
 }

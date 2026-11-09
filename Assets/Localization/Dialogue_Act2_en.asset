@@ -838,6 +838,30 @@ MonoBehaviour:
       Seal'
     m_Metadata:
       m_Items: []
+  - m_Id: 1665692444123136
+    m_Localized: A log... There's frozen blood on it...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066176
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066177
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066178
+    m_Localized: An unholy place...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066179
+    m_Localized: Protagonist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1665692486066180
+    m_Localized: Get out
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

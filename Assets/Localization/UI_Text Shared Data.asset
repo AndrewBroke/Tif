@@ -83,6 +83,18 @@ MonoBehaviour:
     m_Key: close_button
     m_Metadata:
       m_Items: []
+  - m_Id: 22831867827838976
+    m_Key: transition_city_modern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22831867899142144
+    m_Key: transition_city_historical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22831867899142145
+    m_Key: transition_month_january
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -28,6 +28,7 @@ public sealed partial class ScreamerTrigger : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] private AudioClip screamerSound;
+    [SerializeField] private UnityEngine.Audio.AudioMixerGroup soundMixerGroup;
     [Range(0f, 1f)] [SerializeField] private float soundVolume = 1f;
     [Min(0.01f)] [SerializeField] private float soundMinDistance = 1f;
     [Min(0.01f)] [SerializeField] private float soundMaxDistance = 25f;
@@ -273,6 +274,7 @@ public sealed partial class ScreamerTrigger : MonoBehaviour
         GameObject sound = new GameObject("Screamer sound");
         sound.transform.position = position;
         AudioSource source = sound.AddComponent<AudioSource>();
+        source.outputAudioMixerGroup = soundMixerGroup;
         source.playOnAwake = false;
         source.spatialBlend = 1f;
         source.minDistance = soundMinDistance;

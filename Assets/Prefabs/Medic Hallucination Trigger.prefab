@@ -158,6 +158,7 @@ MonoBehaviour:
   navMeshSampleRadius: 3
   movementTimeout: 15
   screamerSound: {fileID: 0}
+  soundMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   soundVolume: 1
   soundMinDistance: 1
   soundMaxDistance: 25

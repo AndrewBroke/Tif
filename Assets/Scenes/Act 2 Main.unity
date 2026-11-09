@@ -6740,7 +6740,7 @@ MonoBehaviour:
   json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":220.5,\"yPos\":158},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u0417\u0430\u043A\u0440\u044B\u0442\u044C\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":223.75,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u041F\u043E\u043B\u0435\u043D\u043E...
     \u041D\u0430 \u043D\u0451\u043C \u0437\u0430\u043C\u0451\u0440\u0437\u0448\u0430\u044F
     \u043A\u0440\u043E\u0432\u044C...\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  localizationId: act2.mass_grave
+  localizationId: act2.bloody_log
   localizationTable: Dialogue_Act2
   saveVersion: 110
   DefaultName: 
@@ -23490,6 +23490,7 @@ MonoBehaviour:
   navMeshSampleRadius: 1.5
   movementTimeout: 15
   screamerSound: {fileID: 0}
+  soundMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   soundVolume: 1
   soundMinDistance: 1
   soundMaxDistance: 25
@@ -24436,6 +24437,10 @@ PrefabInstance:
       propertyPath: animationSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3171587963016064400, guid: 639fe780de3dc0843b9a184f93d874e3, type: 3}
+      propertyPath: soundMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
     - target: {fileID: 5481124485245450823, guid: 639fe780de3dc0843b9a184f93d874e3, type: 3}
       propertyPath: m_Name
       value: Medic Hallucination Trigger
@@ -47580,7 +47585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &564018494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62171,7 +62176,7 @@ AudioSource:
   m_GameObject: {fileID: 814280517}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 62717c00caa43a74ba377d56c422509c, type: 3}
   m_PlayOnAwake: 0
@@ -81099,7 +81104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogSwingController
   soundSource: {fileID: 0}
-  swingSounds: []
+  swingSounds:
+  - percent: 0
+    clip: {fileID: 0}
+    volume: 0
   windupTime: 0.6
   hitTime: 0.15
   returnTime: 0.5
@@ -84321,6 +84329,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195192736}
   m_Mesh: {fileID: 3749655252106300508, guid: 3ec4b63a1205df44b9abe2b702a6f8bc, type: 3}
+--- !u!4 &1198767681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4766008798700844981, guid: 28f858b3019a429c8b61b871043ed142, type: 3}
+  m_PrefabInstance: {fileID: 1950917756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1198767682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5291610182877670671, guid: 28f858b3019a429c8b61b871043ed142, type: 3}
+  m_PrefabInstance: {fileID: 1950917756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1198767683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198767682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9db96a8ded4ee4688361994b188c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MedicSoundController
+  sounds:
+  - name: GrabWood
+    source: {fileID: 2073877873}
 --- !u!1 &1200239005
 GameObject:
   m_ObjectHideFlags: 0
@@ -85471,6 +85504,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: set_volume
         m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: Die
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1943281648}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -88090,10 +88135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 2
-  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":586,\"yPos\":165},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u0412\u044B\u0431\u0440\u0430\u0442\u044C\u0441\u044F\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":585,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u041D\u0435\u0447\u0438\u0441\u0442\u043E\u0435
+  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":218.25,\"yPos\":165},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u0412\u044B\u0431\u0440\u0430\u0442\u044C\u0441\u044F\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":217.25,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u041D\u0435\u0447\u0438\u0441\u0442\u043E\u0435
     \u043C\u0435\u0441\u0442\u043E...\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\u0413\u0435\u0440\u043E\u0439\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  localizationId: 
-  localizationTable: 
+  localizationId: act2.unholy_place
+  localizationTable: Dialogue_Act2
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -93035,7 +93080,7 @@ AudioSource:
   m_GameObject: {fileID: 1309159264}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -138217,6 +138262,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4766008798700844981, guid: 28f858b3019a429c8b61b871043ed142, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2073877872}
     - targetCorrespondingSourceObject: {fileID: 5070193710890067317, guid: 28f858b3019a429c8b61b871043ed142, type: 3}
       insertIndex: -1
       addedObject: {fileID: 601103651}
@@ -138227,6 +138275,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1369352296}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5291610182877670671, guid: 28f858b3019a429c8b61b871043ed142, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1198767683}
     - targetCorrespondingSourceObject: {fileID: 5775746773448625282, guid: 28f858b3019a429c8b61b871043ed142, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1950917763}
@@ -147067,6 +147118,162 @@ Transform:
   m_Children: []
   m_Father: {fileID: 939433031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2073877871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2073877872}
+  - component: {fileID: 2073877873}
+  m_Layer: 0
+  m_Name: "\u0421\u043E\u0431\u0438\u0440\u0430\u0435\u0442 \u0434\u0440\u043E\u0432\u0430"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2073877872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073877871}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1198767681}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2073877873
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073877871}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 62717c00caa43a74ba377d56c422509c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.051864624
+      inSlope: -0.4096558
+      outSlope: -0.4096558
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.9900988
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003988
+      outSlope: -0.10003988
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2075992795
 GameObject:
   m_ObjectHideFlags: 0
@@ -147479,7 +147686,7 @@ AudioSource:
   m_GameObject: {fileID: 2080932461}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -147838,19 +148045,7 @@ MonoBehaviour:
       m_Calls: []
   OnEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 849270931}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: StartDialogue
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1707785062}
-          m_ObjectArgumentAssemblyTypeName: DialogueEditor.NPCConversation, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2086149583
 GameObject:
   m_ObjectHideFlags: 0
@@ -150047,7 +150242,7 @@ AudioSource:
   m_GameObject: {fileID: 2136506757}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 3e2135816f505f44992bddecc00aa265, type: 3}
   m_PlayOnAwake: 0

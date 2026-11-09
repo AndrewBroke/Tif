@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Localization;
 
 public class TimeTransition : MonoBehaviour
 {
@@ -9,6 +10,37 @@ public class TimeTransition : MonoBehaviour
     [SerializeField] private TMP_Text cityText;
     [SerializeField] private TMP_Text yearText;
     [SerializeField] private TMP_Text monthText;
+
+    private readonly LocalizedString cityName = new LocalizedString("UI_Text", "transition_city_modern");
+    private readonly LocalizedString monthName = new LocalizedString("UI_Text", "transition_month_january");
+    private bool cityNameReady;
+    private bool monthNameReady;
+
+    private void OnEnable()
+    {
+        cityNameReady = false;
+        monthNameReady = false;
+        cityName.StringChanged += UpdateCityName;
+        monthName.StringChanged += UpdateMonthName;
+    }
+
+    private void OnDisable()
+    {
+        cityName.StringChanged -= UpdateCityName;
+        monthName.StringChanged -= UpdateMonthName;
+    }
+
+    private void UpdateCityName(string value)
+    {
+        cityText.text = value;
+        cityNameReady = true;
+    }
+
+    private void UpdateMonthName(string value)
+    {
+        monthText.text = value;
+        monthNameReady = true;
+    }
 
     [Header("Затемнение экрана")]
     [SerializeField] private CanvasGroup fadeGroup;
@@ -61,15 +93,16 @@ public class TimeTransition : MonoBehaviour
         // НАЧАЛЬНОЕ СОСТОЯНИЕ
         // ==========================================
 
-        cityText.text = "Новосибирск";
         yearText.text = startYear.ToString();
-        monthText.text = "Январь";
 
-        SetTextAlpha(cityText, 1f);
+        SetTextAlpha(cityText, 0f);
         SetTextAlpha(yearText, 1f);
         SetTextAlpha(monthText, 0f);
 
         fadeGroup.alpha = 0f;
+
+        yield return new WaitUntil(() => cityNameReady && monthNameReady);
+        SetTextAlpha(cityText, 1f);
 
 
         // ==========================================
@@ -176,7 +209,9 @@ public class TimeTransition : MonoBehaviour
 
 
         // Меняем текст
-        cityText.text = "Новониколаевск";
+        cityNameReady = false;
+        cityName.TableEntryReference = "transition_city_historical";
+        yield return new WaitUntil(() => cityNameReady);
 
 
         // Плавно показываем новый текст

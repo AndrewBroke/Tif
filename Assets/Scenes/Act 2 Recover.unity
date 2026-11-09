@@ -904,6 +904,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  routeEndEvents: []
 --- !u!195 &25218612
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1055,6 +1056,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &33292305
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3606,6 +3608,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &109912322
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9049,6 +9052,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &133220704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9550,6 +9554,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &149835547
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11089,6 +11094,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &244380830
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16306,6 +16312,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &364261353
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -27246,6 +27253,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &421871925
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -27812,7 +27820,7 @@ AudioSource:
   m_GameObject: {fileID: 447353013}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: be57e130a724c8944b0424ba6727a05d, type: 3}
   m_PlayOnAwake: 0
@@ -28058,6 +28066,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &453044141
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -29717,6 +29726,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  routeEndEvents: []
 --- !u!195 &517664138
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -29856,6 +29866,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &519242136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31193,6 +31204,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &564018495
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -31274,6 +31286,7 @@ MonoBehaviour:
   logsInArms: {fileID: 1109245024}
   helpDialogue: {fileID: 496084145}
   questDisplayController: {fileID: 132333194}
+  giveLogInteraction: {fileID: 0}
 --- !u!136 &564018500
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -31412,6 +31425,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  routeEndEvents: []
 --- !u!1 &564974898
 GameObject:
   m_ObjectHideFlags: 0
@@ -31668,6 +31682,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &571222127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32821,6 +32836,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &624116462
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36462,6 +36478,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &717621305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38996,6 +39013,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &809991962
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -39493,6 +39511,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Sanitar
+  oneShot: 1
 --- !u!65 &836166744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48707,6 +48726,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &1031849489
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -51429,6 +51449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d036b9426d49f4f9709bcdabe2db6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogSwingController
+  soundSource: {fileID: 0}
+  swingSounds: []
   windupTime: 0.6
   hitTime: 0.15
   returnTime: 0.5
@@ -59841,6 +59863,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!195 &1329530214
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -62834,6 +62857,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  routeEndEvents: []
 --- !u!195 &1432649395
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -64089,6 +64113,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &1494126911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71501,6 +71526,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &1581754215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72333,6 +72359,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &1616209116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75506,6 +75533,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &1729560302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77226,6 +77254,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &1772001146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -78533,6 +78562,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  routeEndEvents: []
 --- !u!64 &1788371224
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -80104,6 +80134,7 @@ MonoBehaviour:
   onEndEvents:
     m_PersistentCalls:
       m_Calls: []
+  routeEndEvents: []
 --- !u!1 &1864739660
 GameObject:
   m_ObjectHideFlags: 0
@@ -83046,6 +83077,10 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 3900108755062758274, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
     - target: {fileID: 3900108755062758285, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_Name
       value: ConversationManager (1)
@@ -84077,6 +84112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutSceneController
   director: {fileID: 84489392}
+  cutsceneOrigin: {fileID: 0}
+  cutsceneCamera: {fileID: 0}
+  cutsceneLookTarget: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1932172796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88791,6 +88830,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   tagToCompare: Player
+  oneShot: 1
 --- !u!65 &2056810634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -89509,7 +89549,7 @@ AudioSource:
   m_GameObject: {fileID: 2080932461}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 73772b4135562324dbc9d5d74f3a5625, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -89872,6 +89912,7 @@ MonoBehaviour:
           m_StringArgument: Fall
           m_BoolArgument: 0
         m_CallState: 2
+  routeEndEvents: []
 --- !u!195 &2091061830
 NavMeshAgent:
   m_ObjectHideFlags: 0
